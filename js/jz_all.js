@@ -38,84 +38,6 @@ var option_jz_left_top_data=[{
 }]
 // 指定图表的配置项和数据
 var option_jz_left_top1 = {
-    series: [{
-        type: 'liquidFill',
-        radius: '80%',
-        data: [0.5, 0.45, 0.4, 0.3],
-        label: {
-            normal: {
-                textStyle: {
-                    color: 'red',
-                    insideColor: 'yellow',
-                    fontSize: 20
-                }
-            }
-        }
-    }]
-};
-var option_jz_left_top2 = {
-    series: [{
-        color: ['#C5DA51', '#D8E69B', '#dae89b', '#dae89b'],
-        type: 'liquidFill',
-        data: [0.6,0.59,0.55,0.50],
-        radius: '90%',
-        outline: {
-            show: false
-        },
-        backgroundStyle: {
-            borderColor: '#05a09c',
-            borderWidth: 2,
-            shadowColor: 'rgba(0, 0, 0, 0.6)',
-            shadowBlur: 20
-        },
-        shape: 'path://M-51.8,519.4c-2.7-0.4-4.9-2.7-4.9-5.5l0,0v-3.5h0.8c1.4,0,2.6-1.2,2.6-2.6v-0.5  c0-1.4-1.2-2.6-2.6-2.6h-26c-1.4,0-2.6,1.2-2.6,2.6v0.5c0,1.4,1.2,2.6,2.6,2.6h0.8v3.5l0,0c0,2.8-2.1,5.2-4.9,5.5  c-10.1,1-18,9.6-18,19.9v120c0,11,9,20,20,20h30c11,0,20-9,20-20v-120C-33.9,529-41.8,520.5-51.8,519.4z',
-        label: {
-            normal: {
-                position: ['50%', '30%'],
-                formatter: function() {
-                    return '占有量 ';
-                },
-                textStyle: {
-                    fontSize: 20,
-                    color: '#D94854'
-                }
-            }
-        }
-    }]
-
-
-};
-var option_jz_left_top3 = {
-    series: [{
-        type: 'liquidFill',
-        data: [0.6, 0.55, 0.4, 0.25],
-        radius: '90%',
-        outline: {
-            show: false
-        },
-        backgroundStyle: {
-            borderColor: '#156ACF',
-            borderWidth: 1,
-            shadowColor: 'rgba(0, 0, 0, 0.4)',
-            shadowBlur: 20
-        },
-        shape: 'path://M367.855,428.202c-3.674-1.385-7.452-1.966-11.146-1.794c0.659-2.922,0.844-5.85,0.58-8.719 c-0.937-10.407-7.663-19.864-18.063-23.834c-10.697-4.043-22.298-1.168-29.902,6.403c3.015,0.026,6.074,0.594,9.035,1.728 c13.626,5.151,20.465,20.379,15.32,34.004c-1.905,5.02-5.177,9.115-9.22,12.05c-6.951,4.992-16.19,6.536-24.777,3.271 c-13.625-5.137-20.471-20.371-15.32-34.004c0.673-1.768,1.523-3.423,2.526-4.992h-0.014c0,0,0,0,0,0.014 c4.386-6.853,8.145-14.279,11.146-22.187c23.294-61.505-7.689-130.278-69.215-153.579c-61.532-23.293-130.279,7.69-153.579,69.202 c-6.371,16.785-8.679,34.097-7.426,50.901c0.026,0.554,0.079,1.121,0.132,1.688c4.973,57.107,41.767,109.148,98.945,130.793 c58.162,22.008,121.303,6.529,162.839-34.465c7.103-6.893,17.826-9.444,27.679-5.719c11.858,4.491,18.565,16.6,16.719,28.643 c4.438-3.126,8.033-7.564,10.117-13.045C389.751,449.992,382.411,433.709,367.855,428.202z',
-        label: {
-            normal: {
-                position: ['38%', '40%'],
-                formatter: function() {
-                    return '总额\n数量';
-                },
-                textStyle: {
-                    fontSize: 20,
-                    color: '#D94854'
-                }
-            }
-        }
-    }]
-
-};
-var option_jz_left_top4= {
   tooltip: {
     trigger: 'item',
     formatter: "{a} <br/>{b} : {c} ({d}%)"
@@ -123,7 +45,7 @@ var option_jz_left_top4= {
   legend: {
     orient: 'vertical',
     left: 'left',
-    data: ['占有率']
+    data: ['矿工率']
   },
   series: [
     {
@@ -139,8 +61,198 @@ var option_jz_left_top4= {
       },
       data: [
         {
-          value: option_jz_left_top_data[3].value2,
-          name: '占有率',
+          value: option_jz_left_top_data[0].value1,
+          name: '矿工率',
+          label: {
+            normal: {
+              formatter: '{d} %',
+              textStyle: {
+                fontSize: 30
+              }
+            }
+          }
+        }, {
+          value: option_jz_left_top_data[0].value2,
+          name: '占位',
+          label: {
+            normal: {
+              formatter: '\n完成率',
+              textStyle: {
+                color: '#fff',
+                fontSize: 10
+              }
+            }
+          },
+          tooltip: {
+            show: false
+          },
+          itemStyle: {
+            normal: {
+              color: '#aaa'
+            },
+            emphasis: {
+              color: '#aaa'
+            }
+          },
+          hoverAnimation: false
+        }
+      ]
+    }
+  ]
+};
+var option_jz_left_top2 = {
+  tooltip: {
+    trigger: 'item',
+    formatter: "{a} <br/>{b} : {c} ({d}%)"
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+    data: ['出差数']
+  },
+  series: [
+    {
+      name: '饼图二',
+      type: 'pie',
+      radius: [
+        '60%', '70%'
+      ],
+      label: {
+        normal: {
+          position: 'center'
+        }
+      },
+      data: [
+        {
+          value: option_jz_left_top_data[1].value1,
+          name: '出差数',
+          label: {
+            normal: {
+              formatter: '{d} %',
+              textStyle: {
+                fontSize: 30
+              }
+            }
+          }
+        }, {
+          value: option_jz_left_top_data[1].value2,
+          name: '占位',
+          label: {
+            normal: {
+              formatter: '\n完成率',
+              textStyle: {
+                color: '#fff',
+                fontSize: 10
+              }
+            }
+          },
+          tooltip: {
+            show: false
+          },
+          itemStyle: {
+            normal: {
+              color: '#aaa'
+            },
+            emphasis: {
+              color: '#aaa'
+            }
+          },
+          hoverAnimation: false
+        }
+      ]
+    }
+  ]
+};
+var option_jz_left_top3 = {
+  tooltip: {
+    trigger: 'item',
+    formatter: "{a} <br/>{b} : {c} ({d}%)"
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+    data: ['全勤率']
+  },
+  series: [
+    {
+      name: '饼图二',
+      type: 'pie',
+      radius: [
+        '60%', '70%'
+      ],
+      label: {
+        normal: {
+          position: 'center'
+        }
+      },
+      data: [
+        {
+          value: option_jz_left_top_data[2].value1,
+          name: '全勤率',
+          label: {
+            normal: {
+              formatter: '{d} %',
+              textStyle: {
+                fontSize: 30
+              }
+            }
+          }
+        }, {
+          value: option_jz_left_top_data[2].value2,
+          name: '占位',
+          label: {
+            normal: {
+              formatter: '\n完成率',
+              textStyle: {
+                color: '#fff',
+                fontSize: 10
+              }
+            }
+          },
+          tooltip: {
+            show: false
+          },
+          itemStyle: {
+            normal: {
+              color: '#aaa'
+            },
+            emphasis: {
+              color: '#aaa'
+            }
+          },
+          hoverAnimation: false
+        }
+      ]
+    }
+  ]
+};
+
+var option_jz_left_top4= {
+  tooltip: {
+    trigger: 'item',
+    formatter: "{a} <br/>{b} : {c} ({d}%)"
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+    data: ['早退率']
+  },
+  series: [
+    {
+      name: '饼图二',
+      type: 'pie',
+      radius: [
+        '60%', '70%'
+      ],
+      label: {
+        normal: {
+          position: 'center'
+        }
+      },
+      data: [
+        {
+          value: option_jz_left_top_data[3].value1,
+          name: '早退率',
           label: {
             normal: {
               formatter: '{d} %',
@@ -178,286 +290,541 @@ var option_jz_left_top4= {
     }
   ]
 };
-
-
-option_jz_left_top5 = {
-
-    tooltip : {
-        formatter: "{a} <br/>{c} {b}"
+placeHolderStyle = {
+    normal: {
+        label: {
+            show: false,
+            position: "center"
+        },
+        labelLine: {
+            show: false
+        },
+        color: "#dedede",
+        borderColor: "#dedede",
+        borderWidth: 0
     },
-    toolbox: {
-        show : true,
-        feature : {
-            mark : {show: true},
-            restore : {show: true},
-            saveAsImage : {show: true}
-        }
-    },
-    series : [
-        {
-            name:'速度',
-            type:'gauge',
-            min:0,
-            max:220,
-            splitNumber:11,
-            radius: '50%',
-            axisLine: {            // 坐标轴线
-                lineStyle: {       // 属性lineStyle控制线条样式
-                    color: [[0.09, 'lime'],[0.82, '#1e90ff'],[1, '#ff4500']],
-                    width: 3,
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                }
-            },
-            axisLabel: {            // 坐标轴小标记
-                textStyle: {       // 属性lineStyle控制线条样式
-                    fontWeight: 'bolder',
-                    color: '#fff',
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                }
-            },
-            axisTick: {            // 坐标轴小标记
-                length :15,        // 属性length控制线长
-                lineStyle: {       // 属性lineStyle控制线条样式
-                    color: 'auto',
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                }
-            },
-            splitLine: {           // 分隔线
-                length :25,         // 属性length控制线长
-                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
-                    width:3,
-                    color: '#fff',
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                }
-            },
-            pointer: {           // 分隔线
-                shadowColor : '#fff', //默认透明
-                shadowBlur: 5
-            },
-            title : {
-                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                    fontWeight: 'bolder',
-                    fontSize: 20,
-                    fontStyle: 'italic',
-                    color: '#fff',
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                }
-            },
-            detail : {
-                backgroundColor: 'rgba(30,144,255,0.8)',
-                borderWidth: 1,
-                borderColor: '#fff',
-                shadowColor : '#fff', //默认透明
-                shadowBlur: 5,
-                offsetCenter: [0, '50%'],       // x, y，单位px
-                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                    fontWeight: 'bolder',
-                    color: '#fff'
-                }
-            },
-            data:[{value: 40, name: 'km/h'}]
-        },
-        {
-            name:'转速',
-            type:'gauge',
-            center : ['25%', '55%'],    // 默认全局居中
-            radius : '30%',
-            min:0,
-            max:7,
-            endAngle:45,
-            splitNumber:7,
-            axisLine: {            // 坐标轴线
-                lineStyle: {       // 属性lineStyle控制线条样式
-                    color: [[0.29, 'lime'],[0.86, '#1e90ff'],[1, '#ff4500']],
-                    width: 2,
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                }
-            },
-            axisLabel: {            // 坐标轴小标记
-                textStyle: {       // 属性lineStyle控制线条样式
-                    fontWeight: 'bolder',
-                    color: '#fff',
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                }
-            },
-            axisTick: {            // 坐标轴小标记
-                length :12,        // 属性length控制线长
-                lineStyle: {       // 属性lineStyle控制线条样式
-                    color: 'auto',
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                }
-            },
-            splitLine: {           // 分隔线
-                length :20,         // 属性length控制线长
-                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
-                    width:3,
-                    color: '#fff',
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                }
-            },
-            pointer: {
-                width:5,
-                shadowColor : '#fff', //默认透明
-                shadowBlur: 5
-            },
-            title : {
-                offsetCenter: [0, '-30%'],       // x, y，单位px
-                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                    fontWeight: 'bolder',
-                    fontStyle: 'italic',
-                    color: '#fff',
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                }
-            },
-            detail : {
-                //backgroundColor: 'rgba(30,144,255,0.8)',
-               // borderWidth: 1,
-                borderColor: '#fff',
-                shadowColor : '#fff', //默认透明
-                shadowBlur: 5,
-                width: 80,
-                height:30,
-                offsetCenter: [25, '20%'],       // x, y，单位px
-                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                    fontWeight: 'bolder',
-                    color: '#fff'
-                }
-            },
-            data:[{value: 1.5, name: 'x1000 r/min'}]
-        },
-        {
-            name:'油表',
-            type:'gauge',
-            center : ['75%', '50%'],    // 默认全局居中
-            radius : '30%',
-            min:0,
-            max:2,
-            startAngle:135,
-            endAngle:45,
-            splitNumber:2,
-            axisLine: {            // 坐标轴线
-                lineStyle: {       // 属性lineStyle控制线条样式
-                    color: [[0.2, 'lime'],[0.8, '#1e90ff'],[1, '#ff4500']],
-                    width: 2,
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                }
-            },
-            axisTick: {            // 坐标轴小标记
-                length :12,        // 属性length控制线长
-                lineStyle: {       // 属性lineStyle控制线条样式
-                    color: 'auto',
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                }
-            },
-            axisLabel: {
-                textStyle: {       // 属性lineStyle控制线条样式
-                    fontWeight: 'bolder',
-                    color: '#fff',
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                },
-                formatter:function(v){
-                    switch (v + '') {
-                        case '0' : return 'E';
-                        case '1' : return 'Gas';
-                        case '2' : return 'F';
-                    }
-                }
-            },
-            splitLine: {           // 分隔线
-                length :15,         // 属性length控制线长
-                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
-                    width:3,
-                    color: '#fff',
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                }
-            },
-            pointer: {
-                width:2,
-                shadowColor : '#fff', //默认透明
-                shadowBlur: 5
-            },
-            title : {
-                show: false
-            },
-            detail : {
-                show: false
-            },
-            data:[{value: 0.5, name: 'gas'}]
-        },
-        {
-            name:'水表',
-            type:'gauge',
-            center : ['75%', '50%'],    // 默认全局居中
-            radius : '30%',
-            min:0,
-            max:2,
-            startAngle:315,
-            endAngle:225,
-            splitNumber:2,
-            axisLine: {            // 坐标轴线
-                lineStyle: {       // 属性lineStyle控制线条样式
-                    color: [[0.2, 'lime'],[0.8, '#1e90ff'],[1, '#ff4500']],
-                    width: 2,
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                }
-            },
-            axisTick: {            // 坐标轴小标记
-                show: false
-            },
-            axisLabel: {
-                textStyle: {       // 属性lineStyle控制线条样式
-                    fontWeight: 'bolder',
-                    color: '#fff',
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                },
-                formatter:function(v){
-                    switch (v + '') {
-                        case '0' : return 'H';
-                        case '1' : return 'Water';
-                        case '2' : return 'C';
-                    }
-                }
-            },
-            splitLine: {           // 分隔线
-                length :15,         // 属性length控制线长
-                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
-                    width:3,
-                    color: '#fff',
-                    shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                }
-            },
-            pointer: {
-                width:2,
-                shadowColor : '#fff', //默认透明
-                shadowBlur: 5
-            },
-            title : {
-                show: false
-            },
-            detail : {
-                show: false
-            },
-            data:[{value: 0.5, name: 'gas'}]
-        }
-    ]
+    emphasis: {
+        color: "#dedede",
+        borderColor: "#dedede",
+        borderWidth: 0
+    }
 };
+option = {
+    backgroundColor: '#fff',
+    color: ['#fc7a26', '#fff', '#ffa127', '#fff', "#ffcd26"],
+    legend: [{
+        orient: '',
+        icon: 'circle',
+        left: 'right',
+        top: 'center',
+        data: ['不喜欢', '喜欢', '跳过']
+    }],
+    series: [{
+        name: '值',
+        type: 'pie',
+        clockWise: true, //顺时加载
+        hoverAnimation: false, //鼠标移入变大
+        radius: [199, 200],
+        itemStyle: {
+            normal: {
+                label: {
+                    show: true,
+                    position: 'outside'
+                },
+                labelLine: {
+                    show: true,
+                    length: 100,
+                    smooth: 0.5
+                },
+                borderWidth: 5,
+                shadowBlur: 40,
+                borderColor: "#fc7a26",
+                shadowColor: 'rgba(0, 0, 0, 0)' //边框阴影
+            }
+        },
+        data: [{
+            value: 7,
+            name: '70%'
+        }, {
+            value: 3,
+            name: '',
+            itemStyle: placeHolderStyle
+        }]
+    }, {
+        name: '白',
+        type: 'pie',
+        clockWise: false,
+        radius: [180, 180],
+        hoverAnimation: false,
+        data: [{
+            value: 1
+        }]
+    }, {
+        name: '值',
+        type: 'pie',
+        clockWise: true,
+        hoverAnimation: false,
+        radius: [159, 160],
+        itemStyle: {
+            normal: {
+                label: {
+                    show: true
+                },
+                labelLine: {
+                    show: true,
+                    length: 100,
+                    smooth: 0.5
+                },
+                borderWidth: 5,
+                shadowBlur: 40,
+                borderColor: "#ffa127",
+                shadowColor: 'rgba(0, 0, 0, 0)' //边框阴影
+            }
+        },
+        data: [{
+            value: 6,
+            name: '60%'
+        }, {
+            value: 4,
+            name: '',
+            itemStyle: placeHolderStyle
+        }]
+    }, {
+        name: '白',
+        type: 'pie',
+        clockWise: false,
+        hoverAnimation: false,
+        radius: [140, 140],
+        data: [{
+            value: 1
+        }]
+    }, {
+        name: '值',
+        type: 'pie',
+        clockWise: true,
+        hoverAnimation: false,
+        radius: [119, 120],
+        itemStyle: {
+            normal: {
+                label: {
+                    show: true
+                },
+                labelLine: {
+                    show: true,
+                    length: 100,
+                    smooth: 0.5
+                },
+                borderWidth: 5,
+                shadowBlur: 40,
+                borderColor: "#ffcd26",
+                shadowColor: 'rgba(0, 0, 0, 0)' //边框阴影
+            }
+        },
+        data: [{
+            value: 4,
+            name: '40%'
+        }, {
+            value: 6,
+            name: '',
+            itemStyle: placeHolderStyle
+        }]
+    }, {
+        type: 'pie',
+        color: ['#fc7a26', '#ffa127', "#ffcd26"],
+        data: [{
+            value: '',
+            name: '不喜欢'
+        }, {
+            value: '',
+            name: '喜欢'
+        }, {
+            value: '',
+            name: '跳过'
+        }]
+    }, {
+        name: '白',
+        type: 'pie',
+        clockWise: true,
+        hoverAnimation: false,
+        radius: [100, 100],
+        label: {
+            normal: {
+                position: 'center'
+            }
+        },
+        data: [{
+            value: 1,
+            label: {
+                normal: {
+                    formatter: '投票人数',
+                    textStyle: {
+                        color: '#666666',
+                        fontSize: 26
+                    }
+                }
+            }
+        }, {
+            tooltip: {
+                show: false
+            },
+            label: {
+                normal: {
+                    formatter: '\n1200',
+                    textStyle: {
+                        color: '#666666',
+                        fontSize: 26
+                    }
+                }
+            }
+        }]
+    }]
+};
+var series = [];
+
+var data = [ 22, 31, 40];
+var countries = ['温度', '酒精度数', '气压'];
+
+var titles = [];
+
+for (var i = 0; i < 3; i++) {
+
+    var x = 7 + i / 3 * 100 + '%';
+
+    titles.push({
+        text: countries[i],
+        textAlign: 'center',
+        left: x,
+        bottom: 10,
+        padding: 0,
+        textStyle: {
+            color: '#fff',
+            fontSize: 12,
+            fontWeight: 'normal'
+        }
+    })
+
+    series.push({
+        animation: true,
+        waveAnimation: true,
+
+        color: ['rgb(253, 77, 73)'],
+        center: [x, '50%'],
+        radius: '63%',
+        type: 'liquidFill',
+        shape: 'path://M229.844,151.547v-166.75c0-11.92-9.662-21.582-21.58-21.582s-21.581,9.662-21.581,21.582v166.75c-9.088,6.654-14.993,17.397-14.993,29.524c0,20.2,16.374,36.575,36.574,36.575c20.199,0,36.574-16.375,36.574-36.575C244.838,168.944,238.932,158.201,229.844,151.547z',
+        outline: {
+            show: false
+        },
+        amplitude: 1,
+        waveLength: '20%',
+        backgroundStyle: {
+            color: 'none',
+            borderColor: '#fff',
+            borderWidth: 5
+        },
+        data: [{
+            // -60 到 100 度
+            value: (data[i] - (-60)) / 160 + 0.1,
+            rawValue: data[i]
+        }],
+        itemStyle: {
+            normal: {
+                shadowBlur: 0
+            }
+        },
+        label: {
+            normal: {
+                position: 'insideBottom',
+                distance: 10,
+                formatter: function(item) {
+                    return ' ' + item.data.rawValue + '°';
+                },
+                textStyle: {
+                    color: 'rgb(253, 77, 73)',
+                    fontSize: 16
+                }
+            }
+        }
+    })
+}
+// option_jz_left_top5 = {
+//
+//     tooltip : {
+//         formatter: "{a} <br/>{c} {b}"
+//     },
+//     toolbox: {
+//         show : true,
+//         feature : {
+//             mark : {show: true},
+//             restore : {show: true},
+//             saveAsImage : {show: true}
+//         }
+//     },
+//     series : [
+//         {
+//             name:'速度',
+//             type:'gauge',
+//             min:0,
+//             max:220,
+//             splitNumber:11,
+//             radius: '50%',
+//             axisLine: {            // 坐标轴线
+//                 lineStyle: {       // 属性lineStyle控制线条样式
+//                     color: [[0.09, 'lime'],[0.82, '#1e90ff'],[1, '#ff4500']],
+//                     width: 3,
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 }
+//             },
+//             axisLabel: {            // 坐标轴小标记
+//                 textStyle: {       // 属性lineStyle控制线条样式
+//                     fontWeight: 'bolder',
+//                     color: '#fff',
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 }
+//             },
+//             axisTick: {            // 坐标轴小标记
+//                 length :15,        // 属性length控制线长
+//                 lineStyle: {       // 属性lineStyle控制线条样式
+//                     color: 'auto',
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 }
+//             },
+//             splitLine: {           // 分隔线
+//                 length :25,         // 属性length控制线长
+//                 lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+//                     width:3,
+//                     color: '#fff',
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 }
+//             },
+//             pointer: {           // 分隔线
+//                 shadowColor : '#fff', //默认透明
+//                 shadowBlur: 5
+//             },
+//             title : {
+//                 textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+//                     fontWeight: 'bolder',
+//                     fontSize: 20,
+//                     fontStyle: 'italic',
+//                     color: '#fff',
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 }
+//             },
+//             detail : {
+//                 backgroundColor: 'rgba(30,144,255,0.8)',
+//                 borderWidth: 1,
+//                 borderColor: '#fff',
+//                 shadowColor : '#fff', //默认透明
+//                 shadowBlur: 5,
+//                 offsetCenter: [0, '50%'],       // x, y，单位px
+//                 textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+//                     fontWeight: 'bolder',
+//                     color: '#fff'
+//                 }
+//             },
+//             data:[{value: 40, name: 'km/h'}]
+//         },
+//         {
+//             name:'转速',
+//             type:'gauge',
+//             center : ['25%', '55%'],    // 默认全局居中
+//             radius : '30%',
+//             min:0,
+//             max:7,
+//             endAngle:45,
+//             splitNumber:7,
+//             axisLine: {            // 坐标轴线
+//                 lineStyle: {       // 属性lineStyle控制线条样式
+//                     color: [[0.29, 'lime'],[0.86, '#1e90ff'],[1, '#ff4500']],
+//                     width: 2,
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 }
+//             },
+//             axisLabel: {            // 坐标轴小标记
+//                 textStyle: {       // 属性lineStyle控制线条样式
+//                     fontWeight: 'bolder',
+//                     color: '#fff',
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 }
+//             },
+//             axisTick: {            // 坐标轴小标记
+//                 length :12,        // 属性length控制线长
+//                 lineStyle: {       // 属性lineStyle控制线条样式
+//                     color: 'auto',
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 }
+//             },
+//             splitLine: {           // 分隔线
+//                 length :20,         // 属性length控制线长
+//                 lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+//                     width:3,
+//                     color: '#fff',
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 }
+//             },
+//             pointer: {
+//                 width:5,
+//                 shadowColor : '#fff', //默认透明
+//                 shadowBlur: 5
+//             },
+//             title : {
+//                 offsetCenter: [0, '-30%'],       // x, y，单位px
+//                 textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+//                     fontWeight: 'bolder',
+//                     fontStyle: 'italic',
+//                     color: '#fff',
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 }
+//             },
+//             detail : {
+//                 //backgroundColor: 'rgba(30,144,255,0.8)',
+//                // borderWidth: 1,
+//                 borderColor: '#fff',
+//                 shadowColor : '#fff', //默认透明
+//                 shadowBlur: 5,
+//                 width: 80,
+//                 height:30,
+//                 offsetCenter: [25, '20%'],       // x, y，单位px
+//                 textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+//                     fontWeight: 'bolder',
+//                     color: '#fff'
+//                 }
+//             },
+//             data:[{value: 1.5, name: 'x1000 r/min'}]
+//         },
+//         {
+//             name:'油表',
+//             type:'gauge',
+//             center : ['75%', '50%'],    // 默认全局居中
+//             radius : '30%',
+//             min:0,
+//             max:2,
+//             startAngle:135,
+//             endAngle:45,
+//             splitNumber:2,
+//             axisLine: {            // 坐标轴线
+//                 lineStyle: {       // 属性lineStyle控制线条样式
+//                     color: [[0.2, 'lime'],[0.8, '#1e90ff'],[1, '#ff4500']],
+//                     width: 2,
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 }
+//             },
+//             axisTick: {            // 坐标轴小标记
+//                 length :12,        // 属性length控制线长
+//                 lineStyle: {       // 属性lineStyle控制线条样式
+//                     color: 'auto',
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 }
+//             },
+//             axisLabel: {
+//                 textStyle: {       // 属性lineStyle控制线条样式
+//                     fontWeight: 'bolder',
+//                     color: '#fff',
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 },
+//                 formatter:function(v){
+//                     switch (v + '') {
+//                         case '0' : return 'E';
+//                         case '1' : return 'Gas';
+//                         case '2' : return 'F';
+//                     }
+//                 }
+//             },
+//             splitLine: {           // 分隔线
+//                 length :15,         // 属性length控制线长
+//                 lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+//                     width:3,
+//                     color: '#fff',
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 }
+//             },
+//             pointer: {
+//                 width:2,
+//                 shadowColor : '#fff', //默认透明
+//                 shadowBlur: 5
+//             },
+//             title : {
+//                 show: false
+//             },
+//             detail : {
+//                 show: false
+//             },
+//             data:[{value: 0.5, name: 'gas'}]
+//         },
+//         {
+//             name:'水表',
+//             type:'gauge',
+//             center : ['75%', '50%'],    // 默认全局居中
+//             radius : '30%',
+//             min:0,
+//             max:2,
+//             startAngle:315,
+//             endAngle:225,
+//             splitNumber:2,
+//             axisLine: {            // 坐标轴线
+//                 lineStyle: {       // 属性lineStyle控制线条样式
+//                     color: [[0.2, 'lime'],[0.8, '#1e90ff'],[1, '#ff4500']],
+//                     width: 2,
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 }
+//             },
+//             axisTick: {            // 坐标轴小标记
+//                 show: false
+//             },
+//             axisLabel: {
+//                 textStyle: {       // 属性lineStyle控制线条样式
+//                     fontWeight: 'bolder',
+//                     color: '#fff',
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 },
+//                 formatter:function(v){
+//                     switch (v + '') {
+//                         case '0' : return 'H';
+//                         case '1' : return 'Water';
+//                         case '2' : return 'C';
+//                     }
+//                 }
+//             },
+//             splitLine: {           // 分隔线
+//                 length :15,         // 属性length控制线长
+//                 lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+//                     width:3,
+//                     color: '#fff',
+//                     shadowColor : '#fff', //默认透明
+//                     shadowBlur: 10
+//                 }
+//             },
+//             pointer: {
+//                 width:2,
+//                 shadowColor : '#fff', //默认透明
+//                 shadowBlur: 5
+//             },
+//             title : {
+//                 show: false
+//             },
+//             detail : {
+//                 show: false
+//             },
+//             data:[{value: 0.5, name: 'gas'}]
+//         }
+//     ]
+// };
 
 setInterval(function (){
     option_jz_left_top5.series[0].data[0].value = (Math.random()*100).toFixed(2) - 0;
@@ -776,7 +1143,7 @@ option_jz_right_top = {
                     value: '2015-01-01',
                     tooltip: {
                         formatter: function(params) {
-                            return params.name + '    注： 沿海地带中未包括广东省的东莞、中山和海南的三沙、儋州。';
+                            return params.name + ' ';
                         }
                     },
                     symbol: 'diamond',
@@ -795,7 +1162,7 @@ option_jz_right_top = {
         tooltip: {},
         legend: {
             x: 'right',
-            data: ['县', '县级市', '区'],
+            data: ['生产量', '进货量', '销售量'],
             selected: {
                 'GDP': false,
                 '金融': false,
@@ -813,7 +1180,7 @@ option_jz_right_top = {
                 'interval': 0
             },
             'data': [
-                '天津', '河北', '辽宁', '上海', '江苏', '浙江', '福建', '山东', '广东', '广西 ', '海 南'
+                '济南', '潍坊', '临沂', '青岛', '日照', '烟台', '枣庄', '德州', '聊城', '泰安 ', '济宁'
             ],
             splitLine: {
                 show: true
@@ -835,13 +1202,13 @@ option_jz_right_top = {
             name: '房地产',
             type: 'bar'
         }, {
-            name: '县',
+            name: '生产量',
             type: 'bar'
         }, {
-            name: '县级市',
+            name: '进货量',
             type: 'bar'
         }, {
-            name: '区',
+            name: '销售量',
             type: 'bar'
         }, {
             name: '合计',
@@ -873,7 +1240,7 @@ option_jz_right_top = {
 
         {
             title: {
-                text: '2015年沿海地区行政区划'
+                text: '经营情况'
             },
             series: [{
                 data: dataMap.dataGDP['2011']
@@ -889,19 +1256,19 @@ option_jz_right_top = {
                 data: dataMap.dataTI['2011']
             }, {
                 data: [{
-                    name: '县',
+                    name: '生产量',
                     value: dataMap.dataPI['2011sum']
                 }, {
-                    name: '县级市',
+                    name: '进货量',
                     value: dataMap.dataSI['2011sum']
                 }, {
-                    name: '区',
+                    name: '销售量',
                     value: dataMap.dataTI['2011sum']
                 }]
             }]
         }, {
             title: {
-                text: '2014年沿海地区行政区划'
+                text: '经营情况'
             },
             series: [{
                 data: dataMap.dataGDP['2012']
@@ -917,19 +1284,19 @@ option_jz_right_top = {
                 data: dataMap.dataTI['2012']
             }, {
                 data: [{
-                    name: '县',
+                    name: '生产量',
                     value: dataMap.dataPI['2012sum']
                 }, {
-                    name: '县级市',
+                    name: '进货量',
                     value: dataMap.dataSI['2012sum']
                 }, {
-                    name: '区',
+                    name: '销售量',
                     value: dataMap.dataTI['2012sum']
                 }]
             }]
         }, {
             title: {
-                text: '2013年沿海地区行政区划'
+                text: '经营情况'
             },
             series: [{
                 data: dataMap.dataGDP['2013']
@@ -945,19 +1312,19 @@ option_jz_right_top = {
                 data: dataMap.dataTI['2013']
             }, {
                 data: [{
-                    name: '县',
+                    name: '生产量',
                     value: dataMap.dataPI['2013sum']
                 }, {
-                    name: '县级市',
+                    name: '进货量',
                     value: dataMap.dataSI['2013sum']
                 }, {
-                    name: '区',
+                    name: '销售量',
                     value: dataMap.dataTI['2013sum']
                 }]
             }]
         }, {
             title: {
-                text: '2012年沿海地区行政区划'
+                text: '经营情况'
             },
             series: [{
                 data: dataMap.dataGDP['2014']
@@ -973,19 +1340,19 @@ option_jz_right_top = {
                 data: dataMap.dataTI['2014']
             }, {
                 data: [{
-                    name: '县',
+                    name: '生产量',
                     value: dataMap.dataPI['2014sum']
                 }, {
-                    name: '县级市',
+                    name: '进货量',
                     value: dataMap.dataSI['2014sum']
                 }, {
-                    name: '区',
+                    name: '销售量',
                     value: dataMap.dataTI['2014sum']
                 }]
             }]
         }, {
             title: {
-                text: '2011年沿海地区行政区划'
+                text: '经营情况'
             },
             series: [{
                 data: dataMap.dataGDP['2015']
@@ -1001,13 +1368,13 @@ option_jz_right_top = {
                 data: dataMap.dataTI['2015']
             }, {
                 data: [{
-                    name: '县',
+                    name: '生产量',
                     value: dataMap.dataPI['2015sum']
                 }, {
-                    name: '县级市',
+                    name: '进货量',
                     value: dataMap.dataSI['2015sum']
                 }, {
-                    name: '区',
+                    name: '销售量',
                     value: dataMap.dataTI['2015sum']
                 }]
             }]
@@ -1341,7 +1708,10 @@ jz_left_top.setOption(option_jz_left_top1);
 jz_left_top2.setOption(option_jz_left_top2);
 jz_left_top3.setOption(option_jz_left_top3);
 jz_left_top4.setOption(option_jz_left_top4);
-jz_left_top5.setOption(option_jz_left_top5);
+jz_left_top5.setOption({
+    title: titles,
+    series: series
+});
 jz_left_top6.setOption(option_jz_left_top6);
 jz_content_top.setOption(option_jz_content_top);
 jz_right_top.setOption(option_jz_right_top);

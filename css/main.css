@@ -1,12 +1,44 @@
 .slide-title{
-    background: rgba(0,0,0,.5);
-    color: #fff;
-    height: 34px;
-    line-height: 34px;
-    padding: 0 10px;
-    font-size: 12px;
-    font-weight: bold;
+
+color: #fff;
+height: 60px;
+line-height: 60px;
+padding: 0 10px;
+font-size: 18px;
+font-weight: bold;
 }
+.zpbtop>div{
+  background: rgba(225,225,225,.1);
+}
+.zpbtop1{
+  border-radius: 30px 0 0 0;
+}
+.zpbtop2{
+  border-radius: 0 30px 0 0;
+}
+.zpbtop3{
+      border-radius: 0 0 0 30px;
+}
+.zpbtop4{
+  border-radius: 0 0 30px 0;
+}
+.zpbtop5{
+  margin-top: 20px;
+  border-radius: 30px;
+}
+.zpbtop6{
+
+  border-radius:30px;
+}
+.zpbtop7{
+    margin-top: 20px;
+  border-radius:  30px 0 0 30px;
+}
+.zpbtop8{
+    margin-top: 20px;
+    border-radius: 0 30px 30px 0;
+}
+
 .slide-title span{
     float: left;
     margin-right: 14px;
@@ -27,11 +59,11 @@
 
 .slide-container{
   position: relative;
-  overflow: hidden;
-   height: 90px;
-   top:0;
-   right:0;
-     color: #fff;
+      overflow: hidden;
+      height: 359px;
+      top: 0;
+      right: 0;
+      color: #fff;
 }
 .slide-list{
   position:absolute;
@@ -43,8 +75,8 @@
     padding:0;
 }
 .slide-list li {
-  height:30px;
-  line-height:30px;
+  height:50px;
+  line-height:50px;
   list-style:none;
    margin:0;
    padding:0 10px;
@@ -52,7 +84,7 @@
 .slide-list li span {
   display:inline-block;
   margin-right:14px;
-  font-size:12px;
+  font-size:16px;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
@@ -67,6 +99,7 @@
 .jz_left_top{
   width: 100%;
   height: 150px;
+  background: rgba(2,31, 52, 0.5);
 }
 .jz_right_top{
   width: 100%;

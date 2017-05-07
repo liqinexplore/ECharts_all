@@ -1,125 +1,131 @@
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>ECharts</title>
     <meta name="veiwport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <link rel="stylesheet"  type="text/css" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css" />
     <script type="text/javascript" src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js">
     </script>
-      <script type="text/javascript" src="./js/echarts.min.js"></script>
-      <script type="text/javascript" src="https://rawgit.com/ecomfe/echarts-gl/master/dist/echarts-gl.min.js"></script>
-      <script type="text/javascript" src="http://echarts.baidu.com/resource/echarts-liquidfill-1.0.4/dist/echarts-liquidfill.js"></script>
-      <script type="text/javascript" src="https://rawgit.com/ecomfe/echarts-liquidfill/master/dist/echarts-liquidfill.js"></script>
-      <script type="text/javascript" src="http://echarts.baidu.com/resource/echarts-liquidfill-1.0.4/dist/echarts-liquidfill.js"></script>
-      <script type="text/javascript" src="./js/dark.js"></script>
+    <script type="text/javascript" src="./js/echarts.min.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/ecomfe/echarts-gl/master/dist/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/resource/echarts-liquidfill-1.0.4/dist/echarts-liquidfill.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/ecomfe/echarts-liquidfill/master/dist/echarts-liquidfill.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/resource/echarts-liquidfill-1.0.4/dist/echarts-liquidfill.js"></script>
+    <script type="text/javascript" src="./js/dark.js"></script>
 
-      <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/main.css">
     <script src="./js/shandong.js"></script>
 
     <script>
-    window.onload=function() {
+        window.onload = function() {
 
 
 
-  }
+        }
+    </script>
+</head>
 
-  </script>
-  </head>
-  <body style="background:url('http://121.196.232.136:8080/rank/bg.jpg')">
-    <div >
-      <div id="main"></div>
+<body style="background:url('http://121.196.232.136:8080/rank/bg.jpg')">
+    <div>
+        <div id="main"></div>
 
     </div>
     <div class="am-g doc-am-g">
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
-          <h1>景芝大数据调度指挥平台</h1>
+            <h1>景芝大数据调度指挥平台</h1>
         </div>
-  <div class="am-u-sm-12 am-u-md-4 am-u-lg-4">
-    <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
-      <div class="jz_left_top" id="jz_left_top">
+        <div class="zpbtop am-u-sm-12 am-u-md-4 am-u-lg-4">
+            <div class="zpbtop1 am-u-sm-12 am-u-md-6 am-u-lg-6">
+                <div class="jz_left_top" id="jz_left_top">
 
-      </div>
-    </div>
-    <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
-      <div class="jz_left_top" id="jz_left_top2">
+                </div>
+            </div>
+            <div class="zpbtop2 am-u-sm-12 am-u-md-6 am-u-lg-6">
+                <div class="jz_left_top" id="jz_left_top2">
 
-      </div>
-    </div>
-    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6">
-      <div class="jz_left_top" id="jz_left_top3">
+                </div>
+            </div>
+            <div class="zpbtop3 am-u-sm-6 am-u-md-6 am-u-lg-6">
+                <div class="jz_left_top" id="jz_left_top3">
 
-      </div>
-    </div>
-    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6">
-      <div class="jz_left_top" id="jz_left_top4">
+                </div>
+            </div>
+            <div class="zpbtop4 am-u-sm-6 am-u-md-6 am-u-lg-6">
+                <div class="jz_left_top" id="jz_left_top4">
 
-      </div>
-    </div>
-    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
-      <div class="jz_left_top2" id="jz_left_top5">
+                </div>
+            </div>
+            <div class="zpbtop5 am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="jz_left_top2" id="jz_left_top5">
 
-      </div>
-    </div>
-    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                </div>
+            </div>
+            <div class="zpbtop5 am-u-sm-12 am-u-md-12 am-u-lg-12">
 
-      <div class="jz_left_top2" id="jz_left_top6">
+                <div class="jz_left_top2" id="jz_left_top6">
 
-      </div>
-    </div>
-  </div>
-    <div class="am-u-sm-12 am-u-md-4 am-u-lg-4">
-      <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
-        <div class="jz_left_top3" id="jz_content_top">
+                </div>
+            </div>
+        </div>
+        <div class=" zpbtop am-u-sm-12 am-u-md-4 am-u-lg-4">
+            <div class="zpbtop6 am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="jz_left_top3" id="jz_content_top">
+
+                </div>
+
+
+            </div>
+            <div class="zpbtop5 am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="slide-title">
+                    <span>销售人</span>
+                    <span>销售数量</span>
+                    <span>主地区</span>
+
+                </div>
+                <div class="slide-container">
+                    <ul class="slide-list js-slide-list">
+                        <li class="odd"><span>王武</span><span>1209</span><span>济南</span></li>
+                        <li class="even"><span>王丽</span><span>1098</span><span>临沂</span></li>
+                        <li class="odd"><span>王维</span><span>2098</span><span>潍坊</span></li>
+                        <li class="even"><span>李明</span><span>2765</span><span>青岛</span></li>
+                        <li class="odd"><span>王东</span><span>1098</span><span>菏泽</span></li>
+                        <li class="even"><span>李铭</span><span>2091</span><span>淄博</span></li>
+                        <li class="odd"><span>刘大刚</span><span>1091</span><span>泰安</span></li>
+                        <li class="even"><span>张华</span><span>1091</span><span>日照</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="zpbtop am-u-sm-12 am-u-md-4 am-u-lg-4">
+            <div class="zpbtop6 am-u-sm-12 am-u-md-12 am-u-lg-12">
+
+                <div class="jz_left_top3" id="jz_right_top">
+
+                </div>
+            </div>
+            <div class="zpbtop7 am-u-sm-12 am-u-md-6 am-u-lg-6">
+                <div class="jz_right_top" id="jz_right_center">
+
+                </div>
+
+            </div>
+            <div class="zpbtop8 am-u-sm-12 am-u-md-6 am-u-lg-6">
+
+                <div class="jz_right_top" id="jz_right_center2">
+
+                </div>
+            </div>
+            <div class="zpbtop5 am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="jz_right_top" id="jz_right_center3">
+
+                </div>
+            </div>
 
         </div>
-
-
-      </div>
-      <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
-        <div class="slide-title">
-        <span>title1</span>
-        <span>title2</span>
-        <span>title3</span>
-        </div>
-  <div class="slide-container">
-  <ul class="slide-list js-slide-list">
-    <li class="odd"><span>里面</span><span>黎明</span><span>黎明</span></li>
-    <li class="even"><span>王丽</span><span>王丽</span><span>黎明</span></li>
-    <li class="odd"><span>item3</span><span>item3</span><span>黎明</span></li>
-    <li class="even"><span>item4</span><span>item4</span><span>黎明</span></li>
-  </ul>
-  </div>
-      </div>
     </div>
-  <div class="am-u-sm-12 am-u-md-4 am-u-lg-4">
-    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
-
-    <div class="jz_left_top3" id="jz_right_top">
-
-    </div>
-    </div>
-    <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
-      <div class="jz_right_top" id="jz_right_center">
-
-      </div>
-
-    </div>
-    <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
-
-    <div class="jz_right_top" id="jz_right_center2">
-
-    </div>
-    </div>
-    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
-      <div class="jz_right_top" id="jz_right_center3">
-
-      </div>
-    </div>
-
-  </div>
-</div>
-        <script type="text/javascript" src="./js/jz_all.js"></script>
-  </body>
+    <script type="text/javascript" src="./js/jz_all.js"></script>
+</body>
 
 </html>
