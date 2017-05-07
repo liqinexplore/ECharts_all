@@ -6,10 +6,6 @@
     padding: 0 10px;
     font-size: 12px;
     font-weight: bold;
-    position: absolute;
-    top:100px;
-    right: 0px;
-    z-index: 9999;
 }
 .slide-title span{
     float: left;
@@ -33,16 +29,16 @@
   position: relative;
   overflow: hidden;
    height: 90px;
-   top:100px;
-   right: 0px;
-   z-index: 9999;
+   top:0;
+   right:0;
+     color: #fff;
 }
 .slide-list{
   position:absolute;
   width:100%;
   left:0;
   top:0;
-  color:#000;
+  color: #fff;
    margin:0;
     padding:0;
 }
@@ -66,4 +62,24 @@
 }
 .slide-list li.even{
     background: rgba(51,79,109,.1);
+}
+/*左边头部*/
+.jz_left_top{
+  width: 100%;
+  height: 150px;
+}
+.jz_right_top{
+  width: 100%;
+  height: 200px;
+}
+.jz_left_top2{
+  width: 100%;
+  height: 300px;
+}
+.jz_left_top3{
+  width: 100%;
+  height: 500px;
+}
+h1{
+  color: #fff;
 }
