@@ -1,0 +1,108 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+<title>ECharts</title>
+    <meta name="veiwport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet"  type="text/css" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css" />
+    <script type="text/javascript" src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js">
+    </script>
+      <script type="text/javascript" src="./js/echarts.min.js"></script>
+      <script type="text/javascript" src="./js/dark.js"></script>
+      <link rel="stylesheet" href="./css/main.css">
+    <script src="./js/shandong.js"></script>
+
+    <script>
+    window.onload=function() {
+
+
+      var chart = echarts.init(document.getElementById('main'));
+      chart.setOption({
+          series: [{
+              type: 'map',
+              map: 'shandong'
+          }]
+      });
+      var doscroll = function(){
+    var $parent = $('.js-slide-list');
+    var $first = $parent.find('li:first');
+    var height = $first.height();
+    $first.animate({
+          marginTop: -height + 'px'  //或者改成： marginTop: -height + 'px'
+        }, 500, function() {// 动画结束后，把它插到最后，形成无缝
+        $first.css('marginTop', 0).appendTo($parent);
+       // $first.css('marginTop', 0).appendTo($parent);
+    });
+};
+setInterval(function(){doscroll()}, 2000);
+
+  }
+
+  </script>
+  </head>
+  <body>
+    <div >
+      <div id="main"></div>
+
+    </div>
+    <div class="am-g doc-am-g">
+  <div class="am-u-sm-12 am-u-md-4 am-u-lg-4">
+    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6">
+      循环
+    </div>
+    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6">
+      循环
+    </div>
+    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6">
+      循环
+    </div>
+    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6">
+      循环
+    </div>
+    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+      三个图
+    </div>
+    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+      表格
+
+    </div>
+  </div>
+    <div class="am-u-sm-12 am-u-md-4 am-u-lg-4">
+      <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+      山东地图
+      <div class="slide-title">
+      <span>title1</span>
+      <span>title2</span>
+      <span>title3</span>
+      </div>
+<div class="slide-container">
+<ul class="slide-list js-slide-list">
+  <li class="odd"><span>item1</span><span>item1</span><span>item1</span></li>
+  <li class="even"><span>item2</span><span>item2</span><span>item2</span></li>
+  <li class="odd"><span>item3</span><span>item3</span><span>item3</span></li>
+  <li class="even"><span>item4</span><span>item4</span><span>item4</span></li>
+</ul>
+</div>
+      </div>
+      <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+      山东地图表格
+      </div>
+    </div>
+  <div class="am-u-sm-12 am-u-md-4 am-u-lg-4">
+    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+    右边的图行
+    </div>
+    <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+    右左边的图形
+    </div>
+    <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+    右右边的图形
+    </div>
+    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+    右边最小的图
+    </div>
+
+  </div>
+</div>
+  </body>
+</html>
