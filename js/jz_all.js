@@ -826,13 +826,13 @@ for (var i = 0; i < 3; i++) {
 //     ]
 // };
 
-setInterval(function (){
-    option_jz_left_top5.series[0].data[0].value = (Math.random()*100).toFixed(2) - 0;
-    option_jz_left_top5.series[1].data[0].value = (Math.random()*7).toFixed(2) - 0;
-    option_jz_left_top5.series[2].data[0].value = (Math.random()*2).toFixed(2) - 0;
-    option_jz_left_top5.series[3].data[0].value = (Math.random()*2).toFixed(2) - 0;
-    jz_left_top5.setOption(option_jz_left_top5);
-},2000)
+// setInterval(function (){
+//     option_jz_left_top5.series[0].data[0].value = (Math.random()*100).toFixed(2) - 0;
+//     option_jz_left_top5.series[1].data[0].value = (Math.random()*7).toFixed(2) - 0;
+//     option_jz_left_top5.series[2].data[0].value = (Math.random()*2).toFixed(2) - 0;
+//     option_jz_left_top5.series[3].data[0].value = (Math.random()*2).toFixed(2) - 0;
+//     jz_left_top5.setOption(option_jz_left_top5);
+// },2000)
 
 var category = [];
 var dottedBase = +new Date();

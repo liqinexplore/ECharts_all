@@ -14,14 +14,39 @@
     <script type="text/javascript" src="https://rawgit.com/ecomfe/echarts-liquidfill/master/dist/echarts-liquidfill.js"></script>
     <script type="text/javascript" src="http://echarts.baidu.com/resource/echarts-liquidfill-1.0.4/dist/echarts-liquidfill.js"></script>
     <script type="text/javascript" src="./js/dark.js"></script>
-
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Ui1hFIbTdm26BERXEZv9VudhLwcl4k3G"></script>
     <link rel="stylesheet" href="./css/main.css">
     <script src="./js/shandong.js"></script>
 
     <script>
+
         window.onload = function() {
+          var map = new BMap.Map('allmap');
+        map.centerAndZoom(new BMap.Point(119.195026,36.740612),9);
 
+        var  mapStyle ={
+              features: ["road", "building","water","land"],//隐藏地图上的poi
+              style : "midnight"  //设置地图风格为高端黑
+          }
+        map.setMapStyle(mapStyle);
+map.enableScrollWheelZoom(true);
+        function checkhHtml5()
+              {
+                  if (typeof(Worker) === "undefined")
+                  {
+                      if(navigator.userAgent.indexOf("MSIE 9.0")<=0)
+                 {
+                 alert("定制个性地图示例：IE9以下不兼容，推荐使用百度浏览器、chrome、firefox、safari、IE10");
+                 }
 
+                  }
+              }
+        checkhHtml5();
+$("#jz_content_top").on("click",function() {
+  console.log("数据");
+  $("#jz_content_top").hide();
+  $(".jz_left_top_map").show();
+})
 
         }
     </script>
@@ -29,14 +54,14 @@
 
 <body style="background:url('http://121.196.232.136:8080/rank/bg.jpg')">
     <div>
-        <div id="main"></div>
+        <div  id="allmap" class="all" ></div>
 
     </div>
-    <div class="am-g doc-am-g">
+    <div class="am-g doc-am-g"  >
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
             <h1>景芝大数据调度指挥平台</h1>
         </div>
-        <div class="zpbtop am-u-sm-12 am-u-md-4 am-u-lg-4">
+        <div class="zpbtop am-u-sm-12 am-u-md-3 am-u-lg-3">
             <div class="zpbtop1 am-u-sm-12 am-u-md-6 am-u-lg-6">
                 <div class="jz_left_top" id="jz_left_top">
 
@@ -69,36 +94,42 @@
                 </div>
             </div>
         </div>
-        <div class=" zpbtop am-u-sm-12 am-u-md-4 am-u-lg-4">
+        <div class=" zpbtop am-u-sm-12 am-u-md-4 am-u-lg-6">
             <div class="zpbtop6 am-u-sm-12 am-u-md-12 am-u-lg-12">
-                <div class="jz_left_top3" id="jz_content_top">
+                <div class="jz_left_top4" id="jz_content_top" style="display:none">
 
                 </div>
+                	<!-- <div id="allmap" class="jz_left_top_map"></div> -->
+                <!-- <div data-am-widget="map" class="am-map am-map-default jz_left_top_map"
+     data-name="云适配" data-address="北京市海淀区海淀大街27号亿景大厦3层西区" data-longitude="" data-latitude="" data-scaleControl="" data-zoomControl="true" data-setZoom="17" data-icon="http://amuituku.qiniudn.com/mapicon.png">
+   <div id="bd-map"></div>
+ </div> -->
 
 
             </div>
-            <div class="zpbtop5 am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="zpbtop5 top22 am-u-sm-12 am-u-md-12 am-u-lg-12">
                 <div class="slide-title">
-                    <span>销售人</span>
-                    <span>销售数量</span>
-                    <span>主地区</span>
-
+                    <span>排名</span>
+                    <span>品牌</span>
+                    <span>商品名称</span>
+                    <span>销量</span>
+                    <span>销售额</span>
+                    <span>占比</span>
                 </div>
                 <div class="slide-container">
                     <ul class="slide-list js-slide-list">
-                        <li class="odd"><span>王武</span><span>1209</span><span>济南</span></li>
-                        <li class="even"><span>王丽</span><span>1098</span><span>临沂</span></li>
-                        <li class="odd"><span>王维</span><span>2098</span><span>潍坊</span></li>
-                        <li class="even"><span>李明</span><span>2765</span><span>青岛</span></li>
-                        <li class="odd"><span>王东</span><span>1098</span><span>菏泽</span></li>
-                        <li class="even"><span>李铭</span><span>2091</span><span>淄博</span></li>
-                        <li class="odd"><span>刘大刚</span><span>1091</span><span>泰安</span></li>
-                        <li class="even"><span>张华</span><span>1091</span><span>日照</span></li>
+                        <li class="odd"><span>冠军</span><span>景芝</span><span>景芝 景阳春 老虎王酒52度</span><span>2345</span><span>23456</span><span>10%</span></li>
+                        <li class="even"><span>亚军</span><span>景芝</span><span>景芝 景阳春 老虎王酒52度</span><span>2345</span><span>23456</span><span>10%</span></li>
+                        <li class="odd"><span>季军</span><span>景芝</span><span>景芝 景阳春 老虎王酒52度</span><span>2345</span><span>23456</span><span>10%</span></li>
+                        <li class="even"><span>4</span><span>景芝</span><span>景芝 景阳春 老虎王酒52度</span><span>2345</span><span>23456</span><span>10%</span></li>
+                        <li class="odd"><span>5</span><span>景芝</span><span>景芝 景阳春 老虎王酒52度</span><span>2345</span><span>23456</span><span>10%</span></li>
+                        <li class="even"><span>6</span><span>景芝</span><span>景芝 景阳春 老虎王酒52度</span><span>2345</span><span>23456</span><span>10%</span></li>
+
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="zpbtop am-u-sm-12 am-u-md-4 am-u-lg-4">
+        <div class="zpbtop am-u-sm-12 am-u-md-3 am-u-lg-3">
             <div class="zpbtop6 am-u-sm-12 am-u-md-12 am-u-lg-12">
 
                 <div class="jz_left_top3" id="jz_right_top">
