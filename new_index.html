@@ -1,0 +1,90 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <meta name="veiwport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css" />
+    <script type="text/javascript" src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js">
+    </script>
+    <script type="text/javascript" src="./js/echarts.min.js"></script>
+    <!-- <script type="text/javascript" src="https://rawgit.com/ecomfe/echarts-gl/master/dist/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="http://www.cmono.net/ec/echartsConfig.js"></script>
+    <script type="text/javascript" src="http://www.cmono.net/ec/ext.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/resource/echarts-liquidfill-1.0.4/dist/echarts-liquidfill.js"></script> -->
+    <script type="text/javascript" src="./js/dark.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Ui1hFIbTdm26BERXEZv9VudhLwcl4k3G"></script>
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="./js/shandong.js"></script>
+
+    <script>
+
+        window.onload = function() {
+          var map = new BMap.Map('allmap');
+        map.centerAndZoom(new BMap.Point(119.195026,36.740612),13);
+        var style_json_all=[
+          {
+                    "featureType": "land",
+                    "elementType": "all",
+                    "stylers": {
+                              "color": "#155191",
+                              "lightness": -17
+                    }
+          }
+]
+        var  mapStyle ={
+              features: ["road", "building","water","land"],//隐藏地图上的poi
+              style : "midnight"  //设置地图风格为高端黑
+          }
+        map.setMapStyle({
+  styleJson:style_json_all
+});
+map.enableScrollWheelZoom(true);
+        function checkhHtml5()
+              {
+                  if (typeof(Worker) === "undefined")
+                  {
+                      if(navigator.userAgent.indexOf("MSIE 9.0")<=0)
+                 {
+                 alert("定制个性地图示例：IE9以下不兼容，推荐使用百度浏览器、chrome、firefox、safari、IE10");
+                 }
+
+                  }
+              }
+        checkhHtml5();
+// $("#jz_content_top").on("click",function() {
+//   console.log("数据");
+//   $("#jz_content_top").hide();
+//   $(".jz_left_top_map").show();
+// })
+
+        }
+    </script>
+</head>
+
+<body style="background:url('http://121.196.232.136:8080/rank/bg.jpg')">
+    <div>
+        <div  id="allmap" class="all" ></div>
+
+    </div>
+    <div class="am-g doc-am-g"  >
+        <a href="#" class="img_all"></a>
+      <div class="top1 top" id="jz_top1">
+
+      </div>
+      <div class="top2 top" id="jz_top2">
+
+      </div>
+      <div class="top3 top" id="jz_top3">
+
+      </div>
+      <div class="top4 top" id="jz_top4">
+
+      </div>
+
+    </div>
+    <script type="text/javascript" src="./js/jz_all.js"></script>
+</body>
+
+</html>

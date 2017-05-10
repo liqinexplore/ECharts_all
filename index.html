@@ -9,10 +9,10 @@
     <script type="text/javascript" src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js">
     </script>
     <script type="text/javascript" src="./js/echarts.min.js"></script>
-    <script type="text/javascript" src="https://rawgit.com/ecomfe/echarts-gl/master/dist/echarts-gl.min.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/resource/echarts-liquidfill-1.0.4/dist/echarts-liquidfill.js"></script>
-    <script type="text/javascript" src="https://rawgit.com/ecomfe/echarts-liquidfill/master/dist/echarts-liquidfill.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/resource/echarts-liquidfill-1.0.4/dist/echarts-liquidfill.js"></script>
+    <!-- <script type="text/javascript" src="https://rawgit.com/ecomfe/echarts-gl/master/dist/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="http://www.cmono.net/ec/echartsConfig.js"></script>
+    <script type="text/javascript" src="http://www.cmono.net/ec/ext.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/resource/echarts-liquidfill-1.0.4/dist/echarts-liquidfill.js"></script> -->
     <script type="text/javascript" src="./js/dark.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Ui1hFIbTdm26BERXEZv9VudhLwcl4k3G"></script>
     <link rel="stylesheet" href="./css/main.css">
@@ -22,13 +22,24 @@
 
         window.onload = function() {
           var map = new BMap.Map('allmap');
-        map.centerAndZoom(new BMap.Point(119.195026,36.740612),9);
-
+        map.centerAndZoom(new BMap.Point(119.195026,36.740612),13);
+        var style_json_all=[
+          {
+                    "featureType": "land",
+                    "elementType": "all",
+                    "stylers": {
+                              "color": "#155191",
+                              "lightness": -17
+                    }
+          }
+]
         var  mapStyle ={
               features: ["road", "building","water","land"],//隐藏地图上的poi
               style : "midnight"  //设置地图风格为高端黑
           }
-        map.setMapStyle(mapStyle);
+        map.setMapStyle({
+  styleJson:style_json_all
+});
 map.enableScrollWheelZoom(true);
         function checkhHtml5()
               {
@@ -59,15 +70,23 @@ $("#jz_content_top").on("click",function() {
     </div>
     <div class="am-g doc-am-g"  >
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
-            <h1>景芝大数据调度指挥平台</h1>
+            <!-- <h1>景芝大数据调度指挥平台</h1> -->
+            <!-- <img src="./title.png" style="width:216px;height:39px;" alt=""> -->
+            <a href="#" class="img_all"></a>
         </div>
-        <div class="zpbtop am-u-sm-12 am-u-md-3 am-u-lg-3">
-            <div class="zpbtop1 am-u-sm-12 am-u-md-6 am-u-lg-6">
+        <div class="zpbtop am-u-sm-12 am-u-md-2 am-u-lg-2">
+            <div class="zpbtop5 am-u-sm-12 am-u-md-12 am-u-lg-12">
+
                 <div class="jz_left_top" id="jz_left_top">
 
                 </div>
             </div>
-            <div class="zpbtop2 am-u-sm-12 am-u-md-6 am-u-lg-6">
+            <div class="zpbtop5 am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="jz_left_top" id="jz_left_top2">
+
+                </div>
+            </div>
+            <!-- <div class="zpbtop2 am-u-sm-12 am-u-md-6 am-u-lg-6">
                 <div class="jz_left_top" id="jz_left_top2">
 
                 </div>
@@ -81,79 +100,84 @@ $("#jz_content_top").on("click",function() {
                 <div class="jz_left_top" id="jz_left_top4">
 
                 </div>
-            </div>
+            </div> -->
             <div class="zpbtop5 am-u-sm-12 am-u-md-12 am-u-lg-12">
-                <div class="jz_left_top2" id="jz_left_top5">
+                <div class="jz_left_top4" id="jz_left_top3">
+                    <div class="jz_title jz_title_all">
+                      <span>成交额</span>
+                      <span>552478</span>
+                    </div>
+                    <div class="jz_title_all jz_title1">
+                      <span>今日订单</span>
+                      <span>552478</span>
+                    </div>
+                    <div class="jz_title_all jz_title2">
+                      <span>今日上新</span>
+                      <span>552478</span>
+                    </div>
+                    <div class="jz_title4">
+                      <span>今日新增</span>
+                      <span>552478</span>
+                      <span>累计注册用户</span>
+                      <span>12222552478</span>
+                    </div>
+                    <div class="jz_title5">
+                        <div class="top_color_all" id="jz_left_top9">
 
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="zpbtop5 am-u-sm-12 am-u-md-12 am-u-lg-12">
 
-                <div class="jz_left_top2" id="jz_left_top6">
+                <div class="jz_left_top2" id="jz_left_top4">
 
                 </div>
             </div>
         </div>
-        <div class=" zpbtop am-u-sm-12 am-u-md-4 am-u-lg-6">
+        <div class=" am-u-sm-12 am-u-md-4 am-u-lg-10">
             <div class="zpbtop6 am-u-sm-12 am-u-md-12 am-u-lg-12">
-                <div class="jz_left_top4" id="jz_content_top" style="display:none">
+                <div class="jz_left_top4" id="jz_content_top1">
 
                 </div>
-                	<!-- <div id="allmap" class="jz_left_top_map"></div> -->
-                <!-- <div data-am-widget="map" class="am-map am-map-default jz_left_top_map"
-     data-name="云适配" data-address="北京市海淀区海淀大街27号亿景大厦3层西区" data-longitude="" data-latitude="" data-scaleControl="" data-zoomControl="true" data-setZoom="17" data-icon="http://amuituku.qiniudn.com/mapicon.png">
-   <div id="bd-map"></div>
- </div> -->
-
-
             </div>
-            <div class="zpbtop5 top22 am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="top22 zpbtop am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="zpbtop5  am-u-sm-12 am-u-md-3 am-u-lg-3">
                 <div class="slide-title">
                     <span>排名</span>
                     <span>品牌</span>
-                    <span>商品名称</span>
-                    <span>销量</span>
-                    <span>销售额</span>
-                    <span>占比</span>
+
+
                 </div>
                 <div class="slide-container">
                     <ul class="slide-list js-slide-list">
-                        <li class="odd"><span>冠军</span><span>景芝</span><span>景芝 景阳春 老虎王酒52度</span><span>2345</span><span>23456</span><span>10%</span></li>
-                        <li class="even"><span>亚军</span><span>景芝</span><span>景芝 景阳春 老虎王酒52度</span><span>2345</span><span>23456</span><span>10%</span></li>
-                        <li class="odd"><span>季军</span><span>景芝</span><span>景芝 景阳春 老虎王酒52度</span><span>2345</span><span>23456</span><span>10%</span></li>
-                        <li class="even"><span>4</span><span>景芝</span><span>景芝 景阳春 老虎王酒52度</span><span>2345</span><span>23456</span><span>10%</span></li>
-                        <li class="odd"><span>5</span><span>景芝</span><span>景芝 景阳春 老虎王酒52度</span><span>2345</span><span>23456</span><span>10%</span></li>
-                        <li class="even"><span>6</span><span>景芝</span><span>景芝 景阳春 老虎王酒52度</span><span>2345</span><span>23456</span><span>10%</span></li>
+                        <li class="odd"><span>冠军</span><span>景芝</span></li>
+                        <li class="even"><span>亚军</span><span>景芝</span></li>
+                        <li class="odd"><span>季军</span><span>景芝</span></li>
+                        <li class="even"><span>4</span><span>景芝</span></li>
+                        <li class="odd"><span>5</span><span>景芝</span></li>
+                        <li class="even"><span>6</span><span>景芝</span></li>
 
                     </ul>
                 </div>
             </div>
+            <div class="zpbtop6 am-u-sm-12 am-u-md-3 am-u-lg-3">
+              <div class="jz_left_top2" id="jz_left_top5">
+
+              </div>
+            </div>
+            <div class="zpbtop6 am-u-sm-12 am-u-md-3 am-u-lg-3">
+                <div class="jz_left_top2" id="jz_content_top3" >
+
+                </div>
+            </div>
+            <div class="zpbtop6 am-u-sm-12 am-u-md-3 am-u-lg-3">
+              <div class="jz_left_top2" id="jz_left_top4">
+
+              </div>
+            </div>
+
         </div>
-        <div class="zpbtop am-u-sm-12 am-u-md-3 am-u-lg-3">
-            <div class="zpbtop6 am-u-sm-12 am-u-md-12 am-u-lg-12">
-
-                <div class="jz_left_top3" id="jz_right_top">
-
-                </div>
-            </div>
-            <div class="zpbtop7 am-u-sm-12 am-u-md-6 am-u-lg-6">
-                <div class="jz_right_top" id="jz_right_center">
-
-                </div>
-
-            </div>
-            <div class="zpbtop8 am-u-sm-12 am-u-md-6 am-u-lg-6">
-
-                <div class="jz_right_top" id="jz_right_center2">
-
-                </div>
-            </div>
-            <div class="zpbtop5 am-u-sm-12 am-u-md-12 am-u-lg-12">
-                <div class="jz_right_top" id="jz_right_center3">
-
-                </div>
-            </div>
-
         </div>
     </div>
     <script type="text/javascript" src="./js/jz_all.js"></script>
