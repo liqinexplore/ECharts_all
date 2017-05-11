@@ -13,14 +13,14 @@
 .slide-title{
 
 color: #fff;
-height: 60px;
-line-height: 60px;
+height: 40px;
+line-height: 40px;
 padding: 0 10px;
-font-size: 18px;
+font-size: 14px;
 font-weight: bold;
 }
 .img_all{
-  background-image: url('../title.png');
+  background-image: url('../img/title.png');
   width: 300px;
   height: 80px;
   background-size: contain;
@@ -54,17 +54,19 @@ font-weight: bold;
 
 .slide-title span{
     float: left;
+
+    color: ff7800;
     margin-right: 14px;
 }
 .slide-title span:nth-child(1),
 .slide-list li span:nth-child(1){
     text-align: center;
-    /*width: 60px;*/
+    width: 60px;
 }
 .slide-title span:nth-child(2),
 .slide-list li span:nth-child(2){
     text-align: center;
-    /*width: 90px;*/
+    width: 90px;
 }
 .slide-title span:nth-child(3),
 .slide-list li span:nth-child(3){
@@ -95,23 +97,24 @@ font-weight: bold;
 .slide-container{
   position: relative;
       overflow: hidden;
-      height: 200px;
+      height: 150px;
       top: 0;
       right: 0;
-      color: #fff;
+      color: #007bff;
+      font-size: 12px;
 }
 .slide-list{
   position:absolute;
   width:100%;
   left:0;
   top:0;
-  color: #fff;
+  color: #007bff;
    margin:0;
     padding:0;
 }
 .slide-list li {
-  height:50px;
-  line-height:50px;
+  height:40px;
+  line-height:40px;
   list-style:none;
    margin:0;
    padding:0 10px;
@@ -223,17 +226,167 @@ h1{
   height:240px;
   margin-top: 10px;
   background: rgba(11,26,73,.9);
+  left:20px;
+  background-image: url(../img/xiao.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-clip: content-box;
+  /*border-left: 10px #01FFFF solid;
+  border-right: 10px #01FFFF solid;
+    box-shadow: 0 0 8px rgba(1,255,255,0.8);*/
 }
-.top1{
-  top: 0px;
+.top>span{
+  color: #00FFFF;
+  font-size: 14px;
+  padding-left: 30px;
+  padding-top: 4px;
+      display: block;
 }
-.top2{
 
+.top>span::before{
+  width: 20px;
+  height: 10px;
+
+  content: " ";
+  background: url("../img/top.png") center center no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+}
+.top_end>span{
+  color: #00FFFF;
+  font-size: 14px;
+  padding-left: 30px;
+  padding-top: 4px;
+      display: block;
+}
+.top_end>span::before{
+  width: 20px;
+  height: 10px;
+
+  content: " ";
+  background: url("../img/top.png") center center no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+/*
+.top::after{
+  width: 10px;
+  height: 234px;
+  position: absolute;
+  content: " ";
+  background: rgba(11,26,73,1);
+  top: 3px;
+  right: -10px;
+}*/
+.top1{
+  top: 80px;
+
+
+}
+
+
+.top2{
+top: 330px;
 }
 .top3{
-
+top: 580px;
+overflow: hidden;
 }
 .top4{
+top: 830px;
+}
+.top4{
+top: 830px;
+overflow: hidden;
+}
+.jz_top4_left{
+  width: 87px;
+  height: 87px;
+    float: left;
+}
+.jz_top4_left1{
+    margin-left: 5px;
+}
+.jz_top4_left2{
+    margin-left: 5px;
+}
+.jz_top4_left3{
+    margin-left: 5px;
+}
+.top5{
+  left: 320px;
+top: 830px;
+}
+.top6{
+  left: 680px;
+top: 830px;
+}
+.top7{
+    left: 1040px;
+top: 830px;
+}
+.top8{
+    left: 1400px;
+top: 830px;
+}
+.top_end{
+  position: absolute;
+  z-index: 9999;
+  width: 340px;
+  height:240px;
+  margin-top: 10px;
+  background: rgba(11,26,73,.9);
+  background-image: url(../img/da.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-clip: content-box;
 
 }
+.top3_top{
+  width:87px;
+  height: 87px;
+  float: left;
+  font-size: 14px;
+  text-align: center;
+  padding-top: 20px;
+}
+.top3_center_tu{
+  width: 100%;
+  height: 140px;
+}
+.top3_top span{
+  display: block;
+    color: #fff;
+}
+.top3_top1{
+
+  margin-left: 5px;
+  background: -webkit-linear-gradient(left top,rgba(0,215,252,0.8), rgba(1,115,197,0.8)); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(bottom right, rgba(0,212,252,0.8), rgba(1,115,197,0.8)); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(bottom right,rgba(0,212,252,0.8), rgba(1,115,197,0.8)); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to bottom right,rgba(0,212,252,0.8), rgba(1,115,197,0.8)); /* 标准的语法（必须放在最后） */
+
+}
+.top3_top2{
+  margin-left: 4px;
+  background: -webkit-linear-gradient(left, rgba(0,212,252,0.8), rgba(1,117,199,0.8)); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, rgba(0,212,252,0.8), rgba(1,117,199,0.8)); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, rgba(0,212,252,0.8), rgba(1,117,199,0.8)); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, rgba(0,212,252,0.8), rgba(1,117,199,0.8)); /* 标准的语法（必须放在最后） */
+
+}
+.top3_top3{
+  margin-left: 4px;
+  background: -webkit-linear-gradient(left, rgba(133,82,255,0.8), rgba(193,29,255,0.8)); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, rgba(133,82,255,0.8), rgba(193,29,255,0.8)); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, rgba(133,82,255,0.8), rgba(193,29,255,0.8)); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, rgba(133,82,255,0.8), rgba(193,29,255,0.8)); /* 标准的语法（必须放在最后） */
+
+}
+
 /*------------------------------------------------------------------*/
