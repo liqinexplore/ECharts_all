@@ -1,3 +1,4 @@
+
 var doscroll = function(){
 var $parent = $('.js-slide-list');
 var $first = $parent.find('li:first');
@@ -11,24 +12,24 @@ $first.animate({
 };
 var top_left=[];
 setInterval(function(){doscroll()}, 2000);
-var top1_data_all=[{"sum1":20,"sum2":80},{"sum1":30,"sum2":70},{"sum1":60,"sum2":40}]
+//经营概况
 var jz_left_top = echarts.init(document.getElementById('jz_left_top'), 'dark');
+var top1_data_all=[{"sum1":20,"sum2":80},{"sum1":20,"sum2":80},{"sum1":30,"sum2":70},{"sum1":60,"sum2":40}];
+//销售排名
 var jz_left_top2 = echarts.init(document.getElementById('jz_left_top2'), 'dark');
+// 库存概况
+var jz_top6_zhe = echarts.init(document.getElementById('jz_top6_zhe'), 'dark');
+//考勤统计
 var jz_top4_left1 = echarts.init(document.getElementById('jz_top4_left1'), 'dark');
 var jz_top4_left2 = echarts.init(document.getElementById('jz_top4_left2'), 'dark');
 var jz_top4_left3 = echarts.init(document.getElementById('jz_top4_left3'), 'dark');
 var top3_center_tu = echarts.init(document.getElementById('top3_center_tu'), 'dark');
-var jz_left_top5 = echarts.init(document.getElementById('jz_left_top5'), 'dark');
-var jz_top6_zhe = echarts.init(document.getElementById('jz_top6_zhe'), 'dark');
-// var jz_content_top = echarts.init(document.getElementById('jz_content_top'), 'dark');
-// var jz_right_top = echarts.init(document.getElementById('jz_right_top'), 'dark');
-// var jz_right_center = echarts.init(document.getElementById('jz_right_center'), 'dark');
-// var jz_right_center2 = echarts.init(document.getElementById('jz_right_center2'), 'dark');
-// var jz_right_center3 = echarts.init(document.getElementById('jz_right_center3'), 'dark');
+// ------------------经营概况-------------------------
+
 var dataStyle = {
     normal: {
-        label: {show:false},
-        labelLine: {show:false},
+      label: {show:false},
+        labelLine: {show:true},
         shadowBlur: 0,
         shadowColor: 'rgba(40, 40, 40, 0.5)',
     }
@@ -45,14 +46,15 @@ var placeHolderStyle = {
 };
 option_jz_left_top1 = {
    backgroundColor: 'rgba(1,1,1,0)',
-     color: ['#0766E8', '#2EAA78','#FE7F1E'],
+     color: ['#0766E8', '#2EAA78','#FE7F1E','#ECAC13'],
     tooltip : {
         show: true,
         formatter: "{a} <br/>{b} : {c} ({d}%)"
     },
     legend: {
         itemGap:12,
-        data:['01','02','03']
+        y: 'bottom',
+        data:['采购计划','生产计划','发货计划','销售任务']
     },
     toolbox: {
         show : true,
@@ -63,9 +65,29 @@ option_jz_left_top1 = {
             saveAsImage : {show: false}
         }
     },
-    series : [
+    series : [{
+        name:'采购计划',
+        type:'pie',
+        clockWise:false,
+        radius : ['36%', '44%'],
+        itemStyle : dataStyle,
+        hoverAnimation: false,
+
+        data:[
+            {
+                value:top1_data_all[0].sum1,
+                name:'采购计划',
+            },
+            {
+                value:top1_data_all[0].sum2,
+                name:'未完成',
+                itemStyle : placeHolderStyle
+            }
+
+        ]
+    },
         {
-            name:'Line 1',
+            name:'生产计划',
             type:'pie',
             clockWise:false,
             radius : ['48%', '56%'],
@@ -74,19 +96,19 @@ option_jz_left_top1 = {
 
             data:[
                 {
-                    value:top1_data_all[0].sum1,
-                    name:'01',
+                    value:top1_data_all[1].sum1,
+                    name:'生产计划',
                 },
                 {
-                    value:top1_data_all[0].sum2,
-                    name:'invisible',
+                    value:top1_data_all[1].sum2,
+                    name:'未完成',
                     itemStyle : placeHolderStyle
                 }
 
             ]
         },
          {
-            name:'Line 2',
+            name:'发货计划',
             type:'pie',
             clockWise:false,
             radius : ['60%', '68%'],
@@ -95,18 +117,18 @@ option_jz_left_top1 = {
 
             data:[
                 {
-                    value:top1_data_all[1].sum1,
-                    name:'02'
+                    value:top1_data_all[2].sum1,
+                    name:'发货计划'
                 },
                 {
-                    value:top1_data_all[1].sum2,
-                    name:'invisible',
+                    value:top1_data_all[2].sum2,
+                    name:'未完成',
                     itemStyle : placeHolderStyle
                 }
             ]
         },
         {
-            name:'Line 3',
+            name:'销售任务',
             type:'pie',
             clockWise:false,
             hoverAnimation: false,
@@ -115,12 +137,12 @@ option_jz_left_top1 = {
 
             data:[
                 {
-                    value:top1_data_all[2].sum1,
-                    name:'03'
+                    value:top1_data_all[3].sum1,
+                    name:'销售任务'
                 },
                 {
-                    value:top1_data_all[2].sum2,
-                    name:'invisible',
+                    value:top1_data_all[3].sum2,
+                    name:'未完成',
                     itemStyle : placeHolderStyle
                 }
             ]
@@ -129,81 +151,7 @@ option_jz_left_top1 = {
 
     ]
 };
-option_jz_left_top6 = {
-    title: {
-        text: ''
-    },
-      textStyle: {
-        color: "#ffffff"
-    },
-    tooltip: {
-        trigger: 'axis',
-        axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-        }
-    },
-    legend: {
-        data: ['包租费', '装修费', '保洁费', '物业费'],
-        align: 'right',
-        right: 10
-    },
-    grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-    },
-    xAxis: [{
-        type: 'category',
-        data: ['新虹桥', '中山公园', '虹桥', '镇宁路', '天山古北']
-    }],
-    yAxis: [{
-        type: 'value',
-        name: '总价(万元)',
-        axisLabel: {
-            formatter: '{value}'
-        }
-    }],
-    series: [{
-        name: '包租费',
-        type: 'bar',
-        data: [20, 12, 31, 34, 31],
-       itemStyle: {
-                normal: {
-                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                        offset: 0,
-                        color: 'rgba(207, 8,255, 1)'
-                    }, {
-                        offset: 1,
-                        color: 'rgba(17, 99,198, 0.4)'
-                    }]),
-                    shadowColor: 'rgba(0, 0, 0, 0.1)',
-                    shadowBlur: 10
-                },
-
-            }
-    }, {
-        name: '装修费',
-        type: 'bar',
-        data: [10, 20, 5, 9, 3],
-         itemStyle: {
-                normal: {
-                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                        offset: 0,
-                        color: 'rgba(0, 215,252, 1)'
-                    }, {
-                        offset: 1,
-                        color: 'rgba(0, 215,252, 0.4)'
-                    }]),
-                    shadowColor: 'rgba(0, 0, 0, 0.6)',
-                    shadowBlur: 10
-                },
-
-            }
-    }, ]
-
-};
-// Generate data
+//销售排名------------------------------------------------------
 var category = [];
 var dottedBase = +new Date();
 var lineData = [];
@@ -318,8 +266,8 @@ option_jz_left_top2 = {
         data: lineData
     }]
 };
-
-option_top3_center_tu = {
+// -----------------------折线图--------------------------
+option_jz_top6_zhe = {
     color: ['#00ffff', '#00ffa2', '#f0e750'],
     tooltip: {
         trigger: 'axis',
@@ -334,27 +282,27 @@ option_top3_center_tu = {
         itemGap: 20,
         //itemWidth:16,
         //itemHeight:12,
-        data: ['高危'],
+        data: ['订单量', '提货量'],
         textStyle: {
             color: '#fff',
         }
     },
     toolbox: {
-        show: false,
+        show: true,
         orient: 'vertical',
         right: 'right',
         top: '20%',
         itemGap: 20,
         feature: {
             magicType: {
-                show: false,
+                show: true,
                 type: ['line', 'bar']
             },
             restore: {
-                show: false
+                show: true
             },
             saveAsImage: {
-                show: false
+                show: true
             }
         },
         iconStyle: {
@@ -404,7 +352,7 @@ option_top3_center_tu = {
     yAxis: [{
         type: 'value',
         min: 0,
-        max: 30,
+        max: 4000,
         splitLine: {
             show: true,
             lineStyle: {
@@ -431,7 +379,7 @@ option_top3_center_tu = {
         }
     }],
     series: [{
-                name: '高危',
+                name: '订单量',
                 type: 'line',
                 smooth: true, //是否平滑曲线显示
                 lineStyle: { //线条样式
@@ -459,11 +407,41 @@ option_top3_center_tu = {
                         color: 'rgb(0,255,255)'
                     }
                 },
-                data: [2, 12, 3, 5, 6, 2, 11, 24, 12]
-            }
+                data: [2000, 122, 3121, 54, 60, 2630, 1150, 2442, 1292]
+            }, {
+                name: '提货量',
+                type: 'line',
+                smooth: true,
+                lineStyle: {
+                    normal: {
+                        width: 1
+                    }
+                },
+                areaStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: 'rgba(240, 231, 80, 0.9)'
+                        }, {
+                            offset: 0.8,
+                            color: 'rgba(240, 231, 80, 0.4)'
+                        }], false),
+                        shadowColor: 'rgba(0, 0, 0, 0.9)',
+                        shadowBlur: 10
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: 'rgb(240,231,80)'
+
+                    }
+                },
+                data: [1130, 812, 1134, 2361, 413, 1330, 1301, 594, 1230]
+            },
 
         ] //series结束
 }; // option结束
+//------------------------------------------------
 // -------------------------考勤统计小圆圈11-------------------------------------
 option_jz_top4_left1 = {
     tooltip: {
@@ -687,8 +665,7 @@ option_jz_top4_left3 = {
     }]
 };
 // -----------------------考勤统计小圆圈结束--------------------------
-// -----------------------折线图--------------------------
-option_jz_top6_zhe = {
+option_top3_center_tu = {
     color: ['#00ffff', '#00ffa2', '#f0e750'],
     tooltip: {
         trigger: 'axis',
@@ -703,27 +680,27 @@ option_jz_top6_zhe = {
         itemGap: 20,
         //itemWidth:16,
         //itemHeight:12,
-        data: ['订单量', '提货量'],
+        data: ['高危'],
         textStyle: {
             color: '#fff',
         }
     },
     toolbox: {
-        show: true,
+        show: false,
         orient: 'vertical',
         right: 'right',
         top: '20%',
         itemGap: 20,
         feature: {
             magicType: {
-                show: true,
+                show: false,
                 type: ['line', 'bar']
             },
             restore: {
-                show: true
+                show: false
             },
             saveAsImage: {
-                show: true
+                show: false
             }
         },
         iconStyle: {
@@ -773,7 +750,7 @@ option_jz_top6_zhe = {
     yAxis: [{
         type: 'value',
         min: 0,
-        max: 4000,
+        max: 30,
         splitLine: {
             show: true,
             lineStyle: {
@@ -800,7 +777,7 @@ option_jz_top6_zhe = {
         }
     }],
     series: [{
-                name: '订单量',
+                name: '实时活跃数曲线',
                 type: 'line',
                 smooth: true, //是否平滑曲线显示
                 lineStyle: { //线条样式
@@ -828,53 +805,91 @@ option_jz_top6_zhe = {
                         color: 'rgb(0,255,255)'
                     }
                 },
-                data: [2000, 122, 3121, 54, 60, 2630, 1150, 2442, 1292]
-            }, {
-                name: '提货量',
-                type: 'line',
-                smooth: true,
-                lineStyle: {
-                    normal: {
-                        width: 1
-                    }
-                },
-                areaStyle: {
-                    normal: {
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                            offset: 0,
-                            color: 'rgba(240, 231, 80, 0.9)'
-                        }, {
-                            offset: 0.8,
-                            color: 'rgba(240, 231, 80, 0.4)'
-                        }], false),
-                        shadowColor: 'rgba(0, 0, 0, 0.9)',
-                        shadowBlur: 10
-                    }
-                },
-                itemStyle: {
-                    normal: {
-                        color: 'rgb(240,231,80)'
-
-                    }
-                },
-                data: [1130, 812, 1134, 2361, 413, 1330, 1301, 594, 1230]
-            },
+                data: [2, 12, 3, 5, 6, 2, 11, 24, 12]
+            }
 
         ] //series结束
 }; // option结束
-//------------------------------------------------
-
-// 使用刚指定的配置项和数据显示图表。
+// -------------------------考勤统计小圆圈11-------------------------------------
+option_jz_top4_left1 = {
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data: ['']
+    },
+    series: [{
+        name: '饼图二',
+        type: 'pie',
+        radius: ['60%', '70%'],
+        label: {
+            normal: {
+                position: 'center'
+            }
+        },
+        data: [{
+            value: 40,
+            name: '占有率',
+            label: {
+                normal: {
+                    formatter: '{d} %',
+                    textStyle: {
+                        fontSize: 20,
+                        color:'red'
+                    }
+                }
+            },
+             itemStyle: {
+                 normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(207, 8,255, 1)'
+                    }, {
+                        offset: 1,
+                        color: 'rgba(17, 99,198, 0.4)'
+                    }]),
+                    shadowColor: 'rgba(0, 0, 0, 1)',
+                    shadowBlur: 10
+                },
+            }
+        }, {
+            value: 60,
+            name: '占位',
+            label: {
+                normal: {
+                    formatter: '\n完成率',
+                    textStyle: {
+                        color: '#555',
+                        fontSize: 16
+                    }
+                }
+            },
+            tooltip: {
+                show: false
+            },
+            itemStyle: {
+                normal: {
+                    color: '#aaa'
+                },
+                emphasis: {
+                    color: '#aaa'
+                }
+            },
+            hoverAnimation: false
+        }]
+    }]
+};
+//经营概况
 jz_left_top.setOption(option_jz_left_top1);
+//销售排名
 jz_left_top2.setOption(option_jz_left_top2);
+//库存概况
+jz_top6_zhe.setOption(option_jz_top6_zhe);
+//考勤统计
 jz_top4_left1.setOption(option_jz_top4_left1);
 jz_top4_left2.setOption(option_jz_top4_left2);
 jz_top4_left3.setOption(option_jz_top4_left3);
 top3_center_tu.setOption(option_top3_center_tu);
-jz_left_top5.setOption(option_jz_left_top6);
-jz_top6_zhe.setOption(option_jz_top6_zhe);
-// jz_content_top.setOption(option_jz_content_top);
-// jz_right_top.setOption(option_jz_right_top);
-// jz_right_center.setOption(option_jz_right_center);
-// jz_right_center2.setOption(option_jz_right_center2);
-// jz_right_center3.setOption(option_jz_right_center3);
