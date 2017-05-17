@@ -1,6 +1,6 @@
 
-var doscroll = function(){
-var $parent = $('.js-slide-list');
+var doscroll = function(pareat){
+var $parent = $(pareat);
 var $first = $parent.find('li:first');
 var height = $first.height();
 $first.animate({
@@ -10,8 +10,58 @@ $first.animate({
  // $first.css('marginTop', 0).appendTo($parent);
 });
 };
+setInterval(function(){doscroll('.js-slide-list')}, 2000);
+setInterval(function(){doscroll('.js-slide-list_top')}, 4000);
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!',
+    list:''
+  }
+})
+//经营状况数据
+$('#my-popup').on('open.modal.amui', function(){
+console.log('第一个演示弹窗打开了');
+var b="我是数据";
+app.list=b
+});
+//销售排名
+$('#sell_all').on('open.modal.amui', function(){
+console.log('第一个演示弹窗打开了');
+var b="我是数据";
+app.list=b
+});
+//库存概况
+$('#repertory_all').on('open.modal.amui', function(){
+console.log('第一个演示弹窗打开了');
+var b="我是数据";
+app.list=b
+});
+//工作流程监控BPM
+$('#flow_all').on('open.modal.amui', function(){
+console.log('第一个演示弹窗打开了');
+var b="我是数据";
+app.list=b
+});
+//阳光酿造
+$('#sun_all').on('open.modal.amui', function(){
+console.log('第一个演示弹窗打开了');
+var b="我是数据";
+app.list=b
+});
+//生产监控
+$('#production_all').on('open.modal.amui', function(){
+console.log('第一个演示弹窗打开了');
+var b="我是数据";
+app.list=b
+});
+//极优佳App运营概况
+$('#app_all').on('open.modal.amui', function(){
+console.log('第一个演示弹窗打开了');
+var b="我是数据";
+app.list=b
+});
 var top_left=[];
-setInterval(function(){doscroll()}, 2000);
 //经营概况
 var jz_left_top = echarts.init(document.getElementById('jz_left_top'), 'dark');
 var top1_data_all=[{"sum1":20,"sum2":80},{"sum1":20,"sum2":80},{"sum1":30,"sum2":70},{"sum1":60,"sum2":40}];
@@ -54,7 +104,8 @@ option_jz_left_top1 = {
     legend: {
         itemGap:12,
         y: 'bottom',
-        data:['采购计划','生产计划','发货计划','销售任务']
+        data:['采购计划','生产计划','发货计划','销售任务'],
+        itemStyle : dataStyle,
     },
     toolbox: {
         show : true,
@@ -69,7 +120,7 @@ option_jz_left_top1 = {
         name:'采购计划',
         type:'pie',
         clockWise:false,
-        radius : ['36%', '44%'],
+        radius : ['10%', '24%'],
         itemStyle : dataStyle,
         hoverAnimation: false,
 
@@ -90,7 +141,7 @@ option_jz_left_top1 = {
             name:'生产计划',
             type:'pie',
             clockWise:false,
-            radius : ['48%', '56%'],
+            radius : ['28%', '42%'],
             itemStyle : dataStyle,
             hoverAnimation: false,
 
@@ -111,7 +162,7 @@ option_jz_left_top1 = {
             name:'发货计划',
             type:'pie',
             clockWise:false,
-            radius : ['60%', '68%'],
+            radius : ['46%', '60%'],
             itemStyle : dataStyle,
             hoverAnimation: false,
 
@@ -132,7 +183,7 @@ option_jz_left_top1 = {
             type:'pie',
             clockWise:false,
             hoverAnimation: false,
-            radius : ['72%', '80%'],
+            radius : ['64%', '78%'],
             itemStyle : dataStyle,
 
             data:[
@@ -454,7 +505,7 @@ option_jz_top4_left1 = {
         data: ['']
     },
     series: [{
-        name: '饼图二',
+        name: '全率',
         type: 'pie',
         radius: ['60%', '70%'],
         label: {
@@ -464,7 +515,7 @@ option_jz_top4_left1 = {
         },
         data: [{
             value: 40,
-            name: '占有率',
+            name: '全率',
             label: {
                 normal: {
                     formatter: '{d} %',
@@ -481,21 +532,27 @@ option_jz_top4_left1 = {
                         color: 'rgba(207, 8,255, 1)'
                     }, {
                         offset: 1,
-                        color: 'rgba(17, 99,198, 0.4)'
+                        color: 'rgba(207, 2,255, 0.9)'
                     }]),
                     shadowColor: 'rgba(0, 0, 0, 1)',
+                    color: '#fff',
                     shadowBlur: 10
                 },
             }
         }, {
             value: 60,
             name: '占位',
+            itemStyle: {
+                        normal: {
+                            color: '#fff'
+                        }
+                    },
             label: {
                 normal: {
-                    formatter: '\n完成率',
+                    formatter: '\n全勤率',
                     textStyle: {
-                        color: '#555',
-                        fontSize: 16
+                        color: '#fff',
+                        fontSize: 18
                     }
                 }
             },
@@ -504,10 +561,10 @@ option_jz_top4_left1 = {
             },
             itemStyle: {
                 normal: {
-                    color: '#aaa'
+                    color: '#fff'
                 },
                 emphasis: {
-                    color: '#aaa'
+                    color: '#fff'
                 }
             },
             hoverAnimation: false
@@ -556,7 +613,7 @@ option_jz_top4_left2 = {
                         color: 'rgba(207, 8,255, 1)'
                     }, {
                         offset: 1,
-                        color: 'rgba(17, 99,198, 0.4)'
+                        color: 'rgba(17, 99,198, 0.9)'
                     }]),
                     shadowColor: 'rgba(0, 0, 0, 1)',
                     shadowBlur: 10
@@ -567,7 +624,7 @@ option_jz_top4_left2 = {
             name: '占位',
             label: {
                 normal: {
-                    formatter: '\n完成率',
+                    formatter: '\n完率',
                     textStyle: {
                         color: '#555',
                         fontSize: 16
@@ -822,7 +879,7 @@ option_jz_top4_left1 = {
         data: ['']
     },
     series: [{
-        name: '饼图二',
+        name: '全勤率',
         type: 'pie',
         radius: ['60%', '70%'],
         label: {
@@ -846,10 +903,10 @@ option_jz_top4_left1 = {
                  normal: {
                     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                         offset: 0,
-                        color: 'rgba(207, 8,255, 1)'
+                        color: 'rgba(0, 211,252, 1)'
                     }, {
                         offset: 1,
-                        color: 'rgba(17, 99,198, 0.4)'
+                        color: 'rgba(0, 193,246, 0.4)'
                     }]),
                     shadowColor: 'rgba(0, 0, 0, 1)',
                     shadowBlur: 10
@@ -860,10 +917,10 @@ option_jz_top4_left1 = {
             name: '占位',
             label: {
                 normal: {
-                    formatter: '\n完成率',
+                    formatter: '\n全勤率',
                     textStyle: {
                         color: '#555',
-                        fontSize: 16
+                        fontSize: 14
                     }
                 }
             },

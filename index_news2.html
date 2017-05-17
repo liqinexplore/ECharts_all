@@ -22,6 +22,7 @@
     <script>
 
         window.onload = function() {
+
           var map = new BMap.Map('allmap');
         map.centerAndZoom(new BMap.Point(119.195026,36.740612),13);
         var style_json_all=[
@@ -59,21 +60,26 @@
 //   $("#jz_content_top").hide();
 //   $(".jz_left_top_map").show();
 // })
+        // var $modal=$('#my-popup');
+
 
         }
+
     </script>
 </head>
 
-<body style="background:url('http://121.196.232.136:8080/rank/bg.jpg')">
+<body style="background:url('./img/bg.png')">
     <!-- <div>
         <div  id="allmap" class="all" ></div>
 
     </div> -->
-    <div class="am-g doc-am-g"  >
+    <div class="am-g doc-am-g" id="app" >
       <div class=" am-u-sm-12 am-u-md-12 am-u-lg-12 jz_top">
         <div class="  jz_weather">
             <div class="jz_weather_top">
               <span>
+                {{message}}
+
                 济南天气啊
 
               </span>
@@ -95,16 +101,105 @@
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-12 jz">
           <div class="  jz_left_all">
               <div class="jz_left jz_left1">
-                <span>经营概况</span>
+                <span   data-am-modal="{target: '#my-popup'}">经营概况</span>
 
-              <div class="jz_left_top" id="jz_left_top"></div>
+                  <!-- 这是弹窗-->
+                    <div class="am-popup" id="my-popup">
+                    <div class="am-popup-inner">
+                      <div class="am-popup-hd">
+                        <h4 class="am-popup-title">经营状况详情</h4>
+                        <span data-am-modal-close
+                              class="am-close">&times;</span>
+                      </div>
+                      <div class="am-popup-bd">
+                        <table class="am-table am-table-bordered">
+      <thead>
+          <tr>
+              <th>采购物品名称</th>
+              <th>采购物品数量</th>
+              <th>采购物品时间</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>一品景芝</td>
+              <td>45555</td>
+              <td>2017-05-01</td>
+          </tr>
+          <tr>
+              <td>52°景芝福酒 500ml</td>
+              <td>45684868</td>
+              <td>2017-05-01</td>
+          </tr>
+          <tr>
+              <td>46°景芝老窖500ml(6瓶装)</td>
+              <td>45684868</td>
+              <td>2017-05-01</td>
+          </tr>
+          <tr>
+              <td>50°一品景芝500ml（双瓶装）</td>
+              <td>45684868</td>
+              <td>2017-05-01</td>
+          </tr>
+          <tr>
+              <td>52°景芝青花500ml（双瓶装）景芝青花，精致礼盒装</td>
+              <td>45684868</td>
+              <td>2017-05-01</td>
+          </tr>
+          <tr>
+              <td>56°景芝醉八仙酒1000ml</td>
+              <td>45684868</td>
+              <td>2017-05-01</td>
+          </tr>
+          <tr>
+              <td>52°景芝福酒 500ml（6瓶装）</td>
+              <td>45684868</td>
+              <td>2017-05-01</td>
+          </tr>
+          <tr>
+              <td>52°景芝朋友万岁500ml（2瓶装）</td>
+              <td>45684868</td>
+              <td>2017-05-01</td>
+          </tr>
+
+      </tbody>
+  </table>
+                      </div>
+                    </div>
+                  </div>
+              <!-- 这是扇形图 -->
+              <div class="jz_left_top1" id="jz_left_top"></div>
               </div>
               <div class="jz_left jz_left2">
-                  <span>销售排名</span>
+                  <span   data-am-modal="{target: '#sell_all'}">销售排名</span>
+                  <div class="am-popup" id="sell_all">
+                  <div class="am-popup-inner">
+                    <div class="am-popup-hd">
+                      <h4 class="am-popup-title">经营状况详情</h4>
+                      <span data-am-modal-close
+                            class="am-close">&times;</span>
+                    </div>
+                    <div class="am-popup-bd">
+                    的是滴是滴是
+                    </div>
+                  </div>
+                </div>
               <div class="jz_left_top" id="jz_left_top2"></div>
               </div>
               <div class="jz_left jz_left3">
-                  <span>库存概况</span>
+                  <span data-am-modal="{target: '#repertory_all'}">库存概况</span>
+                  <div class="am-popup" id="repertory_all">
+                  <div class="am-popup-inner">
+                    <div class="am-popup-hd">
+                      <h4 class="am-popup-title">经营状况详情</h4>
+                      <span data-am-modal-close
+                            class="am-close">&times;</span>
+                    </div>
+                    <div class="am-popup-bd">
+                    的是滴是滴是
+                    </div>
+                  </div>
+                </div>
                   <div class="jz_left3_top" id="jz_top6_zhe">  </div>
                   <div class="jz_left3_top2">
                     <span>积压库存：258942瓶</span><span>查看明细>></span>
@@ -113,11 +208,23 @@
           </div>
           <div class="  jz_middle_all">
             <div class="jz_middle jz_middle_top1">
-  <div  id="allmap" class="all" ></div>
+              <div  id="allmap" class="all" ></div>
             </div>
             <div class="jz_middle jz_middle_top2">
                 <div class="js_middle_top_all js_middle_top_left">
-                    <span>考勤统计</span>
+                    <span data-am-modal="{target: '#attendance_all'}">考勤统计</span>
+                    <div class="am-popup" id="attendance_all">
+                    <div class="am-popup-inner">
+                      <div class="am-popup-hd">
+                        <h4 class="am-popup-title">经营状况详情</h4>
+                        <span data-am-modal-close
+                              class="am-close">&times;</span>
+                      </div>
+                      <div class="am-popup-bd">
+                      的是滴是滴是
+                      </div>
+                    </div>
+                  </div>
                     <div class="js_middle_top_left_all">
 
 
@@ -142,11 +249,25 @@
                   </div>
                 </div>
                 <div class="js_middle_top_all js_middle_top_right">
-                  <span>工作流程监控BPM</span>
-                  <div class="slide-container1">
-                    <ul class="slide-list js-slide-list">
+                  <span data-am-modal="{target: '#flow_all'}">工作流程监控BPM</span>
+                  <div class="am-popup" id="flow_all">
+                  <div class="am-popup-inner">
+                    <div class="am-popup-hd">
+                      <h4 class="am-popup-title">经营状况详情</h4>
+                      <span data-am-modal-close
+                            class="am-close">&times;</span>
+                    </div>
+                    <div class="am-popup-bd">
+                    的是滴是滴是
+                    </div>
+                  </div>
+                </div>
+                  <div class="slide-container_top">
+                    <ul class="slide-list js-slide-list_top">
                         <li class="odd"><span>XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
                           <span>2017/5/1</span></li>
+                        <li class="even"><span>XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
+                          <span>2017/5/1</span</li>
 
                     </ul>
                   </div>
@@ -155,16 +276,10 @@
                     <span>节点</span>
                     <span>发起时间</span>
                     <span>接收时间</span>
-
-
                 </div>
 
                 <div class="slide-container">
-                  <ul class="slide-list js-slide-list">
-                      <li class="odd"><span>XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
-                        <span>2017/5/1</span></li>
 
-                  </ul>
                     <ul class="slide-list js-slide-list">
                         <li class="odd"><span>XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
                           <span>2017/5/1</span></li>
@@ -176,7 +291,7 @@
                           <span>2017/5/1</span</li>
                         <li class="odd"><span>XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
                           <span>2017/5/1</span</li>
-                        <li class="even"><span>XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
+                        <li class="even"><span>11XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
                           <span>2017/5/1</span</li>
 
                     </ul>
@@ -186,13 +301,95 @@
           </div>
           <div class="  jz_right_all">
             <div class="jz_right jz_right1">
-              <span>阳光酿造</span>
+              <span data-am-modal="{target: '#sun_all'}">阳光酿造</span>
+              <div class="am-popup" id="sun_all">
+              <div class="am-popup-inner">
+                <div class="am-popup-hd">
+                  <h4 class="am-popup-title">经营状况详情</h4>
+                  <span data-am-modal-close
+                        class="am-close">&times;</span>
+                </div>
+                <div class="am-popup-bd">
+                的是滴是滴是
+                </div>
+              </div>
+            </div>
+              <div class="jz_right2_all">
+                <div >
+                    <video src="https://image.qiluyidian.mobi/99781670835402495218.mp4" autoplay poster="https://image.qiluyidian.mobi/99781670835402495218.mp4?vframe/jpg/offset/1">
+
+                    </video>
+                </div>
+                <div >
+                  <video src="https://image.qiluyidian.mobi/99781670835402495218.mp4" autoplay poster="https://image.qiluyidian.mobi/99781670835402495218.mp4?vframe/jpg/offset/1">
+
+                  </video>
+                </div>
+                <div >
+                  <video src="https://image.qiluyidian.mobi/99781670835402495218.mp4" autoplay poster="https://image.qiluyidian.mobi/99781670835402495218.mp4?vframe/jpg/offset/1">
+
+                  </video>
+                </div>
+                <div >
+                  <video src="https://image.qiluyidian.mobi/99781670835402495218.mp4" autoplay poster="https://image.qiluyidian.mobi/99781670835402495218.mp4?vframe/jpg/offset/1">
+
+                  </video>
+                </div>
+
+              </div>
             </div>
             <div class="jz_right jz_right2">
-              <span>生产监控</span>
+              <span data-am-modal="{target: '#production_all'}">生产监控</span>
+              <div class="am-popup" id="production_all">
+              <div class="am-popup-inner">
+                <div class="am-popup-hd">
+                  <h4 class="am-popup-title">生产监控</h4>
+                  <span data-am-modal-close
+                        class="am-close">&times;</span>
+                </div>
+                <div class="am-popup-bd">
+                的是滴是滴是
+                </div>
+              </div>
+            </div>
+              <div class="jz_right2_all">
+                <div >
+                    <video src="https://image.qiluyidian.mobi/99781670835402495218.mp4" autoplay poster="https://image.qiluyidian.mobi/99781670835402495218.mp4?vframe/jpg/offset/1">
+
+                    </video>
+                </div>
+                <div >
+                  <video src="https://image.qiluyidian.mobi/99781670835402495218.mp4" autoplay poster="https://image.qiluyidian.mobi/99781670835402495218.mp4?vframe/jpg/offset/1">
+
+                  </video>
+                </div>
+                <div >
+                  <video src="https://image.qiluyidian.mobi/99781670835402495218.mp4" autoplay poster="https://image.qiluyidian.mobi/99781670835402495218.mp4?vframe/jpg/offset/1">
+
+                  </video>
+                </div>
+                <div >
+                  <video src="https://image.qiluyidian.mobi/99781670835402495218.mp4" autoplay poster="https://image.qiluyidian.mobi/99781670835402495218.mp4?vframe/jpg/offset/1">
+
+                  </video>
+                </div>
+
+              </div>
             </div>
             <div class="jz_right jz_right3">
-                <span>极优佳App运营概况</span>
+                <span data-am-modal="{target: '#app_all'}">极优佳App运营概况</span>
+                <div class="am-popup" id="app_all">
+                <div class="am-popup-inner">
+                  <div class="am-popup-hd">
+                    <h4 class="am-popup-title">极优佳App运营概况</h4>
+                    <span data-am-modal-close
+                          class="am-close">&times;</span>
+                  </div>
+                  <div class="am-popup-bd">
+                  的是滴是滴是
+                  </div>
+                </div>
+              </div>
               <ul class="jz_right3_all">
                 <li><span>累积入驻品牌</span><span>88家</span></li>
                 <li><span>累积入驻经销商</span><span>521家</span></li>
