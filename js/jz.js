@@ -1,4 +1,44 @@
 
+ // document.getElementById("iFrame1").stylecontentWindow
+ // document.getElementById("iFrame1").style.overflow="hidden";.document.getElementById("windowss_api")
+// setTimeout(function(){
+//   var iwindow=window.frames["iFrame1"];
+//   console.log("--------------all",iwindow);
+//   var idoc = iwindow.document;
+//           console.log("window",iwindow);//获取iframe的window对象
+//           console.log("document",idoc);  //获取iframe的document
+//           console.log("html",idoc.getElementById("windowss_api"));//获取iframe的html
+//           console.log("head",idoc.head);  //获取head
+//           console.log("body",idoc.body);
+// console.log("--------------all",iwindow,"++++++++++++",idoc);
+//
+// },1000)
+
+
+
+    var start_count = 1188;
+    function init_all_count(){
+        var t_num = $(".t_num");
+        $(".t_num").html("");
+        res_string = String(start_count).split("").reverse().join("")
+        var len = String(start_count).length;
+        for(var i=0;i<len;i++){
+            // if(i%3 == 0 && i != 0){
+            //     t_num.prepend('<img src="./img/images/numsplit.png" class="t_split_img">');
+            // }
+            var num = String(res_string).charAt(i);
+            t_num.prepend('<img src="./img/images/num'+num+'.png" class="t_num_img">');
+        }
+
+        start_count = start_count + 111;
+    }
+    init_all_count();
+    // setInterval('init_all_count()', 100);
+    function random() {
+        return +(Math.random() * (maxData - 10)).toFixed(1);
+    }
+
+
 var doscroll = function(pareat){
 var $parent = $(pareat);
 var $first = $parent.find('li:first');
