@@ -40,12 +40,7 @@
     });
     map.enableScrollWheelZoom(true);
 
-    //定义样式
-  //   var sContent =
-  // "<h4 style='margin:0 0 5px 0;padding:0.2em 0'>天安门</h4>" +
-  // "<img style='float:right;margin:4px' id='imgDemo' src='https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1458682711,2928982766&fm=117&gp=0.jpg' width='139' height='104' title='天安门'/>" +
-  // "<p style='margin:0;line-height:1.5;font-size:13px;text-indent:2em'>天安门坐落在中国北京市中心,故宫的南侧,与天安门广场隔长安街相望,是清朝皇城的大门...</p>" +
-  // "</div>";
+
     // var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
 	    // 编写自定义函数,创建标注
       function addMarker(point,label,color,sum_all){
@@ -53,21 +48,30 @@
     //单独设定图标的样式
     var icon = new BMap.Icon(color, new BMap.Size(30,30));
 	  var marker = new BMap.Marker(point,{icon:icon});
-    marker.addEventListener("click", function(){
+    marker.addEventListener("click", function(e){
     	   this.openInfoWindow(infoWindow);
     	   //图片加载完毕重绘infowindow
 
-    	   document.getElementById('imgDemo').onload = function (){
-    		   infoWindow.redraw();   //防止在网速较慢，图片未加载时，生成的信息框高度比图片的总高度小，导致图片部分被隐藏
-    	   }
-         marker.setLabel(label);
+    	  //  document.getElementById('imgDemo').onload = function (){
+    		//    infoWindow.redraw();   //防止在网速较慢，图片未加载时，生成的信息框高度比图片的总高度小，导致图片部分被隐藏
+    	  //  }
+        // var all=document.getElementsByClassName('BMapLabel')[0];
+  //       if(!_con.is(e.target) && _con.has(e.target).length === 0){ // Mark 1
+  //
+  // }
+ //  if (!$(e.target).closest(".BMapLabel").length) {
+ //             map.removeOverlay(label);
+ //          }
+ // console.log("全部数据",all,e.target);
+ //         marker.setLabel(label);
          setTimeout(function(){
-            closeInfoWindow(infoWindow);
-         },1000)
+              //  map.removeOverlay(label);
+         },10000)
     	});
 	  map.addOverlay(marker);
 
 	}
+
 
 	function addMarker1(point,label,color){
     //单独设定图标的样式
@@ -77,6 +81,9 @@
 	  map.addOverlay(marker);
   	// marker.setLabel(label);
 	}
+  function closeLabel(){
+    console.log("我是关闭");
+  }
 	// 随机向地图添加25个标注
 	var bounds = map.getBounds();
 	var sw = bounds.getSouthWest();
@@ -87,16 +94,37 @@
 	for (var i = 0; i < 25; i ++) {
 		var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
       var label = new BMap.Label("我是文字标注哦"+i,{offset:new BMap.Size(21,-10)});
-      var sum_all="我是数字"+i;//我是变量
+      // var sum_all="我是数字"+i;//我是变量
+      //定义样式
+      var sContent =
+          "<div class='infor_all'>"+
+          "<div class='infor_peopel'>"+
+          "<span>提交人：隔壁老王</span>"+
+          "<span>提交时间：2017-4-5 12:12:12</span>"+
+          "<span>附近新开一个社区，白酒市场缺乏，可以考虑开一家分店</span>"+
+          "<a style='background:url(https://image.qiluyidian.mobi/43230590851066149651QN1D928U291dGhFYXN0.jpg?imageMogr2/auto-orient/thumbnail/680x410)'  class='infor_img'></a>"+
+          "</div>"+
+          "</div>";
   var color ='img/red.png';
-		addMarker(point,label,color,sum_all);
+		addMarker(point,label,color,sContent);
 
 	}
 	for (var i = 0; i < 10; i ++) {
 		var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
       var label = new BMap.Label("我是文字标注哦"+i,{offset:new BMap.Size(21,-10)});
       var color ='img/blud.png';
-		addMarker(point,label,color);
+      var shop_list=
+      "<div class='shop_all'>"+
+        "<span>门店名称：景芝零售店1</span>"+
+        "<span>负责人：李钦</span>"+
+        "<span>联系电话：123456789021</span>"+
+        "<span>门店位置：潍坊市奎文区新华路5号11店东500米</span>"+
+        "<span>在销产品</span>"+
+        "<span>景芝酒，一品景芝，A景</span>"+
+        "<span>门店图片</span>"+
+        "<a style='background:url(https://image.qiluyidian.mobi/43230590851066149651QN1D928U291dGhFYXN0.jpg?imageMogr2/auto-orient/thumbnail/680x410)'  class='infor_img'></a>"+
+      "</div>"
+		addMarker(point,label,color,shop_list);
 
 	}
 	for (var i = 0; i < 6; i ++) {

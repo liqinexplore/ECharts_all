@@ -590,4 +590,130 @@ body {
 iframe{
   overflow: hidden!important;
 }
-html { overflow: hidden!important; } 
+html { overflow: hidden!important; }
+.anchorBL{
+  display: none;
+}
+ .BMap_cpyCtrl{
+   display: none;
+ }
+ /*情报站样式*/
+ .infor_all,.shop_all,.salesman_all{
+   width: 300px;
+    height: auto;
+ }
+.infor_peopel span,.shop_all span,.salesman_all span{
+  display: block;
+
+}
+
+.infor_peopel img,.shop_all img{
+  width:100%;
+  height: 150px;
+}
+.infor_img{
+  display: block;
+  width: 100%;
+  height: 150px;
+  background-size: cover!important;
+  background-repeat: no-repeat!important;
+  background-origin: content-box!important;
+}
+.salesman_all>.am-table{
+  font-size: 16px!important;
+}
+.salesman_all_container{
+  position: relative;
+  overflow: hidden;
+  height: 190px;
+  top: 0;
+  right: 0;
+  color: #007bff;
+  font-size: 12px;
+}
+.salesman-list{
+  position:absolute;
+  width:100%;
+  left:0;
+  top:0;
+  color: #007bff;
+  margin:0;
+  padding:0;
+}
+
+/*表格*/
+.salesman_title{
+
+width: 100%;
+height: 40px;
+line-height: 40px;
+padding: 0 10px;
+font-size: 14px;
+font-weight: bold;
+}
+.salesman_title span{
+    float: left;
+
+    color: ff7800;
+    margin-right: 14px;
+}
+.salesman_title span:nth-child(1),
+.salesman-list li span:nth-child(1){
+    text-align: center;
+        width: 65px;
+}
+.salesman_title span:nth-child(2),
+.salesman-list li span:nth-child(2){
+    text-align: center;
+      width: 65px;
+}
+.salesman_title span:nth-child(3),
+.salesman-list li span:nth-child(3){
+  text-align: center;
+      width: 65px;
+
+}
+.salesman_title span:nth-child(4),
+.salesman-list li span:nth-child(4){
+    text-align: center;
+        width: 65px;
+
+}
+
+/*表格滚动*/
+.salesman_all_container{
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  height: 190px;
+  top: 0;
+  right: 0;
+
+  font-size: 12px;
+}
+.salesman-list{
+  position:absolute;
+  width:100%;
+  left:0;
+  top:0;
+
+  margin:0;
+  padding:0;
+}
+
+.salesman-list li {
+  height:40px;
+  line-height:40px;
+  list-style:none;
+  margin:0;
+  padding:0 10px;
+}
+.salesman-list li span {
+  display:inline-block;
+  margin-right:14px;
+  font-size:16px;
+    font-size: 12px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}

@@ -14,8 +14,6 @@
 //
 // },1000)
 
-
-
     var start_count = 1188;
     function init_all_count(){
         var t_num = $(".t_num");
@@ -56,7 +54,14 @@ var app = new Vue({
   el: '#app',
   data: {
     message: 'Hello Vue!',
-    list:''
+    list:'',
+    infor_all:[{
+      infor_name:"隔壁老王",
+      infor_time:"2017-4-5 12:12:12",
+      infor_content:"附近新开一个社区，白酒市场缺乏，可以考虑开一家分店",
+      infor_img:"https://image.qiluyidian.mobi/43230590851066149651QN1D928U291dGhFYXN0.jpg?imageMogr2/auto-orient/thumbnail/680x410"
+    }]
+
   }
 })
 //经营状况数据
@@ -67,13 +72,13 @@ app.list=b
 });
 //销售排名
 $('#sell_all').on('open.modal.amui', function(){
-console.log('第一个演示弹窗打开了');
+console.log('第二个演示弹窗打开了');
 var b="我是数据";
 app.list=b
 });
 //库存概况
 $('#repertory_all').on('open.modal.amui', function(){
-console.log('第一个演示弹窗打开了');
+console.log('第三个演示弹窗打开了');
 var b="我是数据";
 app.list=b
 });
@@ -85,13 +90,13 @@ app.list=b
 });
 //阳光酿造
 $('#sun_all').on('open.modal.amui', function(){
-console.log('第一个演示弹窗打开了');
+console.log('第四个演示弹窗打开了');
 var b="我是数据";
 app.list=b
 });
 //生产监控
 $('#production_all').on('open.modal.amui', function(){
-console.log('第一个演示弹窗打开了');
+console.log('第五个演示弹窗打开了');
 var b="我是数据";
 app.list=b
 });
