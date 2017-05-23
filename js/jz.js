@@ -13,6 +13,75 @@
 // console.log("--------------all",iwindow,"++++++++++++",idoc);
 //
 // },1000)
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!',
+    list:'',
+    infor_all:[{
+      infor_name:"隔壁老王",
+      infor_time:"2017-4-5 12:12:12",
+      infor_content:"附近新开一个社区，白酒市场缺乏，可以考虑开一家分店",
+      infor_img:"https://image.qiluyidian.mobi/43230590851066149651QN1D928U291dGhFYXN0.jpg?imageMogr2/auto-orient/thumbnail/680x410"
+    }],
+    manage_market:[{//销售明细
+        mk_id:1,
+        mk_piao:"购买20瓶景芝酒",
+        mk_chanpin:"景芝酒53度",
+        mk_start_time:"2017-05-09",
+        mk_people:"李钦",
+        mk_other:"来喝酒了，买新酒了"
+    },{
+        mk_id:2,
+        mk_piao:"购买20瓶景芝酒",
+        mk_chanpin:"景芝酒53度",
+        mk_start_time:"2017-05-09",
+        mk_people:"李钦",
+        mk_other:"来喝酒了，买新酒了"
+    }],
+    manage_shop:[{//发货计划
+        ms_id:1,
+        ms_piao:"购买20瓶景芝酒",
+        ms_chanpin:"景芝酒53度",
+        ms_start_time:"2017-05-09",
+        ms_people:"李钦",
+        ms_other:"来喝酒了，买新酒了"
+    },{
+        ms_id:2,
+        ms_piao:"购买20瓶景芝酒",
+        ms_chanpin:"景芝酒53度",
+        ms_start_time:"2017-05-09",
+        ms_people:"李钦",
+        ms_other:"来喝酒了，买新酒了"
+    }],
+    manage_production:[{//生产计划
+        ms_id:1,
+        ms_piao:"购买20瓶景芝酒",
+        ms_chanpin:"景芝酒53度",
+        ms_start_time:"2017-05-09",
+        ms_people:"李钦",
+        ms_other:"来喝酒了，买新酒了"
+    },{
+        ms_id:2,
+        ms_piao:"购买20瓶景芝酒",
+        ms_chanpin:"景芝酒53度",
+        ms_start_time:"2017-05-09",
+        ms_people:"李钦",
+        ms_other:"来喝酒了，买新酒了"
+    }],
+
+  }
+})
+
+
+$(function() {
+  $('#doc-datepicker').datepicker().
+    on('changeDate.datepicker.amui', function(event) {
+      console.log(event.date);
+    });
+});
+
+
 
     var start_count = 1188;
     function init_all_count(){
@@ -50,20 +119,7 @@ $first.animate({
 };
 setInterval(function(){doscroll('.js-slide-list')}, 2000);
 setInterval(function(){doscroll('.js-slide-list_top')}, 4000);
-var app = new Vue({
-  el: '#app',
-  data: {
-    message: 'Hello Vue!',
-    list:'',
-    infor_all:[{
-      infor_name:"隔壁老王",
-      infor_time:"2017-4-5 12:12:12",
-      infor_content:"附近新开一个社区，白酒市场缺乏，可以考虑开一家分店",
-      infor_img:"https://image.qiluyidian.mobi/43230590851066149651QN1D928U291dGhFYXN0.jpg?imageMogr2/auto-orient/thumbnail/680x410"
-    }]
 
-  }
-})
 //经营状况数据
 $('#my-popup').on('open.modal.amui', function(){
 console.log('第一个演示弹窗打开了');
@@ -995,3 +1051,7 @@ jz_top4_left1.setOption(option_jz_top4_left1);
 jz_top4_left2.setOption(option_jz_top4_left2);
 jz_top4_left3.setOption(option_jz_top4_left3);
 top3_center_tu.setOption(option_top3_center_tu);
+/*tabs切换start*/
+
+
+/*tabs切换end*/

@@ -2,7 +2,7 @@
   width: 100%;
   height: 100%;
 
-  z-index: -10;
+  /*z-index: -10!important;*/
 }
 .jz_top{
   height: 100px;
@@ -630,6 +630,7 @@ html { overflow: hidden!important; }
   right: 0;
   color: #007bff;
   font-size: 12px;
+  margin-top: 20px;
 }
 .salesman-list{
   position:absolute;
@@ -659,24 +660,25 @@ font-weight: bold;
 }
 .salesman_title span:nth-child(1),
 .salesman-list li span:nth-child(1){
+
     text-align: center;
-        width: 65px;
+        width: 30%;
 }
 .salesman_title span:nth-child(2),
 .salesman-list li span:nth-child(2){
     text-align: center;
-      width: 65px;
+      width: 68%;
 }
 .salesman_title span:nth-child(3),
 .salesman-list li span:nth-child(3){
   text-align: center;
-      width: 65px;
+      /*width: 65px;*/
 
 }
 .salesman_title span:nth-child(4),
 .salesman-list li span:nth-child(4){
     text-align: center;
-        width: 65px;
+        /*width: 65px;*/
 
 }
 
@@ -702,18 +704,43 @@ font-weight: bold;
 }
 
 .salesman-list li {
-  height:40px;
-  line-height:40px;
+  height:26px;
+  line-height:26px;
   list-style:none;
-  margin:0;
-  padding:0 10px;
+
 }
 .salesman-list li span {
+    border: 1px #aaa solid;
   display:inline-block;
-  margin-right:14px;
   font-size:16px;
     font-size: 12px;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
+}
+/*tabs切换start*/
+.am-tabs-nav li {
+  position: relative;
+  z-index: 1;
+}
+
+.am-tabs-nav .am-icon-close {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  color: #888;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.am-tabs-nav .am-icon-close:hover {
+  color: #333;
+}
+
+.am-tabs-nav .am-icon-close ~ a {
+  padding-right: 25px!important;
+}
+/*tabs切换end*/
+.input_select{
+  width: 40%;
 }
