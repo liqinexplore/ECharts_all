@@ -24,7 +24,7 @@ var app = new Vue({
       infor_content:"附近新开一个社区，白酒市场缺乏，可以考虑开一家分店",
       infor_img:"https://image.qiluyidian.mobi/43230590851066149651QN1D928U291dGhFYXN0.jpg?imageMogr2/auto-orient/thumbnail/680x410"
     }],
-    manage_market:[{//销售明细
+    manage_market:[{
         mk_id:1,
         mk_piao:"购买20瓶景芝酒",
         mk_chanpin:"景芝酒53度",
@@ -39,7 +39,7 @@ var app = new Vue({
         mk_people:"李钦",
         mk_other:"来喝酒了，买新酒了"
     }],
-    manage_shop:[{//发货计划
+    manage_shop:[{
         ms_id:1,
         ms_piao:"购买20瓶景芝酒",
         ms_chanpin:"景芝酒53度",
@@ -54,32 +54,18 @@ var app = new Vue({
         ms_people:"李钦",
         ms_other:"来喝酒了，买新酒了"
     }],
-    manage_production:[{//生产计划
-        ms_id:1,
-        ms_piao:"购买20瓶景芝酒",
-        ms_chanpin:"景芝酒53度",
-        ms_start_time:"2017-05-09",
-        ms_people:"李钦",
-        ms_other:"来喝酒了，买新酒了"
-    },{
-        ms_id:2,
-        ms_piao:"购买20瓶景芝酒",
-        ms_chanpin:"景芝酒53度",
-        ms_start_time:"2017-05-09",
-        ms_people:"李钦",
-        ms_other:"来喝酒了，买新酒了"
-    }],
+    
 
   }
 })
 
 
-$(function() {
-  $('#doc-datepicker').datepicker().
-    on('changeDate.datepicker.amui', function(event) {
-      console.log(event.date);
-    });
-});
+// $(function() {
+  // $('#doc-datepicker').datepicker().
+  //   on('changeDate.datepicker.amui', function(event) {
+  //     console.log(event.date);
+  //   });
+// });
 
 
 

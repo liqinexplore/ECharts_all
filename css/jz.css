@@ -744,3 +744,174 @@ font-weight: bold;
 .input_select{
   width: 40%;
 }
+.jiankong{
+  margin: 0px;
+  padding: 0px;
+}
+.jiyoujia{
+  overflow: hidden;
+}
+.jiyoujia_title{
+  font-size: 18px;
+padding-left: 20px;
+margin-bottom: 10px;
+}
+.jiyoujia_mianban>div{
+  text-align: center;
+
+}
+.huoyue{
+padding-left: 294px;
+}
+.top_img_all{
+  width: 100%;
+height: 30px;
+margin-top: 20px!important;
+
+}
+.jingyinginfo{
+    background: url('../img/jzajingying.png');
+      background-repeat: no-repeat;
+  background-size: contain;
+  background-clip: content-box;
+  background-position: center;
+
+}
+.xiaoshouinfo{
+  background: url('../img/jzxiaoshou.png');
+    background-repeat: no-repeat;
+background-size: contain;
+background-clip: content-box;
+background-position: center;
+}
+.kucuninfo{
+  background: url('../img/kucun.png');
+    background-repeat: no-repeat;
+background-size: contain;
+background-clip: content-box;
+background-position: center;
+}
+.kaoqininfo{
+  background: url('../img/kaoqin.png');
+    background-repeat: no-repeat;
+background-size: contain;
+background-clip: content-box;
+background-position: center;
+}
+.gongzuoinfo{
+  background: url('../img/gongzuo.png');
+    background-repeat: no-repeat;
+background-size: contain;
+background-clip: content-box;
+background-position: center;
+}
+.yangguanginfo{
+  background: url('../img/yangguang.png');
+    background-repeat: no-repeat;
+background-size: contain;
+background-clip: content-box;
+background-position: center;
+}
+.shengchaninfo{
+  background: url('../img/shengchan.png');
+    background-repeat: no-repeat;
+background-size: contain;
+background-clip: content-box;
+background-position: center;
+}
+.jiyoujiainfo{
+  background: url('../img/jiyoujia.png');
+    background-repeat: no-repeat;
+background-size: contain;
+background-clip: content-box;
+background-position: center;
+}
+.am-datepicker,.am-datepicker-dropdown{
+  background-color: rgba(12,27,69,.9)!important;
+}
+.am-popup,.am-popup-bd{
+      background-color: rgba(12,27,69,.8)!important;
+}
+select{
+      background-color: rgba(12,27,69,.8)!important;
+      color: #fff;
+}
+.am-popup-hd {
+border-bottom: 1px solid rgba(12,27,69,.8);
+      background-color: rgba(12,27,69,.8)!important;
+}
+.am-nav-tabs>li.am-active>a, .am-nav-tabs>li.am-active>a:focus, .am-nav-tabs>li.am-active>a:hover{
+  background-color: rgba(12,27,69,.8)!important;
+}
+input{
+  color: #fff!important;
+    background-color: rgba(12,27,69,.8)!important;
+}
+.am-panel,.am-panel-default{
+    color: #09DFFF;
+    border: 1px solid #09DFFF;
+    background-color: rgba(12,27,69,.8)!important;
+}
+.jiyoujia_page_all{
+  border-color: rgba(12,27,69,.8)!important;
+}
+.jiyoujia_page_all>.am-panel-hd{
+      background-color: rgba(12,27,69,.8)!important;
+      width: 88%;
+      margin-left: 6%;
+      font-size: 26px!important;
+      height: 35px!important;
+      line-height: 0px!important;
+      color: #09DFFF!important;
+}
+.am-panel-bd{
+  font-size: 22px;
+}
+.jiyoujia_page{
+  margin-top: 10px;
+}
+.am-panel-hd{
+  text-align: center;
+  font-size: 20px;
+  color: #09DFFF;
+}
+.am-tabs-bd{
+
+color: #09DFFF;
+}
+.am-panel-default>.am-panel-hd{
+  color: #122790;
+  font-size: 18px;
+  height: 36px;
+  line-height: 20px;
+  background-color: #09DFFF;
+  border-color: #09DFFF;
+}
+table {
+  margin-top: 30px;
+  text-align: center;
+  color:#09DFFF;
+
+
+}
+table th{
+  text-align: center;
+
+}
+.am-input-group-btn button{
+  background: #0e90d2;
+  color: #fff;
+}
+.am-nav-tabs>li.am-active>a, .am-nav-tabs>li.am-active>a:focus, .am-nav-tabs>li.am-active>a:hover{
+  color: #09DFFF;
+}
+.am-datepicker-prev-icon,.am-datepicker-next-icon{
+  padding: 8px;
+}
+.iframe_info{
+  width: 100%;
+  height: 500px!important;
+}
+.jiankonglist{
+    height: 500px!important;
+}

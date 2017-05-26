@@ -64,20 +64,24 @@
  //          }
  // console.log("全部数据",all,e.target);
  //         marker.setLabel(label);
-         setTimeout(function(){
+        //  setTimeout(function(){
               //  map.removeOverlay(label);
-         },10000)
+        //  },10000)
     	});
 	  map.addOverlay(marker);
 
 	}
 
 
-	function addMarker1(point,label,color){
+	function addMarker1(point,label,color,sum_all){
+      var infoWindow = new BMap.InfoWindow(sum_all);  // 创建信息窗口对象
     //单独设定图标的样式
     var icon = new BMap.Icon(color, new BMap.Size(40,40));
 	  var marker = new BMap.Marker(point,{icon:icon});
+    marker.addEventListener("click", function(e){
+         this.openInfoWindow(infoWindow);
 
+      });
 	  map.addOverlay(marker);
   	// marker.setLabel(label);
 	}
@@ -160,14 +164,58 @@
 		var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
       var label = new BMap.Label("我是文字标注哦"+i,{offset:new BMap.Size(21,-10)});
       var color ='img/origin.png';
-    		addMarker(point,label,color);
+      var salesman_list=
+      "<div class='salesman_all'>"+
+      "<span>提交人：景芝零售店1</span>"+
+      "<span>所在部门：李钦</span>"+
+      "<span>联系电话：123456789021</span>"+
+      "<span>当前位置：潍坊市奎文区新华路5号11店东500米</span>"+
+      "<span>提交历史</span>"+
+      "<div class='salesman_all_container'>"+
+        "<ul class='salesman-list js-salesman-list'>"+
+          "<li ><span>XX区XX店</span><span>张XX</span>"+
+          "</li>"+
+          "<li ><span>XX区XX店</span><span>张XX</span>"+
+          "</li>"+
+          "<li ><span>XX区XX店</span><span>张XX</span>"+
+          "</li>"+
+          "<li ><span>XX区XX店</span><span>张XX</span>"+
+          "</li>"+
+          "<li ><span>XX区XX店</span><span>张XX</span>"+
+          "</li>"+
+        "</ul>"+
+    "</div>"+
+    "</div>"
+    		addMarker(point,label,color,salesman_list);
 
 	}
 	for (var i = 0; i < 5; i ++) {
 		var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
       var label = new BMap.Label("我是文字标注哦"+i,{offset:new BMap.Size(21,-10)});
       var color ='img/dian.png';
-    		addMarker1(point,label,color);
+      var salesman_list=
+      "<div class='salesman_all'>"+
+      "<span>提交人：景芝零售店1</span>"+
+      "<span>所在部门：李钦</span>"+
+      "<span>联系电话：123456789021</span>"+
+      "<span>当前位置：潍坊市奎文区新华路5号11店东500米</span>"+
+      "<span>提交历史</span>"+
+      "<div class='salesman_all_container'>"+
+        "<ul class='salesman-list js-salesman-list'>"+
+          "<li ><span>XX区XX店</span><span>张XX</span>"+
+          "</li>"+
+          "<li ><span>XX区XX店</span><span>张XX</span>"+
+          "</li>"+
+          "<li ><span>XX区XX店</span><span>张XX</span>"+
+          "</li>"+
+          "<li ><span>XX区XX店</span><span>张XX</span>"+
+          "</li>"+
+          "<li ><span>XX区XX店</span><span>张XX</span>"+
+          "</li>"+
+        "</ul>"+
+    "</div>"+
+    "</div>"
+    		addMarker1(point,label,color,salesman_list);
 
 	}
 
@@ -207,7 +255,7 @@
       <div class="  jz_weather">
         <div class="jz_weather_top">
           <span>
-                {{message}}
+              <h1>你好景芝</h1>
 
                 济南天气啊
 
@@ -232,10 +280,13 @@
           <div class="am-popup" id="my-popup">
             <div class="am-popup-inner">
               <div class="am-popup-hd">
-                <h4 class="am-popup-title">经营状况详情</h4>
+                <!-- <h4 class="am-popup-title">经营状况详情</h4> -->
+                  <div class="am-popup-title jingyinginfo top_img_all ">
+
+                  </div>
                 <span data-am-modal-close class="am-close">&times;</span>
               </div>
-              <div class="am-popup-bd">
+              <div class="am-popup-bd ">
                 <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
                   <ul class="am-tabs-nav am-nav am-nav-tabs">
     <li class="am-active"><a href="javascript: void(0)">销量明细</a></li>
@@ -255,7 +306,7 @@
             </span>
         </div>
       </div>
-      <table class="am-table am-table-bordered">
+      <table class="am-table am-primary">
                   <thead>
                     <tr>
                       <th>序号</th>
@@ -289,7 +340,7 @@
             </span>
         </div>
       </div>
-      <table class="am-table am-table-bordered">
+      <table class="am-table ">
                   <thead>
                     <tr>
                       <th>序号</th>
@@ -324,7 +375,7 @@
             </span>
         </div>
       </div>
-      <table class="am-table am-table-bordered">
+      <table class="am-table">
                   <thead>
                     <tr>
                       <th>序号</th>
@@ -358,7 +409,7 @@
             </span>
         </div>
       </div>
-      <table class="am-table am-table-bordered">
+      <table class="am-table ">
                   <thead>
                     <tr>
                       <th>序号</th>
@@ -396,7 +447,10 @@
           <div class="am-popup" id="sell_all">
             <div class="am-popup-inner">
               <div class="am-popup-hd">
-                <h4 class="am-popup-title">销售排名详情</h4>
+                <!-- <h4 class="am-popup-title">销售排名详情</h4> -->
+                <div class="am-popup-title top_img_all xiaoshouinfo">
+
+                </div>
                 <span data-am-modal-close class="am-close">&times;</span>
               </div>
               <div class="am-popup-bd">
@@ -419,7 +473,7 @@
             </span>
         </div>
       </div>
-      <table class="am-table am-table-bordered">
+      <table class="am-table ">
                   <thead>
                     <tr>
                       <th>序号</th>
@@ -456,7 +510,7 @@
             </span>
         </div>
       </div>
-      <table class="am-table am-table-bordered">
+      <table class="am-table ">
                   <thead>
                     <tr>
                       <th>序号</th>
@@ -493,7 +547,7 @@
             </span>
         </div>
       </div>
-      <table class="am-table am-table-bordered">
+      <table class="am-table ">
                   <thead>
                     <tr>
                       <th>序号</th>
@@ -531,7 +585,10 @@
           <div class="am-popup" id="repertory_all">
             <div class="am-popup-inner">
               <div class="am-popup-hd">
-                <h4 class="am-popup-title">库存概况详情</h4>
+                <!-- <h4 class="am-popup-title">经营状况详情</h4> -->
+                <div class="am-popup-title top_img_all kucuninfo">
+
+                </div>
                 <span data-am-modal-close class="am-close">&times;</span>
               </div>
               <div class="am-popup-bd">
@@ -552,7 +609,7 @@
             </span>
         </div>
       </div>
-      <table class="am-table am-table-bordered">
+      <table class="am-table ">
                   <thead>
                     <tr>
                       <th>序号</th>
@@ -577,38 +634,37 @@
                 </table>
     </div>
     <div class="am-tab-panel">
-      <div class="am-tab-panel am-active">
-        <div class="input_select">
-          <div class="am-input-group">
-              <input type="text" class="am-form-field">
-              <span class="am-input-group-btn">
-                <button class="am-btn am-btn-default" type="button">搜索一下</button>
-              </span>
-          </div>
+      <div class="input_select">
+        <div class="am-input-group">
+            <input type="text" class="am-form-field">
+            <span class="am-input-group-btn">
+              <button class="am-btn am-btn-default" type="button">搜索一下</button>
+            </span>
         </div>
-        <table class="am-table am-table-bordered">
-                    <thead>
-                      <tr>
-                        <th>序号</th>
-                        <th>客户名称</th>
-                        <th>申请产品名称</th>
-                        <th>申请发货量</th>
-                        <th>实际发货量</th>
-                        <th>发货占比</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr v-for="value in manage_market">
-                        <td>{{value.mk_id}}</td>
-                        <td>{{value.mk_piao}}</td>
-                        <td>{{value.mk_chanpin}}</td>
-                        <td>{{value.mk_start_time}}</td>
-                        <td>{{value.mk_people}}</td>
-                        <td>{{value.mk_other}}</td>
-                      </tr>
+      </div>
+      <table class="am-table ">
+                  <thead>
+                    <tr>
+                      <th>序号</th>
+                      <th>客户名称</th>
+                      <th>申请产品名称</th>
+                      <th>申请发货量</th>
+                      <th>发货占比</th>
+                      <th>备注</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="value in manage_market">
+                      <td>{{value.mk_id}}</td>
+                      <td>{{value.mk_piao}}</td>
+                      <td>{{value.mk_chanpin}}</td>
+                      <td>{{value.mk_start_time}}</td>
+                      <td>{{value.mk_people}}</td>
+                      <td>{{value.mk_other}}</td>
+                    </tr>
 
-                    </tbody>
-                  </table>
+                  </tbody>
+                </table>
     </div>
 
   </div>
@@ -646,19 +702,20 @@
             <div class="am-popup" id="attendance_all">
               <div class="am-popup-inner">
                 <div class="am-popup-hd">
-                  <h4 class="am-popup-title">考勤统计详情</h4>
+                  <!-- <h4 class="am-popup-title">考勤统计详情</h4> -->
+                  <div class="am-popup-title top_img_all kaoqininfo">
+
+                  </div>
                   <span data-am-modal-close class="am-close">&times;</span>
                 </div>
                 <div class="am-popup-bd">
                   <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
                     <ul class="am-tabs-nav am-nav am-nav-tabs">
-      <li class="am-active"><a href="javascript: void(0)">按照员工</a></li>
-      <li><a href="javascript: void(0)">按照部门</a></li>
-
+      <li class="am-active"><a href="javascript: void(0)">按员工</a></li>
+      <li><a href="javascript: void(0)">按部门</a></li>
     </ul>
 
                     <div class="am-tabs-bd">
-                      <!-- 按照员工 -->
       <div class="am-tab-panel am-active">
         <div class="input_select">
           <div class="am-input-group">
@@ -668,7 +725,7 @@
               </span>
           </div>
         </div>
-        <table class="am-table am-table-bordered">
+        <table class="am-table ">
                     <thead>
                       <tr>
                         <th>序号</th>
@@ -695,7 +752,6 @@
                   </table>
       </div>
       <div class="am-tab-panel">
-        <!-- 按照部门 -->
         <div class="input_select">
           <div class="am-input-group">
               <input type="text" class="am-form-field">
@@ -704,12 +760,12 @@
               </span>
           </div>
         </div>
-        <table class="am-table am-table-bordered">
+        <table class="am-table ">
                     <thead>
                       <tr>
                         <th>序号</th>
                         <th>部门名称</th>
-                        <th>归属公司</th>
+                        <th>归属部门</th>
                         <th>平均出差（天）</th>
                         <th>平均请假（天）</th>
                         <th>平均跨区域出差（天）</th>
@@ -759,52 +815,70 @@
             <div class="am-popup" id="flow_all">
               <div class="am-popup-inner">
                 <div class="am-popup-hd">
-                  <h4 class="am-popup-title">工作流程监控BPM详情</h4>
-                  <div class="am-g">
-  <div class="col-sm-2 col-lg-4">
-  <input type="text" name="" value="" >
-  </div>
-  <div class="col-sm-4 col-lg-2">
-    <span>选择时间</span>
-    <form action="" class="am-form" data-am-validator>
-  <p>
-  <input type="text" class="am-form-field" placeholder="日历组件" data-am-datepicker readonly required />
-  </p>
-  <p><button class="am-btn am-btn-primary">提交</button></p>
-</form>
-  </div>
-  <div class="col-sm-4 col-lg-2">
-    <span>按状态</span>
-    
-  </div>
-  <div class="col-sm-6 col-lg-4">
-    <span class="am-show-md-down">6</span>
-    <span class="am-show-lg-only">4</span>
-  </div>
-</div>
-                  <table class="am-table am-table-bordered">
-                              <thead>
-                                <tr>
-                                  <th>序号</th>
-                                  <th>开票明细</th>
-                                  <th>产品明细</th>
-                                  <th>开票时间</th>
-                                  <th>提交人</th>
-                                  <th>备注</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr v-for="value in manage_market">
-                                  <td>{{value.mk_id}}</td>
-                                  <td>{{value.mk_piao}}</td>
-                                  <td>{{value.mk_chanpin}}</td>
-                                  <td>{{value.mk_start_time}}</td>
-                                  <td>{{value.mk_people}}</td>
-                                  <td>{{value.mk_other}}</td>
-                                </tr>
+                  <!-- <h4 class="am-popup-title">工作流程监控BPM详情</h4> -->
+                  <div class="am-popup-title top_img_all gongzuoinfo">
 
-                              </tbody>
-                            </table>
+                  </div>
+                  <span data-am-modal-close class="am-close">&times;</span>
+                </div>
+                <div class="am-popup-bd">
+                  <div class="am-u-lg-12 jiankong">
+                    <div class="am-u-lg-3 jiankong">
+                      <div class="am-input-group" style="width:90%;">
+                          <input type="text" class="am-form-field"  placeholder="请输入搜索">
+                      </div>
+                    </div>
+
+                    <div class="am-u-lg-2 jiankong">
+                      <p><input type="text" class="am-form-field" placeholder="日历组件" data-am-datepicker readonly/></p>
+                    </div>
+                    <div class="am-u-lg-1 jiankong">
+
+                    </div>
+                    <div class="am-u-lg-2 jiankong">
+                      <div class="am-form-group">
+        <select id="doc-select-1" style="width:80%;height:38px;margin-left:10%;">
+          <option value="option1">选项一...</option>
+          <option value="option2">选项二.....</option>
+          <option value="option3">选项三........</option>
+        </select>
+        <span class="am-form-caret"></span>
+      </div>
+
+                    </div>
+                    <div class="am-u-lg-2 am-u-end jiankong" >
+                      <button type="button" style="width:84px;" class="am-btn am-btn-primary">搜索</button>
+                    </div>
+                    <div class="am-u-lg-12 jiankong">
+                      <table class="am-table ">
+                                  <thead>
+                                    <tr>
+                                      <th>序号</th>
+                                      <th>流程标题</th>
+                                      <th>发起人</th>
+                                      <th>发起时间</th>
+                                      <th>当前节点</th>
+                                      <th>接收时间</th>
+                                      <th>当前状态</th>
+                                      <th>结束时间</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr v-for="value in manage_market">
+                                      <td>{{value.mk_id}}</td>
+                                      <td>{{value.mk_piao}}</td>
+                                      <td>{{value.mk_chanpin}}</td>
+                                      <td>{{value.mk_start_time}}</td>
+                                      <td>{{value.mk_people}}</td>
+                                      <td>{{value.mk_other}}</td>
+                                      <td>{{value.mk_other}}</td>
+                                      <td>{{value.mk_other}}</td>
+                                    </tr>
+
+                                  </tbody>
+                                </table>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -849,64 +923,33 @@
                   <div class="am-popup" id="sun_all">
                     <div class="am-popup-inner">
                       <div class="am-popup-hd">
-                        <h4 class="am-popup-title">经营状况详情</h4>
-                        <span data-am-modal-close class="am-close">&times;</span>
-                      </div>
-                      <div class="am-popup-bd">
-                        <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
-                          <ul class="am-tabs-nav am-nav am-nav-tabs">
-            <li class="am-active"><a href="javascript: void(0)">销量明细</a></li>
-            <li><a href="javascript: void(0)">发货计划</a></li>
-            <li><a href="javascript: void(0)">生产计划</a></li>
-            <li><a href="javascript: void(0)">采购计划</a></li>
-          </ul>
+                        <div class="am-popup-title top_img_all yangguanginfo">
 
-                          <div class="am-tabs-bd">
-            <div class="am-tab-panel am-active">
-              <div class="input_select">
-                <div class="am-input-group">
-                    <input type="text" class="am-form-field">
-                    <span class="am-input-group-btn">
-                      <button class="am-btn am-btn-default" type="button">搜索一下</button>
-                    </span>
-                </div>
-              </div>
-              <table class="am-table am-table-bordered">
-                          <thead>
-                            <tr>
-                              <th>序号</th>
-                              <th>开票明细</th>
-                              <th>产品明细</th>
-                              <th>开票时间</th>
-                              <th>提交人</th>
-                              <th>备注</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr v-for="value in manage_market">
-                              <td>{{value.mk_id}}</td>
-                              <td>{{value.mk_piao}}</td>
-                              <td>{{value.mk_chanpin}}</td>
-                              <td>{{value.mk_start_time}}</td>
-                              <td>{{value.mk_people}}</td>
-                              <td>{{value.mk_other}}</td>
-                            </tr>
-
-                          </tbody>
-                        </table>
-            </div>
-            <div class="am-tab-panel">
-              ...
-            </div>
-            <div class="am-tab-panel">
-              ...
-            </div>
-            <div class="am-tab-panel">
-              ...
-            </div>
-          </div>
                         </div>
+                        <div class="am-u-lg-6" class="jiankonglist">
+                          <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
 
+                        </div>
+                        <div class="am-u-lg-6" class="jiankonglist">
+                          <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
+
+                        </div>
+                        <div class="am-u-lg-6" class="jiankonglist">
+                          <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
+
+                        </div>
+                        <div class="am-u-lg-6" class="jiankonglist">
+                          <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
+
+                        </div>
+                        <div class="am-u-lg-6" class="jiankonglist">
+                          <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
+
+                        </div>
+                        <div class="am-u-lg-6" class="jiankonglist">
+                          <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
+
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -915,23 +958,23 @@
                       <!-- <video src="http://118.190.10.51/live/1374.m3u8" autoplay poster="">
 
                     </video> -->
-                      <!-- <iframe name="iFrame1 " id="iFrame1" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0 ">
-                      </iframe> -->
+                      <iframe name="iFrame1 " id="iFrame1" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0 ">
+                      </iframe>
                     </div>
                     <div>
-                      <!-- <iframe name="iFrame1 " src="http://wfb.5252net.com/player/wfzx/5.html" scrolling="auto " frameborder="0 "> </iframe> -->
+                      <iframe name="iFrame1 " src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0 "> </iframe>
                       <!-- <video src="https://image.qiluyidian.mobi/99781670835402495218.mp4" autoplay poster="https://image.qiluyidian.mobi/99781670835402495218.mp4?vframe/jpg/offset/1">
 
                   </video> -->
                     </div>
                     <div>
-                      <!-- <iframe name="iFrame1 " src="http://wfb.5252net.com/player/wfzx/5.html" scrolling="auto " frameborder="0 "> </iframe> -->
+                      <iframe name="iFrame1 " src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0 "> </iframe>
                       <!-- <video src="https://image.qiluyidian.mobi/99781670835402495218.mp4" autoplay poster="https://image.qiluyidian.mobi/99781670835402495218.mp4?vframe/jpg/offset/1">
 
                   </video> -->
                     </div>
                     <div>
-                      <!-- <iframe name="iFrame1 " src="http://wfb.5252net.com/player/wfzx/5.html" scrolling="auto " frameborder="0 "> </iframe> -->
+                      <iframe name="iFrame1 " src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0 "> </iframe>
                       <!-- <video src="https://image.qiluyidian.mobi/99781670835402495218.mp4" autoplay poster="https://image.qiluyidian.mobi/99781670835402495218.mp4?vframe/jpg/offset/1">
 
                   </video> -->
@@ -943,62 +986,36 @@
               <div class="am-popup" id="production_all">
                 <div class="am-popup-inner">
                   <div class="am-popup-hd">
-                    <h4 class="am-popup-title">生产监控</h4>
+                    <!-- <h4 class="am-popup-title">生产监控</h4> -->
+                    <div class="am-popup-title top_img_all shengchaninfo">
+
+                    </div>
                     <span data-am-modal-close class="am-close">&times;</span>
                   </div>
                   <div class="am-popup-bd">
-                    <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
-                      <ul class="am-tabs-nav am-nav am-nav-tabs">
-        <li class="am-active"><a href="javascript: void(0)">销量明细</a></li>
-        <li><a href="javascript: void(0)">发货计划</a></li>
-        <li><a href="javascript: void(0)">生产计划</a></li>
-        <li><a href="javascript: void(0)">采购计划</a></li>
-      </ul>
+                    <div class="am-u-lg-6" class="jiankonglist">
+                      <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
 
-                      <div class="am-tabs-bd">
-        <div class="am-tab-panel am-active">
-          <div class="input_select">
-            <div class="am-input-group">
-                <input type="text" class="am-form-field">
-                <span class="am-input-group-btn">
-                  <button class="am-btn am-btn-default" type="button">搜索一下</button>
-                </span>
-            </div>
-          </div>
-          <table class="am-table am-table-bordered">
-                      <thead>
-                        <tr>
-                          <th>序号</th>
-                          <th>开票明细</th>
-                          <th>产品明细</th>
-                          <th>开票时间</th>
-                          <th>提交人</th>
-                          <th>备注</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr v-for="value in manage_market">
-                          <td>{{value.mk_id}}</td>
-                          <td>{{value.mk_piao}}</td>
-                          <td>{{value.mk_chanpin}}</td>
-                          <td>{{value.mk_start_time}}</td>
-                          <td>{{value.mk_people}}</td>
-                          <td>{{value.mk_other}}</td>
-                        </tr>
+                    </div>
+                    <div class="am-u-lg-6" class="jiankonglist">
+                      <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
 
-                      </tbody>
-                    </table>
-        </div>
-        <div class="am-tab-panel">
-          ...
-        </div>
-        <div class="am-tab-panel">
-          ...
-        </div>
-        <div class="am-tab-panel">
-          ...
-        </div>
-      </div>
+                    </div>
+                    <div class="am-u-lg-6" class="jiankonglist">
+                      <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
+
+                    </div>
+                    <div class="am-u-lg-6" class="jiankonglist">
+                      <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
+
+                    </div>
+                    <div class="am-u-lg-6" class="jiankonglist">
+                      <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
+
+                    </div>
+                    <div class="am-u-lg-6" class="jiankonglist">
+                      <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
+
                     </div>
 
                   </div>
@@ -1009,26 +1026,26 @@
                   <!-- <video src="http://wfb.5252net.com/player/wfzx/6.html" autoplay poster="https://image.qiluyidian.mobi/99781670835402495218.mp4?vframe/jpg/offset/1">
 
                     </video> -->
-                  <!-- <iframe name="iFrame1 " src="http://wfb.5252net.com/player/wfzx/5.html" scrolling="auto " frameborder="0 "> </iframe> -->
+                  <iframe name="iFrame1 " src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0 "> </iframe>
                   <!-- <iframe name="iFrame1" width="807" height="510" src="http://wfb.5252net.com/player/wfzx/6.html" scrolling="auto" allowtransparency="true" frameborder="0" style="position: absolute;z-index:-1"></iframe> -->
                 </div>
                 <div>
                   <!-- <video src="https://image.qiluyidian.mobi/99781670835402495218.mp4" autoplay poster="https://image.qiluyidian.mobi/99781670835402495218.mp4?vframe/jpg/offset/1">
 
                   </video> -->
-                  <!-- <iframe name="iFrame1 " src="http://wfb.5252net.com/player/wfzx/5.html" scrolling="auto " frameborder="0 "> </iframe> -->
+                  <iframe name="iFrame1 " src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0 "> </iframe>
                 </div>
                 <div>
                   <!-- <video src="https://image.qiluyidian.mobi/99781670835402495218.mp4" autoplay poster="https://image.qiluyidian.mobi/99781670835402495218.mp4?vframe/jpg/offset/1">
 
                   </video> -->
-                  <!-- <iframe name="iFrame1 " src="http://wfb.5252net.com/player/wfzx/5.html" scrolling="auto " frameborder="0 "> </iframe> -->
+                  <iframe name="iFrame1 " src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0 "> </iframe>
                 </div>
                 <div>
                   <!-- <video src="https://image.qiluyidian.mobi/99781670835402495218.mp4" autoplay poster="https://image.qiluyidian.mobi/99781670835402495218.mp4?vframe/jpg/offset/1">
 
                   </video> -->
-                  <!-- <iframe name="iFrame1 " src="http://wfb.5252net.com/player/wfzx/5.html" scrolling="auto " frameborder="0 "> </iframe> -->
+                  <iframe name="iFrame1 " src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0 "> </iframe>
                 </div>
               </div>
             </div>
@@ -1037,64 +1054,187 @@
               <div class="am-popup" id="app_all">
                 <div class="am-popup-inner">
                   <div class="am-popup-hd">
-                    <h4 class="am-popup-title">极优佳App运营概况</h4>
+                    <div class="am-popup-title top_img_all jiyoujiainfo">
+
+                    </div>
+                    <!-- <h4 class="am-popup-title">极优佳App运营概况</h4> -->
                     <span data-am-modal-close class="am-close">&times;</span>
                   </div>
-                  <div class="am-popup-bd">
-                    <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
-                      <ul class="am-tabs-nav am-nav am-nav-tabs">
-        <li class="am-active"><a href="javascript: void(0)">销量明细</a></li>
-        <li><a href="javascript: void(0)">发货计划</a></li>
-        <li><a href="javascript: void(0)">生产计划</a></li>
-        <li><a href="javascript: void(0)">采购计划</a></li>
-      </ul>
+                  <div class="am-popup-bd jiyoujia_page" >
+                    <div class="am-u-lg-6">
+                      <div class="am-panel am-panel-default jiyoujia_page_all">
+                        <div class="am-panel-hd">极优佳-用户端</div>
+                        <div class="am-panel-bd jiyoujia">
 
-                      <div class="am-tabs-bd">
-        <div class="am-tab-panel am-active">
-          <div class="input_select">
-            <div class="am-input-group">
-                <input type="text" class="am-form-field">
-                <span class="am-input-group-btn">
-                  <button class="am-btn am-btn-default" type="button">搜索一下</button>
-                </span>
-            </div>
-          </div>
-          <table class="am-table am-table-bordered">
-                      <thead>
-                        <tr>
-                          <th>序号</th>
-                          <th>开票明细</th>
-                          <th>产品明细</th>
-                          <th>开票时间</th>
-                          <th>提交人</th>
-                          <th>备注</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr v-for="value in manage_market">
-                          <td>{{value.mk_id}}</td>
-                          <td>{{value.mk_piao}}</td>
-                          <td>{{value.mk_chanpin}}</td>
-                          <td>{{value.mk_start_time}}</td>
-                          <td>{{value.mk_people}}</td>
-                          <td>{{value.mk_other}}</td>
-                        </tr>
+                        <div class="am-u-lg-12">
+                            <div class="am-u-lg-12">
+                                <div class="jiyoujia_title ">品牌入职量</div>
+                            <div class="am-u-lg-6">
+                              <div class="am-panel am-panel-default jiyoujia_mianban">
+                                <div class="am-panel-hd">最近30天</div>
+                                <div class="am-panel-bd">
+                                  56个
+                                </div>
+                              </div>
+                            </div>
+                            <div class="am-u-lg-6">
+                              <div class="am-panel am-panel-default jiyoujia_mianban">
+                                <div class="am-panel-hd">截止累计</div>
+                                <div class="am-panel-bd">
+                                  999个
+                                </div>
+                              </div>
+                            </div>
+                            </div>
+                            <div class="am-u-lg-12">
+                                <div class="jiyoujia_title">经销商入驻量</div>
+                            <div class="am-u-lg-6">
+                              <div class="am-panel am-panel-default jiyoujia_mianban">
+                                <div class="am-panel-hd">最近30天</div>
+                                <div class="am-panel-bd">
+                                  56个
+                                </div>
+                              </div>
+                            </div>
+                            <div class="am-u-lg-6">
+                              <div class="am-panel am-panel-default jiyoujia_mianban">
+                                <div class="am-panel-hd">截止累计</div>
+                                <div class="am-panel-bd">
+                                  956个
+                                </div>
+                              </div>
+                            </div>
+                            </div>
+                            <div class="am-u-lg-12">
+                                <div class="jiyoujia_title"><span>装机量</span><span class="huoyue">活跃用户量</span></div>
+                            <div class="am-u-lg-6">
+                              <div class="am-panel am-panel-default jiyoujia_mianban">
+                                <div class="am-panel-hd">截止累计</div>
+                                <div class="am-panel-bd">
+                                  56个
+                                </div>
+                              </div>
+                            </div>
 
-                      </tbody>
-                    </table>
-        </div>
-        <div class="am-tab-panel">
-          ...
-        </div>
-        <div class="am-tab-panel">
-          ...
-        </div>
-        <div class="am-tab-panel">
-          ...
-        </div>
-      </div>
+                            <div class="am-u-lg-6">
+                              <div class="am-panel am-panel-default jiyoujia_mianban">
+                                <div class="am-panel-hd">今天</div>
+                                <div class="am-panel-bd">
+                                  999个
+                                </div>
+                              </div>
+                            </div>
+                            </div>
+                            <div class="am-u-lg-12">
+                                <div class="jiyoujia_title"><span>订单量</span><span class="huoyue">订单金额</span></div>
+                            <div class="am-u-lg-6">
+                              <div class="am-panel am-panel-default jiyoujia_mianban">
+                                <div class="am-panel-hd">今天</div>
+                                <div class="am-panel-bd">
+                                  56个
+                                </div>
+                              </div>
+                            </div>
+                            <div class="am-u-lg-6">
+                              <div class="am-panel am-panel-default jiyoujia_mianban">
+                                <div class="am-panel-hd">今天</div>
+                                <div class="am-panel-bd">
+                                  8167元
+                                </div>
+                              </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                      </div>
                     </div>
+                    <div class="am-u-lg-6">
+                      <div class="am-panel am-panel-default jiyoujia_page_all">
+                        <div class="am-panel-hd">极优佳-用户端</div>
+                        <div class="am-panel-bd jiyoujia">
 
+                        <div class="am-u-lg-12">
+                            <div class="am-u-lg-12">
+                                <div class="jiyoujia_title ">品牌入职量</div>
+                            <div class="am-u-lg-6">
+                              <div class="am-panel am-panel-default jiyoujia_mianban">
+                                <div class="am-panel-hd">最近30天</div>
+                                <div class="am-panel-bd">
+                                  56个
+                                </div>
+                              </div>
+                            </div>
+                            <div class="am-u-lg-6">
+                              <div class="am-panel am-panel-default jiyoujia_mianban">
+                                <div class="am-panel-hd">截止累计</div>
+                                <div class="am-panel-bd">
+                                  999个
+                                </div>
+                              </div>
+                            </div>
+                            </div>
+                            <div class="am-u-lg-12">
+                                <div class="jiyoujia_title">经销商入驻量</div>
+                            <div class="am-u-lg-6">
+                              <div class="am-panel am-panel-default jiyoujia_mianban">
+                                <div class="am-panel-hd">最近30天</div>
+                                <div class="am-panel-bd">
+                                  56个
+                                </div>
+                              </div>
+                            </div>
+                            <div class="am-u-lg-6">
+                              <div class="am-panel am-panel-default jiyoujia_mianban">
+                                <div class="am-panel-hd">截止累计</div>
+                                <div class="am-panel-bd">
+                                  956个
+                                </div>
+                              </div>
+                            </div>
+                            </div>
+                            <div class="am-u-lg-12">
+                                <div class="jiyoujia_title"><span>装机量</span><span class="huoyue">活跃用户量</span></div>
+                            <div class="am-u-lg-6">
+                              <div class="am-panel am-panel-default jiyoujia_mianban">
+                                <div class="am-panel-hd">截止累计</div>
+                                <div class="am-panel-bd">
+                                  56个
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="am-u-lg-6">
+                              <div class="am-panel am-panel-default jiyoujia_mianban">
+                                <div class="am-panel-hd">今天</div>
+                                <div class="am-panel-bd">
+                                  999个
+                                </div>
+                              </div>
+                            </div>
+                            </div>
+                            <div class="am-u-lg-12">
+                                <div class="jiyoujia_title"><span>订单量</span><span class="huoyue">订单金额</span></div>
+                            <div class="am-u-lg-6">
+                              <div class="am-panel am-panel-default jiyoujia_mianban">
+                                <div class="am-panel-hd">今天</div>
+                                <div class="am-panel-bd">
+                                  56个
+                                </div>
+                              </div>
+                            </div>
+                            <div class="am-u-lg-6">
+                              <div class="am-panel am-panel-default jiyoujia_mianban">
+                                <div class="am-panel-hd">今天</div>
+                                <div class="am-panel-bd">
+                                  8167元
+                                </div>
+                              </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
