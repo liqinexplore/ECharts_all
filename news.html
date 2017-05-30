@@ -16,12 +16,15 @@
     // body.style.textAlign ='center';
     // body.style.backgroundColor ='red';
     // body.style.color ='blue';
+
     $(function () {
             jwplayer.key = "H8YuTH/6ydsAJ/19lK84NpM8yVdT7HEuq0hmLAg1sE0=";
             var _bridge = null, playerInstance = null;
             playerInstance = jwplayer('news_video');
             playerInstance.setup({
                 width: "100%",
+                flashplayer: "jwplayer/player.swf",//调用播放器
+                androidhls:"true",
                 aspectratio: "4:3",
                 file: "http://118.190.10.51/live/1372.m3u8",
                 image: "",
@@ -37,7 +40,7 @@
 <body>
   <div style="width:800px;height:auto;overflow:auto">
     <!-- <iframe name="iFrame1 " id="iFrame1" src="http://118.190.10.51/live/1372.m3u8" scrolling="auto " frameborder="0 "> </iframe> -->
-<!-- <span id="news_video" class="news_video"></span> -->
+<span id="news_video" class="news_video"></span>
 <div class="infor_all">
   <div class="infor_peopel">
     <span>提交人：隔壁老王</span>

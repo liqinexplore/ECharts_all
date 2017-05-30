@@ -54,8 +54,736 @@ var app = new Vue({
         ms_people:"李钦",
         ms_other:"来喝酒了，买新酒了"
     }],
-    
+    manage_fahuo:[
+      {
+        key:1,
+        mingxi:'34度500ml景阳春原珍',
+        faqishijian:'2017-5-12',
+        faqiren:'刘培贵',
+        tijiaoren:'刘培贵',
+        zhuangtai:'已发货'
+      },
+      {
+        key:2,
+        mingxi:'国标景芝原浆',
+        faqishijian:'2017-5-15',
+        faqiren:'杨五洲',
+        'tijiaoren':'杨五洲',
+        'zhuangtai':'已发货'
+      },
+      {
+        key:3,
+        mingxi:'62度50L私家窖藏国标景芝原浆',
+        faqishijian:'2017-5-15',
+        'faqiren':'李莉莉',
+        'tijiaoren':'李莉莉',
+        'zhuangtai':'已发货'
+      },
+      {
+        key:4,
+        mingxi:'BC38度480ml景阳春和春',
+        faqishijian:'2017-5-16',
+        'faqiren':'朱万星',
+        'tijiaoren':'朱万星',
+        'zhuangtai':'已发货'
+      },
+      {
+        key:5,
+        mingxi:'BC49度500ml单位招待专用酒',
+        faqishijian:'2017-5-16',
+        'faqiren':'刘国智',
+        'tijiaoren':'刘国智',
+        'zhuangtai':'已发货'
+      },
+      {
+        key:6,
+        mingxi:'BC38度500ml1#景阳春景韵(流通)',
+        faqishijian:'2017-5-17',
+        'faqiren':'刘勇',
+        'tijiaoren':'刘勇',
+        'zhuangtai':'已发货'
+      },
+      {
+        key:7,
+        mingxi:'BC38度480ml1#景阳春珍品小老虎',
+        faqishijian:'2017-5-18',
+        'faqiren':'尹誉晓',
+        'tijiaoren':'尹誉晓',
+        'zhuangtai':'已发货'
+      },
+      {
+        key:8,
+        mingxi:'BC38度500ml景阳春翡翠',
+        faqishijian:'2017-5-18',
+        'faqiren':'尹誉晓',
+        'tijiaoren':'尹誉晓',
+        'zhuangtai':'已发货'
+      },
+    ],
+    manage_shengchan:[
+      {
+        key:1,
+        mingcheng:'BC32度500ml景阳春A景(酒店)(1*6)',
+        shengchanliang:'1000瓶',
+        shijishengchanliang:'1100瓶',
+        zhanbi:'110%',
+      },
+      {
+        key:2,
+        mingcheng:'BC50度238ml景芝古酿12生效系列',
+        shengchanliang:'1000瓶',
+        shijishengchanliang:'1200瓶',
+        zhanbi:'120%',
+      },
+      {
+        key:3,
+        mingcheng:'BC49度500ml单位招待专用酒',
+        shengchanliang:'1000瓶',
+        shijishengchanliang:'900瓶',
+        zhanbi:'90%',
+      },
+      {
+        key:4,
+        mingcheng:'BC38度500ml1#景阳春景韵(流通)',
+        shengchanliang:'1000瓶',
+        shijishengchanliang:'800瓶',
+        zhanbi:'80%',
+      },
+      {
+        key:5,
+        mingcheng:'BC38度480ml1#景阳春珍品小老虎(东营)',
+        shengchanliang:'1000瓶',
+        shijishengchanliang:'800瓶',
+        zhanbi:'80%',
+      },
+      {
+        key:6,
+        mingcheng:'BC32度600ml光瓶景阳春绵柔陈香(淄博)',
+        shengchanliang:'1000瓶',
+        shijishengchanliang:'700瓶',
+        zhanbi:'70%',
+      },
+      {
+        key:7,
+        mingcheng:'BC38度500ml景阳春翡翠(滨州)',
+        shengchanliang:'1000瓶',
+        shijishengchanliang:'1100瓶',
+        zhanbi:'110%',
+      },
+      {
+        key:8,
+        mingcheng:'BC32度500ml景阳春A景(酒店)',
+        shengchanliang:'1000瓶',
+        shijishengchanliang:'1300瓶',
+        zhanbi:'130%',
+      }
+    ],
+    manage_caigou:[
+      {
+        key:1,
+        cailiaomingcheng:'高粱',
+        jihuacaigou:'1100',
+        shiji:'1100',
+        zhanbi:'100%',
+      },
+      {
+        key:2,
+        cailiaomingcheng:'大米',
+        jihuacaigou:'1000',
+        shiji:'900',
+        zhanbi:'90%',
+      },
+      {
+        key:3,
+        cailiaomingcheng:'小麦',
+        jihuacaigou:'1000',
+        shiji:'800',
+        zhanbi:'80%',
+      },
+      {
+        key:4,
+        cailiaomingcheng:'糯米',
+        jihuacaigou:'1000',
+        shiji:'950',
+        zhanbi:'95%',
+      },
+      {
+        key:5,
+        cailiaomingcheng:'大缸',
+        jihuacaigou:'20',
+        shiji:'20',
+        zhanbi:'100%',
+      },
+      {
+        key:6,
+        cailiaomingcheng:'60W灯泡',
+        jihuacaigou:'100',
+        shiji:'100',
+        zhanbi:'100%',
+      },
+      {
+        key:7,
+        cailiaomingcheng:'白炽灯',
+        jihuacaigou:'100',
+        shiji:'110',
+        zhanbi:'110%',
+      },
+      {
+        key:8,
+        cailiaomingcheng:'酒曲',
+        jihuacaigou:'1000',
+        shiji:'1100',
+        zhanbi:'110%',
+      },
+      {
+        key:9,
+        cailiaomingcheng:'玉米粉',
+        jihuacaigou:'1000',
+        shiji:'1100',
+        zhanbi:'110%',
+      },
+      {
+        key:10,
+        cailiaomingcheng:'消毒液',
+        jihuacaigou:'1100',
+        shiji:'1100',
+        zhanbi:'100%',
+      },
+    ],
+    manage_angongsi:[
+      {
+        key:1,
+        gongsimingcheng:'景芝酒业酒厂',
+        xiaoliang:'1000/1100',
+        xiaoliang_bili:'110%',
+        xiaoshoue:'2000/2200',
+        xiaoshoue_bili:'110%',
 
+      },
+      {
+        key:2,
+        gongsimingcheng:'景芝酒业酒厂',
+        xiaoliang:'1000/1100',
+        xiaoliang_bili:'110%',
+        xiaoshoue:'2000/2200',
+        xiaoshoue_bili:'110%',
+
+      },
+      {
+        key:3,
+        gongsimingcheng:'景芝酒业酒厂',
+        xiaoliang:'1000/1100',
+        xiaoliang_bili:'110%',
+        xiaoshoue:'2000/2200',
+        xiaoshoue_bili:'110%',
+
+      },
+      {
+        key:4,
+        gongsimingcheng:'景芝酒业酒厂',
+        xiaoliang:'1000/1100',
+        xiaoliang_bili:'110%',
+        xiaoshoue:'2000/2200',
+        xiaoshoue_bili:'110%',
+
+      },
+      {
+        key:5,
+        gongsimingcheng:'景芝酒业酒厂',
+        xiaoliang:'1000/1100',
+        xiaoliang_bili:'110%',
+        xiaoshoue:'2000/2200',
+        xiaoshoue_bili:'110%',
+
+      },
+      {
+        key:6,
+        gongsimingcheng:'景芝酒业酒厂',
+        xiaoliang:'1000/1100',
+        xiaoliang_bili:'110%',
+        xiaoshoue:'2000/2200',
+        xiaoshoue_bili:'110%',
+
+      },
+      {
+        key:7,
+        gongsimingcheng:'景芝酒业酒厂',
+        xiaoliang:'1000/1100',
+        xiaoliang_bili:'110%',
+        xiaoshoue:'2000/2200',
+        xiaoshoue_bili:'110%',
+
+      },
+      {
+        key:8,
+        gongsimingcheng:'景芝酒业酒厂',
+        xiaoliang:'1000/1100',
+        xiaoliang_bili:'110%',
+        xiaoshoue:'2000/2200',
+        xiaoshoue_bili:'110%',
+
+      },
+    ],
+    manage_anbumen:[
+      {
+        key:1,
+        bumenname:'酿酒三厂',
+        gongsi:'酿酒三厂',
+        xiaoliang:'1000/1100',
+        xiaoliang_bili:'110%',
+        xiaoshoue:'2000/2200',
+        xiaoshoue_bili:'110%',
+      },
+      {
+        key:2,
+        bumenname:'酿酒二厂',
+        gongsi:'酿酒二厂',
+        xiaoliang:'1000/1200',
+        xiaoliang_bili:'120%',
+        xiaoshoue:'2000/2400',
+        xiaoshoue_bili:'120%',
+      },
+      {
+        key:3,
+        bumenname:'酿酒一厂',
+        gongsi:'酿酒一厂',
+        xiaoliang:'1000/1400',
+        xiaoliang_bili:'140%',
+        xiaoshoue:'2000/2200',
+        xiaoshoue_bili:'110%',
+      },
+      {
+        key:4,
+        bumenname:'酿酒四厂',
+        gongsi:'酿酒四厂',
+        xiaoliang:'500/600',
+        xiaoliang_bili:'120%',
+        xiaoshoue:'2000/2200',
+        xiaoshoue_bili:'110%',
+      },
+      {
+        key:5,
+        bumenname:'酿酒五厂',
+        gongsi:'酿酒五厂',
+        xiaoliang:'500/700',
+        xiaoliang_bili:'140%',
+        xiaoshoue:'2000/2400',
+        xiaoshoue_bili:'120%',
+      },
+      {
+        key:6,
+        bumenname:'酿酒六厂',
+        gongsi:'酿酒六厂',
+        xiaoliang:'1000/1000',
+        xiaoliang_bili:'100%',
+        xiaoshoue:'2000/2000',
+        xiaoshoue_bili:'100%',
+      },
+
+    ],
+    manage_anchanpin:[
+      {
+        key:1,
+        chanp:'62度50L私家窖藏国标景芝原浆（大师级）',
+        xiaoliang:'1000/1100',
+        xiaoliang_bili:'110%',
+        xiaoshoue:'2000/2200',
+        xiaoshoue_bili:'110%',
+      },
+      {
+        key:2,
+        chanp:'BC49度500ml单位招待专用酒',
+        xiaoliang:'1000/1200',
+        xiaoliang_bili:'120%',
+        xiaoshoue:'2000/2400',
+        xiaoshoue_bili:'120%',
+      },
+      {
+        key:3,
+        chanp:'BC38度500ml1#景阳春景韵(流通)(1*6)',
+        xiaoliang:'1000/1400',
+        xiaoliang_bili:'140%',
+        xiaoshoue:'2000/2200',
+        xiaoshoue_bili:'110%',
+      },
+      {
+        key:4,
+        chanp:'BC32度600ml光瓶景阳春绵柔陈香(淄博)(1*6)',
+        xiaoliang:'500/600',
+        xiaoliang_bili:'120%',
+        xiaoshoue:'2000/2200',
+        xiaoshoue_bili:'110%',
+      },
+      {
+        key:5,
+        chanp:'BC32度500ml景阳春A景(酒店)(1*6)',
+        xiaoliang:'500/700',
+        xiaoliang_bili:'140%',
+        xiaoshoue:'2000/2400',
+        xiaoshoue_bili:'120%',
+      },
+      {
+        key:6,
+        chanp:'BC38度500ml景阳春翡翠(滨州)(1*6)',
+        xiaoliang:'1000/1000',
+        xiaoliang_bili:'100%',
+        xiaoshoue:'2000/2000',
+        xiaoshoue_bili:'100%',
+      },
+
+    ],
+    manage_jiya:[
+      {
+        key:1,
+        jiyachanpin:"BC50度238ml景芝古酿12生效系列（新疆）",
+        jiyaliang:"2233",
+        jiyatime:"60",
+        tijaoren:"刘勇",
+        beizhu:"积压产品"
+      },
+      {
+        key:2,
+        jiyachanpin:"BC49度500ml单位招待专用酒",
+        jiyaliang:"2233",
+        jiyatime:"60",
+        tijaoren:"刘勇",
+        beizhu:"积压产品"
+      },
+      {
+        key:3,
+        jiyachanpin:"BC38度500ml1#景阳春景韵(流通)(1*6)",
+        jiyaliang:"2233",
+        jiyatime:"60",
+        tijaoren:"刘勇",
+        beizhu:"积压产品"
+      },
+      {
+        key:4,
+        jiyachanpin:"BC38度480ml1#景阳春珍品小老虎(东营)(1*6)",
+        jiyaliang:"2233",
+        jiyatime:"60",
+        tijaoren:"刘勇",
+        beizhu:"积压产品"
+      },
+      {
+        key:5,
+        jiyachanpin:"BC32度600ml光瓶景阳春绵柔陈香(淄博)(1*6)",
+        jiyaliang:"2233",
+        jiyatime:"60",
+        tijaoren:"刘勇",
+        beizhu:"积压产品"
+      },
+      {
+        key:6,
+        jiyachanpin:"35度500ml新品景芝5年(流通)(1*6)",
+        jiyaliang:"2233",
+        jiyatime:"60",
+        tijaoren:"刘勇",
+        beizhu:"积压产品"
+      },
+      {
+        key:7,
+        jiyachanpin:"38度500ml景阳春御酿酒(东营)(1*6)",
+        jiyaliang:"2233",
+        jiyatime:"60",
+        tijaoren:"刘勇",
+        beizhu:"积压产品"
+      },
+      {
+        key:8,
+        jiyachanpin:"42度500ml景阳春畅享(聊城)(1*6)",
+        jiyaliang:"2233",
+        jiyatime:"60",
+        tijaoren:"刘勇",
+        beizhu:"积压产品"
+      },
+  ],
+  manage_fahuochanpin:[
+    {
+      key:1,
+      kehuming:'刘国智',
+      mingcheng:"一品景芝",
+      fahuoliang:"2354",
+      zhanbi:"80%",
+      beizhu:"请发货"
+    },
+    {
+      key:2,
+      kehuming:'刘国智',
+      mingcheng:"一品景芝",
+      fahuoliang:"2354",
+      zhanbi:"80%",
+      beizhu:"请发货"
+    },
+    {
+      key:3,
+      kehuming:'刘国智',
+      mingcheng:"一品景芝",
+      fahuoliang:"2354",
+      zhanbi:"80%",
+      beizhu:"请发货"
+    },
+    {
+      key:4,
+      kehuming:'刘国智',
+      mingcheng:"一品景芝",
+      fahuoliang:"2354",
+      zhanbi:"80%",
+      beizhu:"请发货"
+    },
+    {
+      key:5,
+      kehuming:'刘国智',
+      mingcheng:"一品景芝",
+      fahuoliang:"2354",
+      zhanbi:"80%",
+      beizhu:"请发货"
+    },
+    {
+      key:6,
+      kehuming:'刘国智',
+      mingcheng:"一品景芝",
+      fahuoliang:"2354",
+      zhanbi:"80%",
+      beizhu:"请发货"
+    },
+    {
+      key:7,
+      kehuming:'刘国智',
+      mingcheng:"一品景芝",
+      fahuoliang:"2354",
+      zhanbi:"80%",
+      beizhu:"请发货"
+    },
+    {
+      key:8,
+      kehuming:'刘国智',
+      mingcheng:"一品景芝",
+      fahuoliang:"2354",
+      zhanbi:"80%",
+      beizhu:"请发货"
+    },
+  ],
+  manage_kaoqin:[
+    {
+      key:1,
+      name:'朱万星',
+      bumen:'定制酒中心主任',
+      chuchai:'7',
+      qingjia:'2',
+      kuquchuchai:'7',
+      gongsi:'18'
+    },
+    {
+      key:2,
+      name:'朱万星',
+      bumen:'定制酒中心主任',
+      chuchai:'7',
+      qingjia:'2',
+      kuquchuchai:'7',
+      gongsi:'18'
+    },
+    {
+      key:3,
+      name:'朱万星',
+      bumen:'定制酒中心主任',
+      chuchai:'7',
+      qingjia:'2',
+      kuquchuchai:'7',
+      gongsi:'18'
+    },
+    {
+      key:4,
+      name:'朱万星',
+      bumen:'定制酒中心主任',
+      chuchai:'7',
+      qingjia:'2',
+      kuquchuchai:'7',
+      gongsi:'18'
+    },
+    {
+      key:5,
+      name:'朱万星',
+      bumen:'定制酒中心主任',
+      chuchai:'7',
+      qingjia:'2',
+      kuquchuchai:'7',
+      gongsi:'18'
+    },
+    {
+      key:6,
+      name:'朱万星',
+      bumen:'定制酒中心主任',
+      chuchai:'7',
+      qingjia:'2',
+      kuquchuchai:'7',
+      gongsi:'18'
+    },
+    {
+      key:7,
+      name:'朱万星',
+      bumen:'定制酒中心主任',
+      chuchai:'7',
+      qingjia:'2',
+      kuquchuchai:'7',
+      gongsi:'18'
+    },
+    {
+      key:8,
+      name:'朱万星',
+      bumen:'定制酒中心主任',
+      chuchai:'7',
+      qingjia:'2',
+      kuquchuchai:'7',
+      gongsi:'18'
+    },
+  ],
+  manage_kaqinbumen:[
+    {
+      key:1,
+      bumen:'运营经理',
+      guishu:'鲁西分公司总经理',
+      chuchai:'7',
+      qingjia:'2',
+      kuquchuchai:'7',
+      gongsi:'18'
+    },
+    {
+      key:2,
+      bumen:'运营经理',
+      guishu:'鲁西分公司总经理',
+      chuchai:'7',
+      qingjia:'2',
+      kuquchuchai:'7',
+      gongsi:'18'
+    },
+    {
+      key:3,
+      bumen:'运营经理',
+      guishu:'鲁西分公司总经理',
+      chuchai:'7',
+      qingjia:'2',
+      kuquchuchai:'7',
+      gongsi:'18'
+    },
+    {
+      key:4,
+      bumen:'运营经理',
+      guishu:'鲁西分公司总经理',
+      chuchai:'7',
+      qingjia:'2',
+      kuquchuchai:'7',
+      gongsi:'18'
+    },
+    {
+      key:5,
+      bumen:'运营经理',
+      guishu:'鲁西分公司总经理',
+      chuchai:'7',
+      qingjia:'2',
+      kuquchuchai:'7',
+      gongsi:'18'
+    },
+    {
+      key:6,
+      bumen:'运营经理',
+      guishu:'鲁西分公司总经理',
+      chuchai:'7',
+      qingjia:'2',
+      kuquchuchai:'7',
+      gongsi:'18'
+    },
+    {
+      key:7,
+      bumen:'运营经理',
+      guishu:'鲁西分公司总经理',
+      chuchai:'7',
+      qingjia:'2',
+      kuquchuchai:'7',
+      gongsi:'18'
+    },
+    {
+      key:8,
+      bumen:'运营经理',
+      guishu:'鲁西分公司总经理',
+      chuchai:'7',
+      qingjia:'2',
+      kuquchuchai:'7',
+      gongsi:'18'
+    },
+  ],
+  manage_liucheng:[
+    {
+      key:1,
+      title:'申请请假',
+      faqiren:'李莉莉',
+      time:'2017-05-09',
+      jiedian:'主任未审核',
+      jieshoutime:'2017-05-11',
+      zhuangtai:'已通过',
+      endtime:'2017-05-12'
+    },
+    {
+      key:2,
+      title:'申请请假',
+      faqiren:'李莉莉',
+      time:'2017-05-09',
+      jiedian:'主任未审核',
+      jieshoutime:'2017-05-11',
+      zhuangtai:'已通过',
+      endtime:'2017-05-12'
+    },
+    {
+      key:3,
+      title:'申请请假',
+      faqiren:'李莉莉',
+      time:'2017-05-09',
+      jiedian:'主任未审核',
+      jieshoutime:'2017-05-11',
+      zhuangtai:'已通过',
+      endtime:'2017-05-12'
+    },
+    {
+      key:4,
+      title:'申请请假',
+      faqiren:'李莉莉',
+      time:'2017-05-09',
+      jiedian:'主任未审核',
+      jieshoutime:'2017-05-11',
+      zhuangtai:'已通过',
+      endtime:'2017-05-12'
+    },
+    {
+      key:5,
+      title:'申请请假',
+      faqiren:'李莉莉',
+      time:'2017-05-09',
+      jiedian:'主任未审核',
+      jieshoutime:'2017-05-11',
+      zhuangtai:'已通过',
+      endtime:'2017-05-12'
+    },
+    {
+      key:6,
+      title:'申请请假',
+      faqiren:'李莉莉',
+      time:'2017-05-09',
+      jiedian:'主任未审核',
+      jieshoutime:'2017-05-11',
+      zhuangtai:'已通过',
+      endtime:'2017-05-12'
+    },
+    {
+      key:7,
+      title:'申请请假',
+      faqiren:'李莉莉',
+      time:'2017-05-09',
+      jiedian:'主任未审核',
+      jieshoutime:'2017-05-11',
+      zhuangtai:'已通过',
+      endtime:'2017-05-12'
+    },
+  ]
   }
 })
 
@@ -311,99 +1039,78 @@ for (var i = 0; i < 8; i++) {
 
 // option
 option_jz_left_top2 = {
-
+    color:['#2ADACD','#FE7F1E','#D4237A'],
     tooltip: {
         trigger: 'axis',
         axisPointer: {
-            type: 'shadow',
-            label: {
-                show: true,
-                backgroundColor: '#333'
+            type: 'cross',
+            crossStyle: {
+                color: '#999'
             }
+        }
+    },
+    toolbox: {
+        feature: {
+            dataView: {show: false, readOnly: false},
+            magicType: {show: true, type: ['line', 'bar']},
+            restore: {show: true},
+            saveAsImage: {show: true}
         }
     },
     legend: {
-        data: ['line', 'bar'],
-        textStyle: {
-            color: '#ccc'
-        }
+        data:['去年同期','本月','增长比例']
     },
-    xAxis: {
-        data: category,
-        axisLine: {
-            lineStyle: {
-                color: '#ccc'
+    xAxis: [
+        {
+            type: 'category',
+            data: ['办事处','运营','部门','人力','安全节能','酿酒'],
+            axisPointer: {
+                type: 'shadow'
             }
         }
-    },
-    yAxis: {
-        splitLine: {show: false},
-        axisLine: {
-            lineStyle: {
-                color: '#ccc'
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            name: '完成度',
+            min: 0,
+            max: 2250,
+            interval: 500,
+            axisLabel: {
+                formatter: '{value}'
+            }
+        },
+        {
+            type: 'value',
+            name: '销量',
+            min: 0,
+            max: 100,
+            interval: 20,
+            axisLabel: {
+                formatter: '{value}'
             }
         }
-    },
-    series: [{
-        name: 'line',
-        type: 'line',
-        smooth: true,
-        showAllSymbol: true,
-        symbol: 'emptyCircle',
-        symbolSize: 15,
-        data: lineData
-    }, {
-        name: 'bar',
-        type: 'bar',
-        barWidth: 10,
-        itemStyle: {
-            normal: {
-                barBorderRadius: 5,
-                color: new echarts.graphic.LinearGradient(
-                    0, 0, 0, 1,
-                    [
-                        {offset: 0, color: '#14c8d4'},
-                        {offset: 1, color: '#43eec6'}
-                    ]
-                )
-            }
+    ],
+    series: [
+        {
+            name:'去年同期',
+            type:'bar',
+            data:[1102.0, 1500.9, 1300.0, 1230.2, 1025.6, 1176.7]
         },
-        data: barData
-    }, {
-        name: 'line',
-        type: 'bar',
-        barGap: '-100%',
-        barWidth: 10,
-        itemStyle: {
-            normal: {
-                color: new echarts.graphic.LinearGradient(
-                    0, 0, 0, 1,
-                    [
-                        {offset: 0, color: 'rgba(20,200,212,0.5)'},
-                        {offset: 0.2, color: 'rgba(20,200,212,0.2)'},
-                        {offset: 1, color: 'rgba(20,200,212,0)'}
-                    ]
-                )
-            }
+        {
+            name:'本月',
+            type:'bar',
+            data:[1302.6, 1805.9, 1029.0, 1926.4, 1128.7, 1470.7]
         },
-        z: -12,
-        data: lineData
-    }, {
-        name: 'dotted',
-        type: 'pictorialBar',
-        symbol: 'rect',
-        itemStyle: {
-            normal: {
-                color: '#0f375f'
-            }
-        },
-        symbolRepeat: true,
-        symbolSize: [12, 4],
-        symbolMargin: 1,
-        z: -10,
-        data: lineData
-    }]
-};
+        {
+            name:'增长比例',
+            type:'line',
+            yAxisIndex: 1,
+            data:[20.0, 32.2, 13.3, 20.5, 16.3, 10.2]
+        }
+    ]
+}
+
 // -----------------------折线图--------------------------
 option_jz_top6_zhe = {
     color: ['#00ffff', '#00ffa2', '#f0e750'],
