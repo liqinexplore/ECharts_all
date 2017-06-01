@@ -41,7 +41,8 @@
     //   }
     //视频播放功能结束
     var map = new BMap.Map('allmap');
-    map.centerAndZoom(new BMap.Point(119.195026, 36.740612), 13);
+    var map_point={lng:119.195026,lat:36.740612}
+    map.centerAndZoom(new BMap.Point(map_point.lng,map_point.lat), 13);
     var style_json_all = [{
       "featureType": "land",
       "elementType": "all",
@@ -116,11 +117,11 @@
 	  map.addOverlay(marker2);
   	marker2.setLabel(label);
     setTimeout(function() {
-      console.log("我的map参数",map.getOverlays());
+      // console.log("我的map参数",map.getOverlays());
       var allOverlay=map.getOverlays();
       for (var i = 0; i < allOverlay.length -1; i++){
 			if(allOverlay[i].getLabel().content != ""){
-        console.log("我是循环",allOverlay[i]);
+        // console.log("我是循环",allOverlay[i]);
 				map.removeOverlay(allOverlay[i]);
 				return false;
 			}
@@ -129,7 +130,7 @@
     },5000)
 	}
   function closeLabel(){
-    console.log("我是关闭");
+    // console.log("我是关闭");
   }
 	// 随机向地图添加25个标注
 	var bounds = map.getBounds();
@@ -153,14 +154,44 @@
   		map.addOverlay(marker);
   		marker.setLabel(label);
   	}
+    var news_url='http://121.196.232.136:8200/lbs/test/';
+    var img_dian='./img/dian.png';
+    var xiao_url='http://192.168.1.186:8000/lbs/test_jingxiao/';
+    var img_xiaodian='./img/xiaodian.png';
+    // getConterAll(map_point,news_url,img_dian);
+    getConterAll(map_point,xiao_url,img_xiaodian);
+    function getConterAll(center,news_url,img_dian){
+      console.log("全部",(center));
+      // var news_url='http://192.168.1.186:8000/lbs/test/';
+      // var news_url='http://121.196.232.136:8200/lbs/test/';
+      $.get(news_url,center,function(data){
+          console.log("-----------------",data);
+          app.mendian=data;
+          list_all_dian(img_dian);
+      },'json')
+    }
+    //拖拽事件
+        map.addEventListener("dragend", function(){
+          var center =map.getCenter();
+            map.clearOverlays();
+            // console.log("拖拽",center);
 
-var index=0;
+            // getConterAll(center,news_url,img_dian);
+              getConterAll(map_point,xiao_url,img_xiaodian);
+            // callback_fun(center.lng,center.lat)
+        });
+        // 缩放事件
+        map.addEventListener("zoomend", function(){
+          var center =map.getCenter();
+          map.clearOverlays();
+          // getConterAll(center,news_url,img_dian);
+            getConterAll(map_point,xiao_url,img_xiaodian);
+        });
+
 // 我是随机的产生
 function suijichange(){
-  console.log("你好我是数据");
-  if(index>=20){
-			index=0;
-		}
+  // console.log("你好我是数据");
+
   var point11 = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
     // var label11 = new BMap.Label("我是文字标注哦"+i,{offset:new BMap.Size(21,-10)});
     // var sum_all="我是数字"+i;//我是变量
@@ -171,7 +202,7 @@ function suijichange(){
         "<span>提交人：隔壁老王</span>"+
         "<span>提交时间：2017-4-5 12:12:12</span>"+
         "<span>附近新开一个社区，白酒市场缺乏，可以考虑开一家分店</span>"+
-        "<a style='background:url(https://image.qiluyidian.mobi/43230590851066149651QN1D928U291dGhFYXN0.jpg?imageMogr2/auto-orient/thumbnail/680x410)'  class='infor_img'></a>"+
+        "<a style='display:none;background:url(https://image.qiluyidian.mobi/43230590851066149651QN1D928U291dGhFYXN0.jpg?imageMogr2/auto-orient/thumbnail/680x410)'  class='infor_img'></a>"+
         "</div>"+
         "</div>";
 var color ='img/red.png';
@@ -192,80 +223,105 @@ setTimeout(function(){
   map.closeInfoWindow(infoWindow11);
   map.removeOverlay(marker111);
 },6000);
-index++;
+
 }
-  setInterval(function(){
-    suijichange();
-  },10000);
-	for (var i = 0; i < 25; i ++) {
-		var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
-      var label = new BMap.Label("我是文字标注哦"+i,{offset:new BMap.Size(21,-10)});
-      // var sum_all="我是数字"+i;//我是变量
-      //定义样式
-      var sContent =
-          "<div class='infor_all'>"+
-          "<div class='infor_peopel'>"+
-          "<span>提交人：隔壁老王</span>"+
-          "<span>提交时间：2017-4-5 12:12:12</span>"+
-          "<span>附近新开一个社区，白酒市场缺乏，可以考虑开一家分店</span>"+
-          "<a style='background:url(https://image.qiluyidian.mobi/43230590851066149651QN1D928U291dGhFYXN0.jpg?imageMogr2/auto-orient/thumbnail/680x410)'  class='infor_img'></a>"+
-          "</div>"+
-          "</div>";
-  var color ='img/red.png';
-		addMarker(point,label,color,sContent);
+//循环
+  // setInterval(function(){
+  //   suijichange();
+  // },10000);
+	// for (var i = 0; i < 25; i ++) {
+	// 	var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+  //     var label = new BMap.Label("我是文字标注哦"+i,{offset:new BMap.Size(21,-10)});
+  //     // var sum_all="我是数字"+i;//我是变量
+  //     //定义样式
+  //     var sContent =
+  //         "<div class='infor_all'>"+
+  //         "<div class='infor_peopel'>"+
+  //         "<span>提交人：隔壁老王</span>"+
+  //         "<span>提交时间：2017-4-5 12:12:12</span>"+
+  //         "<span>附近新开一个社区，白酒市场缺乏，可以考虑开一家分店</span>"+
+  //         "<a style='display:none;background:url(https://image.qiluyidian.mobi/43230590851066149651QN1D928U291dGhFYXN0.jpg?imageMogr2/auto-orient/thumbnail/680x410)'  class='infor_img'></a>"+
+  //         "</div>"+
+  //         "</div>";
+  // var color ='img/red.png';
+	// 	addMarker(point,label,color,sContent);
+  //
+	// }
+	// for (var i = 0; i < 10; i ++) {
+	// 	var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+  //     var label = new BMap.Label("我是文字标注哦"+i,{offset:new BMap.Size(21,-10)});
+  //     var color ='img/blud.png';
+  //     var shop_list=
+  //     "<div class='shop_all'>"+
+  //       "<span>门店名称：景芝零售店1</span>"+
+  //       "<span>负责人：李钦</span>"+
+  //       "<span>联系电话：123456789021</span>"+
+  //       "<span>门店位置：潍坊市奎文区新华路5号11店东500米</span>"+
+  //       "<span>在销产品</span>"+
+  //       "<span>景芝酒，一品景芝，A景</span>"+
+  //       "<span>门店图片</span>"+
+  //       "<a style='background:url(https://image.qiluyidian.mobi/43230590851066149651QN1D928U291dGhFYXN0.jpg?imageMogr2/auto-orient/thumbnail/680x410)'  class='infor_img'></a>"+
+  //     "</div>"
+	// 	addMarker(point,label,color,shop_list);
+  //
+	// }
+	// for (var i = 0; i < 6; i ++) {
+	// 	var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+  //     var label = new BMap.Label("我是文字标注哦"+i,{offset:new BMap.Size(21,-10)});
+  // var color ='img/yellow.png';
+  //   var salesman_list=
+  //   "<div class='salesman_all'>"+
+  //   "<span>提交人：景芝零售店1</span>"+
+  //   "<span>所在部门：李钦</span>"+
+  //   "<span>联系电话：123456789021</span>"+
+  //   "<span>当前位置：潍坊市奎文区新华路5号11店东500米</span>"+
+  //   "<span>提交历史</span>"+
+  //   "<div class='salesman_all_container'>"+
+  //     "<ul class='salesman-list js-salesman-list'>"+
+  //       "<li ><span>XX区XX店</span><span>张XX</span>"+
+  //       "</li>"+
+  //       "<li ><span>XX区XX店</span><span>张XX</span>"+
+  //       "</li>"+
+  //       "<li ><span>XX区XX店</span><span>张XX</span>"+
+  //       "</li>"+
+  //       "<li ><span>XX区XX店</span><span>张XX</span>"+
+  //       "</li>"+
+  //       "<li ><span>XX区XX店</span><span>张XX</span>"+
+  //       "</li>"+
+  //     "</ul>"+
+  // "</div>"+
+  // "</div>"
+	// 	addMarker(point,label,color,salesman_list);
+  //
+	// }
+  list_all_dian(img_dian);
+  function list_all_dian(img_dian) {
 
-	}
-	for (var i = 0; i < 10; i ++) {
-		var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
-      var label = new BMap.Label("我是文字标注哦"+i,{offset:new BMap.Size(21,-10)});
-      var color ='img/blud.png';
-      var shop_list=
-      "<div class='shop_all'>"+
-        "<span>门店名称：景芝零售店1</span>"+
-        "<span>负责人：李钦</span>"+
-        "<span>联系电话：123456789021</span>"+
-        "<span>门店位置：潍坊市奎文区新华路5号11店东500米</span>"+
-        "<span>在销产品</span>"+
-        "<span>景芝酒，一品景芝，A景</span>"+
-        "<span>门店图片</span>"+
-        "<a style='background:url(https://image.qiluyidian.mobi/43230590851066149651QN1D928U291dGhFYXN0.jpg?imageMogr2/auto-orient/thumbnail/680x410)'  class='infor_img'></a>"+
-      "</div>"
-		addMarker(point,label,color,shop_list);
 
-	}
-	for (var i = 0; i < 6; i ++) {
-		var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+  app.mendian.forEach(function(value,i){
+    // console.log("我输数据",value,i);
+    var point = new BMap.Point(value.lng,value.lat);
       var label = new BMap.Label("我是文字标注哦"+i,{offset:new BMap.Size(21,-10)});
-  var color ='img/yellow.png';
-    var salesman_list=
-    "<div class='salesman_all'>"+
-    "<span>提交人：景芝零售店1</span>"+
-    "<span>所在部门：李钦</span>"+
-    "<span>联系电话：123456789021</span>"+
-    "<span>当前位置：潍坊市奎文区新华路5号11店东500米</span>"+
-    "<span>提交历史</span>"+
-    "<div class='salesman_all_container'>"+
-      "<ul class='salesman-list js-salesman-list'>"+
-        "<li ><span>XX区XX店</span><span>张XX</span>"+
-        "</li>"+
-        "<li ><span>XX区XX店</span><span>张XX</span>"+
-        "</li>"+
-        "<li ><span>XX区XX店</span><span>张XX</span>"+
-        "</li>"+
-        "<li ><span>XX区XX店</span><span>张XX</span>"+
-        "</li>"+
-        "<li ><span>XX区XX店</span><span>张XX</span>"+
-        "</li>"+
-      "</ul>"+
-  "</div>"+
-  "</div>"
-		addMarker(point,label,color,salesman_list);
-
-	}
+      var color =img_dian;
+  var shop_list="<div class='shop_all'>"+
+       "<span>经销商名称："+value.mingcheng+"</span>"+
+       "<span>负责人："+value.fuzeren+"</span>"+
+       "<span>联系电话："+value.lianxidianhua+"</span>"+
+       "<span>门店位置："+value.weizhi+"</span>"+
+       "<span style='display:none;'>在销产品</span>"+
+       "<span style='display:none;'>景芝酒，一品景芝，A景</span>"+
+       "<span style='display:none;'>门店图片</span>"+
+       "<a style='display:none;background:url(https://image.qiluyidian.mobi/43230590851066149651QN1D928U291dGhFYXN0.jpg?imageMogr2/auto-orient/thumbnail/680x410)'  class='infor_img'></a>"+
+     "</div>"
+  	addMarker1(point,label,color,shop_list);
+  });
+  }
+  var value_all_all= app.manage_liucheng;
+  // console.log("我是数据",value_all_all);
 	for (var i = 0; i < 5; i ++) {
 		var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
       var label = new BMap.Label("我是文字标注哦"+i,{offset:new BMap.Size(21,-10)});
-      var color ='img/origin.png';
+      var color ='img/xiaodian.png';
       var salesman_list=
       "<div class='salesman_all'>"+
       "<span>提交人：景芝零售店1</span>"+
@@ -275,44 +331,15 @@ index++;
       "<span>提交历史</span>"+
       "<div class='salesman_all_container'>"+
         "<ul class='salesman-list js-salesman-list'>"+
-          "<li ><span>XX区XX店</span><span>张XX</span>"+
+          "<li ><span>潍坊市景芝店</span><span>张红河</span>"+
           "</li>"+
-          "<li ><span>XX区XX店</span><span>张XX</span>"+
+          "<li ><span>坊子区店</span><span>戴军</span>"+
           "</li>"+
-          "<li ><span>XX区XX店</span><span>张XX</span>"+
+          "<li ><span>诸城市景芝店</span><span>李钦</span>"+
           "</li>"+
-          "<li ><span>XX区XX店</span><span>张XX</span>"+
+          "<li ><span>奎文区景芝店</span><span>张洪洞</span>"+
           "</li>"+
-          "<li ><span>XX区XX店</span><span>张XX</span>"+
-          "</li>"+
-        "</ul>"+
-    "</div>"+
-    "</div>"
-    		addMarker(point,label,color,salesman_list);
-
-	}
-	for (var i = 0; i < 5; i ++) {
-		var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
-      var label = new BMap.Label("我是文字标注哦"+i,{offset:new BMap.Size(21,-10)});
-      var color ='img/dian.png';
-      var salesman_list=
-      "<div class='salesman_all'>"+
-      "<span>提交人：景芝零售店1</span>"+
-      "<span>所在部门：李钦</span>"+
-      "<span>联系电话：123456789021</span>"+
-      "<span>当前位置：潍坊市奎文区新华路5号11店东500米</span>"+
-      "<span>提交历史</span>"+
-      "<div class='salesman_all_container'>"+
-        "<ul class='salesman-list js-salesman-list'>"+
-          "<li ><span>XX区XX店</span><span>张XX</span>"+
-          "</li>"+
-          "<li ><span>XX区XX店</span><span>张XX</span>"+
-          "</li>"+
-          "<li ><span>XX区XX店</span><span>张XX</span>"+
-          "</li>"+
-          "<li ><span>XX区XX店</span><span>张XX</span>"+
-          "</li>"+
-          "<li ><span>XX区XX店</span><span>张XX</span>"+
+          "<li ><span>寿光市景芝店</span><span>张海洋</span>"+
           "</li>"+
         "</ul>"+
     "</div>"+
@@ -320,6 +347,7 @@ index++;
     		addMarker1(point,label,color,salesman_list);
 
 	}
+
 
     function checkhHtml5() {
       if (typeof(Worker) === "undefined") {
@@ -791,15 +819,28 @@ index++;
 
           </div>
           <div class="allmap_sum">
-            <span>在线门店数</span>
+            <span>累计门店数</span>
             <!-- <ul class="all_sum_one" id="all_sum_one">
 
             </ul> -->
             <div class="t_num all_sum_one">
 
             </div>
-            <span>累计人数：999</span>
-            <span>门店数：999</span>
+            <span>累计经销商数</span>
+            <div class="t_num2 all_sum_one">
+
+            </div>
+
+          </div>
+          <div class="allmap_tubiao">
+            <span>
+              <img src="./img/xiaodian.png"  alt="">：
+              经销商
+            </span>
+            <span>
+              <img src="./img/dian.png"  alt="">：
+              门店
+            </span>
           </div>
         </div>
         <div class="jz_middle jz_middle_top2">
@@ -834,7 +875,7 @@ index++;
         <table class="am-table ">
                     <thead>
                       <tr>
-                        <th>序号</th>
+
                         <th>姓名</th>
                         <th>归属部门</th>
                         <th>出差（天）</th>
@@ -845,12 +886,11 @@ index++;
                     </thead>
                     <tbody>
                       <tr v-for="value in manage_kaoqin">
-                        <td>{{value.key}}</td>
-                        <td>{{value.name}}</td>
+                        <td>{{value.xingming}}</td>
                         <td>{{value.bumen}}</td>
-                        <td>{{value.chuchai}}</td>
                         <td>{{value.qingjia}}</td>
-                        <td>{{value.kuquchuchai}}</td>
+                        <td>{{value.chuchai}}</td>
+                        <td>{{value.quyu}}</td>
                         <td>{{value.gongsi}}</td>
                       </tr>
 
@@ -869,7 +909,7 @@ index++;
         <table class="am-table ">
                     <thead>
                       <tr>
-                        <th>序号</th>
+
                         <th>部门名称</th>
                         <th>归属部门</th>
                         <th>平均出差（天）</th>
@@ -880,13 +920,12 @@ index++;
                     </thead>
                     <tbody>
                       <tr v-for="value in manage_kaqinbumen">
-                        <td>{{value.key}}</td>
-                        <td>{{value.bumen}}</td>
-                        <td>{{value.guishu}}</td>
-                        <td>{{value.chuchai}}</td>
-                        <td>{{value.qingjia}}</td>
-                        <td>{{value.kuquchuchai}}</td>
-                        <td>{{value.gongsi}}</td>
+                          <td>{{value.bumen}}</td>
+                          <td>{{value.guishubumen}}</td>
+                          <td>{{value.pingjun_chuchai}}</td>
+                          <td>{{value.pingjun_qingjia}}</td>
+                          <td>{{value.pingjun_quyu}}</td>
+                          <td>{{value.pingjun_gongsi}}</td>
                       </tr>
 
                     </tbody>
@@ -909,10 +948,10 @@ index++;
             </div>
             <div class="js_middle_top_foot">
               <ul>
-                <li><span>出勤率最高</span><span>市场1部门</span></li>
-                <li><span>规范化最高</span><span>市场1部门</span></li>
-                <li><span>出勤率最差</span><span>市场1部门</span></li>
-                <li><span>规范化最差</span><span>市场1部门</span></li>
+                <li><span>出勤率最高</span><span>{{kaoqin_zui.chuqin_gao}}</span></li>
+                <li><span>规范化最高</span><span>{{kaoqin_zui.guifan_gao}}</span></li>
+                <li><span>出勤率最差</span><span>{{kaoqin_zui.chuqin_di}}</span></li>
+                <li><span>规范化最差</span><span>{{kaoqin_zui.guifan_di}}</span></li>
               </ul>
             </div>
           </div>
@@ -959,7 +998,7 @@ index++;
                       <table class="am-table ">
                                   <thead>
                                     <tr>
-                                      <th>序号</th>
+
                                       <th>流程标题</th>
                                       <th>发起人</th>
                                       <th>发起时间</th>
@@ -971,14 +1010,14 @@ index++;
                                   </thead>
                                   <tbody>
                                     <tr v-for="value in manage_liucheng">
-                                      <td>{{value.key}}</td>
-                                      <td>{{value.title}}</td>
+
+                                      <td>{{value.biaoti}}</td>
                                       <td>{{value.faqiren}}</td>
-                                      <td>{{value.time}}</td>
-                                      <td>{{value.jiedian}}</td>
-                                      <td>{{value.jieshoutime}}</td>
-                                      <td>{{value.zhuangtai}}</td>
-                                      <td>{{value.endtime}}</td>
+                                      <td>{{value.faqishijian}}</td>
+                                      <td>{{value.dangqianjiedian}}</td>
+                                      <td>{{value.jieshoushijian}}</td>
+                                      <td>{{value.dangqianzhuangtai}}</td>
+                                      <td>{{value.jieshushijian}}</td>
                                     </tr>
 
                                   </tbody>
@@ -990,10 +1029,8 @@ index++;
             </div>
             <div class="slide-container_top">
               <ul class="slide-list js-slide-list_top">
-                <li class="odd"><span>XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
-                  <span>2017/5/1</span></li>
-                <li class="even"><span>XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
-                  <span>2017/5/1</span</li>
+                <li  v-for="value in manage_liucheng"><span>{{value.biaoti}}</span><span>{{value.faqiren}}</span><span>{{value.faqishijian}}</span>
+                  <span>{{value.jieshoushijian}}</span></li>
 
                     </ul>
                   </div>
@@ -1004,19 +1041,19 @@ index++;
                   <span>接收时间</span>
             </div>
             <div class="slide-container">
-              <ul class="slide-list js-slide-list">
-                <li class="odd"><span>XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
-                  <span>2017/5/1</span></li>
-                <li class="even"><span>XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
-                  <span>2017/5/1</span</li>
-                        <li class="odd"><span>XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
+              <ul class="slide-list js-slide-list" >
+                <li  v-for="value in manage_liucheng"><span>{{value.biaoti}}</span><span>{{value.faqiren}}</span><span>{{value.faqishijian}}</span>
+                  <span>{{value.jieshoushijian}}</span></li>
+                <!-- <li><span>XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
+                  <span>2017/5/1</span</li> -->
+                        <!-- <li class="odd"><span>XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
                   <span>2017/5/1</span</li>
                         <li class="even"><span>XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
                   <span>2017/5/1</span</li>
                         <li class="odd"><span>XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
                   <span>2017/5/1</span</li>
                         <li class="even"><span>11XX区XX店发起进货景阳春X系列200箱</span><span>张XX</span><span>2017/4/5</span>
-                  <span>2017/5/1</span</li>
+                  <span>2017/5/1</span</li> -->
 
                     </ul>
                 </div>
@@ -1033,19 +1070,19 @@ index++;
 
                         </div>
                         <div class="am-u-lg-6" class="jiankonglist">
-                          <!-- <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe> -->
+                          <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
 
                         </div>
                         <div class="am-u-lg-6" class="jiankonglist">
-                          <!-- <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe> -->
+                          <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
 
                         </div>
                         <div class="am-u-lg-6" class="jiankonglist">
-                          <!-- <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe> -->
+                          <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
 
                         </div>
                         <div class="am-u-lg-6" class="jiankonglist">
-                          <!-- <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe> -->
+                          <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
 
                         </div>
                         <div class="am-u-lg-6" class="jiankonglist">
@@ -1060,35 +1097,18 @@ index++;
                     </div>
                   </div>
                   <div class="jz_right2_all">
-                    <div>
+                    <div class="am-u-lg-12">
                       <!-- <video src="http://118.190.10.51/live/1374.m3u8" autoplay poster="">
 
                     </video> -->
 
-				 <video id="iphones" src="http://118.190.10.51/live/1372.m3u8" controls="controls" style="display: none;"></video>
+				 <video id="iphones" src="http://118.190.10.51/live/1382.m3u8" controls="controls" style="display: none;"></video>
 				<div id="windowss"  style="display: none;"></div>
-				<object  id="windowss_api" name="windowss_api" data="./js/2_files/flowplayer.swf" type="application/x-shockwave-flash"><param name="allowfullscreen" value="true"><param name="allowscriptaccess" value="always"><param name="quality" value="high"><param name="bgcolor" value="#000000"><param name="flashvars" value="config={&quot;wmode&quot;:&quot;direct&quot;,&quot;clip&quot;:{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1372.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true},&quot;plugins&quot;:{&quot;controls&quot;:{&quot;time&quot;:false},&quot;httpstreaming&quot;:{&quot;url&quot;:&quot;./js/FlowPlayer/flashlsFlowPlayer.swf&quot;,&quot;hls_debug&quot;:false,&quot;hls_debug2&quot;:false,&quot;hls_lowbufferlength&quot;:3,&quot;hls_minbufferlength&quot;:-1,&quot;hls_maxbufferlength&quot;:60,&quot;hls_startfromlevel&quot;:-1,&quot;hls_seekfromlevel&quot;:-1,&quot;hls_live_flushurlcache&quot;:false,&quot;hls_seekmode&quot;:&quot;ACCURATE&quot;,&quot;hls_fragmentloadmaxretry&quot;:-1,&quot;hls_manifestloadmaxretry&quot;:-1,&quot;hls_capleveltostage&quot;:false,&quot;hls_maxlevelcappingmode&quot;:&quot;downscale&quot;}},&quot;log&quot;:{&quot;level&quot;:&quot;debug&quot;,&quot;filter&quot;:&quot;org.flowplayer.controller.*&quot;},&quot;playerId&quot;:&quot;windowss&quot;,&quot;playlist&quot;:[{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1372.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true}]}"></object>
+				<object  id="windowss_api" name="windowss_api" data="./js/2_files/flowplayer.swf" type="application/x-shockwave-flash"><param name="allowfullscreen" value="true"><param name="allowscriptaccess" value="always"><param name="quality" value="high"><param name="bgcolor" value="#000000"><param name="flashvars" value="config={&quot;wmode&quot;:&quot;direct&quot;,&quot;clip&quot;:{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1382.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true},&quot;plugins&quot;:{&quot;controls&quot;:{&quot;time&quot;:false},&quot;httpstreaming&quot;:{&quot;url&quot;:&quot;./js/FlowPlayer/flashlsFlowPlayer.swf&quot;,&quot;hls_debug&quot;:false,&quot;hls_debug2&quot;:false,&quot;hls_lowbufferlength&quot;:3,&quot;hls_minbufferlength&quot;:-1,&quot;hls_maxbufferlength&quot;:60,&quot;hls_startfromlevel&quot;:-1,&quot;hls_seekfromlevel&quot;:-1,&quot;hls_live_flushurlcache&quot;:false,&quot;hls_seekmode&quot;:&quot;ACCURATE&quot;,&quot;hls_fragmentloadmaxretry&quot;:-1,&quot;hls_manifestloadmaxretry&quot;:-1,&quot;hls_capleveltostage&quot;:false,&quot;hls_maxlevelcappingmode&quot;:&quot;downscale&quot;}},&quot;log&quot;:{&quot;level&quot;:&quot;debug&quot;,&quot;filter&quot;:&quot;org.flowplayer.controller.*&quot;},&quot;playerId&quot;:&quot;windowss&quot;,&quot;playlist&quot;:[{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1382.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true}]}"></object>
 
 
                     </div>
-                    <div>
-                      <video id="iphones" src="http://118.190.10.51/live/1372.m3u8" controls="controls" style="display: none;"></video>
-             				<div id="windowss"  style="display: none;"></div>
-             				<object  id="windowss_api" name="windowss_api" data="./js/2_files/flowplayer.swf" type="application/x-shockwave-flash"><param name="allowfullscreen" value="true"><param name="allowscriptaccess" value="always"><param name="quality" value="high"><param name="bgcolor" value="#000000"><param name="flashvars" value="config={&quot;wmode&quot;:&quot;direct&quot;,&quot;clip&quot;:{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1372.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true},&quot;plugins&quot;:{&quot;controls&quot;:{&quot;time&quot;:false},&quot;httpstreaming&quot;:{&quot;url&quot;:&quot;./js/FlowPlayer/flashlsFlowPlayer.swf&quot;,&quot;hls_debug&quot;:false,&quot;hls_debug2&quot;:false,&quot;hls_lowbufferlength&quot;:3,&quot;hls_minbufferlength&quot;:-1,&quot;hls_maxbufferlength&quot;:60,&quot;hls_startfromlevel&quot;:-1,&quot;hls_seekfromlevel&quot;:-1,&quot;hls_live_flushurlcache&quot;:false,&quot;hls_seekmode&quot;:&quot;ACCURATE&quot;,&quot;hls_fragmentloadmaxretry&quot;:-1,&quot;hls_manifestloadmaxretry&quot;:-1,&quot;hls_capleveltostage&quot;:false,&quot;hls_maxlevelcappingmode&quot;:&quot;downscale&quot;}},&quot;log&quot;:{&quot;level&quot;:&quot;debug&quot;,&quot;filter&quot;:&quot;org.flowplayer.controller.*&quot;},&quot;playerId&quot;:&quot;windowss&quot;,&quot;playlist&quot;:[{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1372.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true}]}"></object>
 
-                      </div>
-                    <div>
-                      <video id="iphones" src="http://118.190.10.51/live/1374.m3u8" controls="controls" style="display: none;"></video>
-             				<div id="windowss"  style="display: none;"></div>
-             				<object  id="windowss_api" name="windowss_api" data="./js/2_files/flowplayer.swf" type="application/x-shockwave-flash"><param name="allowfullscreen" value="true"><param name="allowscriptaccess" value="always"><param name="quality" value="high"><param name="bgcolor" value="#000000"><param name="flashvars" value="config={&quot;wmode&quot;:&quot;direct&quot;,&quot;clip&quot;:{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1374.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true},&quot;plugins&quot;:{&quot;controls&quot;:{&quot;time&quot;:false},&quot;httpstreaming&quot;:{&quot;url&quot;:&quot;./js/FlowPlayer/flashlsFlowPlayer.swf&quot;,&quot;hls_debug&quot;:false,&quot;hls_debug2&quot;:false,&quot;hls_lowbufferlength&quot;:3,&quot;hls_minbufferlength&quot;:-1,&quot;hls_maxbufferlength&quot;:60,&quot;hls_startfromlevel&quot;:-1,&quot;hls_seekfromlevel&quot;:-1,&quot;hls_live_flushurlcache&quot;:false,&quot;hls_seekmode&quot;:&quot;ACCURATE&quot;,&quot;hls_fragmentloadmaxretry&quot;:-1,&quot;hls_manifestloadmaxretry&quot;:-1,&quot;hls_capleveltostage&quot;:false,&quot;hls_maxlevelcappingmode&quot;:&quot;downscale&quot;}},&quot;log&quot;:{&quot;level&quot;:&quot;debug&quot;,&quot;filter&quot;:&quot;org.flowplayer.controller.*&quot;},&quot;playerId&quot;:&quot;windowss&quot;,&quot;playlist&quot;:[{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1372.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true}]}"></object>
-
-                    </div>
-                    <div>
-                      <video id="iphones" src="http://118.190.10.51/live/1382.m3u8" controls="controls" style="display: none;"></video>
-             				<div id="windowss"  style="display: none;"></div>
-             				<object  id="windowss_api" name="windowss_api" data="./js/2_files/flowplayer.swf" type="application/x-shockwave-flash"><param name="allowfullscreen" value="true"><param name="allowscriptaccess" value="always"><param name="quality" value="high"><param name="bgcolor" value="#000000"><param name="flashvars" value="config={&quot;wmode&quot;:&quot;direct&quot;,&quot;clip&quot;:{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1382.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true},&quot;plugins&quot;:{&quot;controls&quot;:{&quot;time&quot;:false},&quot;httpstreaming&quot;:{&quot;url&quot;:&quot;./js/FlowPlayer/flashlsFlowPlayer.swf&quot;,&quot;hls_debug&quot;:false,&quot;hls_debug2&quot;:false,&quot;hls_lowbufferlength&quot;:3,&quot;hls_minbufferlength&quot;:-1,&quot;hls_maxbufferlength&quot;:60,&quot;hls_startfromlevel&quot;:-1,&quot;hls_seekfromlevel&quot;:-1,&quot;hls_live_flushurlcache&quot;:false,&quot;hls_seekmode&quot;:&quot;ACCURATE&quot;,&quot;hls_fragmentloadmaxretry&quot;:-1,&quot;hls_manifestloadmaxretry&quot;:-1,&quot;hls_capleveltostage&quot;:false,&quot;hls_maxlevelcappingmode&quot;:&quot;downscale&quot;}},&quot;log&quot;:{&quot;level&quot;:&quot;debug&quot;,&quot;filter&quot;:&quot;org.flowplayer.controller.*&quot;},&quot;playerId&quot;:&quot;windowss&quot;,&quot;playlist&quot;:[{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1372.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true}]}"></object>
-
-                    </div>
                   </div>
             </div>
             <div class="jz_right jz_right2">
@@ -1104,26 +1124,26 @@ index++;
                   </div>
                   <div class="am-popup-bd">
                     <div class="am-u-lg-6" class="jiankonglist">
-                      <!-- <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe> -->
+                      <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
+
+                    </div>
+                    <div class="am-u-lg-6" class="jiankonglist">
+                      <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
+
+                    </div>
+                    <div class="am-u-lg-6" class="jiankonglist">
+                      <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
+
+                    </div>
+                    <div class="am-u-lg-6" class="jiankonglist">
+                      <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe>
 
                     </div>
                     <div class="am-u-lg-6" class="jiankonglist">
                       <!-- <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe> -->
 
                     </div>
-                    <div class="am-u-lg-6" class="jiankonglist">
-                      <!-- <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe> -->
-
-                    </div>
-                    <div class="am-u-lg-6" class="jiankonglist">
-                      <!-- <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe> -->
-
-                    </div>
-                    <div class="am-u-lg-6" class="jiankonglist">
-                      <!-- <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe> -->
-
-                    </div>
-                    <div class="am-u-lg-6" class="jiankonglist">
+                    <div class="am-u-lg-6 jiankonglist">
                       <!-- <iframe name="iFrame1" class="iframe_info" src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0"> </iframe> -->
 
                     </div>
@@ -1132,32 +1152,13 @@ index++;
                 </div>
               </div>
               <div class="jz_right2_all">
-                <div>
+                <div class="am-u-lg-12">
                   <video id="iphones" src="http://118.190.10.51/live/1372.m3u8" controls="controls" style="display: none;"></video>
                   <div id="windowss"  style="display: none;"></div>
                   <object  id="windowss_api" name="windowss_api" data="./js/2_files/flowplayer.swf" type="application/x-shockwave-flash"><param name="allowfullscreen" value="true"><param name="allowscriptaccess" value="always"><param name="quality" value="high"><param name="bgcolor" value="#000000"><param name="flashvars" value="config={&quot;wmode&quot;:&quot;direct&quot;,&quot;clip&quot;:{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1372.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true},&quot;plugins&quot;:{&quot;controls&quot;:{&quot;time&quot;:false},&quot;httpstreaming&quot;:{&quot;url&quot;:&quot;./js/FlowPlayer/flashlsFlowPlayer.swf&quot;,&quot;hls_debug&quot;:false,&quot;hls_debug2&quot;:false,&quot;hls_lowbufferlength&quot;:3,&quot;hls_minbufferlength&quot;:-1,&quot;hls_maxbufferlength&quot;:60,&quot;hls_startfromlevel&quot;:-1,&quot;hls_seekfromlevel&quot;:-1,&quot;hls_live_flushurlcache&quot;:false,&quot;hls_seekmode&quot;:&quot;ACCURATE&quot;,&quot;hls_fragmentloadmaxretry&quot;:-1,&quot;hls_manifestloadmaxretry&quot;:-1,&quot;hls_capleveltostage&quot;:false,&quot;hls_maxlevelcappingmode&quot;:&quot;downscale&quot;}},&quot;log&quot;:{&quot;level&quot;:&quot;debug&quot;,&quot;filter&quot;:&quot;org.flowplayer.controller.*&quot;},&quot;playerId&quot;:&quot;windowss&quot;,&quot;playlist&quot;:[{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1372.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true}]}"></object>
 
                 </div>
-                <div>
-                  <video id="iphones" src="http://118.190.10.51/live/1376.m3u8" controls="controls" style="display: none;"></video>
-                  <div id="windowss"  style="display: none;"></div>
-                  <object  id="windowss_api" name="windowss_api" data="./js/2_files/flowplayer.swf" type="application/x-shockwave-flash"><param name="allowfullscreen" value="true"><param name="allowscriptaccess" value="always"><param name="quality" value="high"><param name="bgcolor" value="#000000"><param name="flashvars" value="config={&quot;wmode&quot;:&quot;direct&quot;,&quot;clip&quot;:{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1376.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true},&quot;plugins&quot;:{&quot;controls&quot;:{&quot;time&quot;:false},&quot;httpstreaming&quot;:{&quot;url&quot;:&quot;./js/FlowPlayer/flashlsFlowPlayer.swf&quot;,&quot;hls_debug&quot;:false,&quot;hls_debug2&quot;:false,&quot;hls_lowbufferlength&quot;:3,&quot;hls_minbufferlength&quot;:-1,&quot;hls_maxbufferlength&quot;:60,&quot;hls_startfromlevel&quot;:-1,&quot;hls_seekfromlevel&quot;:-1,&quot;hls_live_flushurlcache&quot;:false,&quot;hls_seekmode&quot;:&quot;ACCURATE&quot;,&quot;hls_fragmentloadmaxretry&quot;:-1,&quot;hls_manifestloadmaxretry&quot;:-1,&quot;hls_capleveltostage&quot;:false,&quot;hls_maxlevelcappingmode&quot;:&quot;downscale&quot;}},&quot;log&quot;:{&quot;level&quot;:&quot;debug&quot;,&quot;filter&quot;:&quot;org.flowplayer.controller.*&quot;},&quot;playerId&quot;:&quot;windowss&quot;,&quot;playlist&quot;:[{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1376.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true}]}"></object>
 
-                </div>
-                <div>
-                  <video id="iphones" src="http://118.190.10.51/live/1374.m3u8" controls="controls" style="display: none;"></video>
-                  <div id="windowss"  style="display: none;"></div>
-                  <object  id="windowss_api" name="windowss_api" data="./js/2_files/flowplayer.swf" type="application/x-shockwave-flash"><param name="allowfullscreen" value="true"><param name="allowscriptaccess" value="always"><param name="quality" value="high"><param name="bgcolor" value="#000000"><param name="flashvars" value="config={&quot;wmode&quot;:&quot;direct&quot;,&quot;clip&quot;:{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1374.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true},&quot;plugins&quot;:{&quot;controls&quot;:{&quot;time&quot;:false},&quot;httpstreaming&quot;:{&quot;url&quot;:&quot;./js/FlowPlayer/flashlsFlowPlayer.swf&quot;,&quot;hls_debug&quot;:false,&quot;hls_debug2&quot;:false,&quot;hls_lowbufferlength&quot;:3,&quot;hls_minbufferlength&quot;:-1,&quot;hls_maxbufferlength&quot;:60,&quot;hls_startfromlevel&quot;:-1,&quot;hls_seekfromlevel&quot;:-1,&quot;hls_live_flushurlcache&quot;:false,&quot;hls_seekmode&quot;:&quot;ACCURATE&quot;,&quot;hls_fragmentloadmaxretry&quot;:-1,&quot;hls_manifestloadmaxretry&quot;:-1,&quot;hls_capleveltostage&quot;:false,&quot;hls_maxlevelcappingmode&quot;:&quot;downscale&quot;}},&quot;log&quot;:{&quot;level&quot;:&quot;debug&quot;,&quot;filter&quot;:&quot;org.flowplayer.controller.*&quot;},&quot;playerId&quot;:&quot;windowss&quot;,&quot;playlist&quot;:[{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1372.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true}]}"></object>
-
-                  <!-- <iframe name="iFrame1 " src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0 "> </iframe> -->
-                </div>
-                <div>
-                  <video id="iphones" src="http://118.190.10.51/live/1381.m3u8" controls="controls" style="display: none;"></video>
-                  <div id="windowss"  style="display: none;"></div>
-                  <object  id="windowss_api" name="windowss_api" data="./js/2_files/flowplayer.swf" type="application/x-shockwave-flash"><param name="allowfullscreen" value="true"><param name="allowscriptaccess" value="always"><param name="quality" value="high"><param name="bgcolor" value="#000000"><param name="flashvars" value="config={&quot;wmode&quot;:&quot;direct&quot;,&quot;clip&quot;:{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1381.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true},&quot;plugins&quot;:{&quot;controls&quot;:{&quot;time&quot;:false},&quot;httpstreaming&quot;:{&quot;url&quot;:&quot;./js/FlowPlayer/flashlsFlowPlayer.swf&quot;,&quot;hls_debug&quot;:false,&quot;hls_debug2&quot;:false,&quot;hls_lowbufferlength&quot;:3,&quot;hls_minbufferlength&quot;:-1,&quot;hls_maxbufferlength&quot;:60,&quot;hls_startfromlevel&quot;:-1,&quot;hls_seekfromlevel&quot;:-1,&quot;hls_live_flushurlcache&quot;:false,&quot;hls_seekmode&quot;:&quot;ACCURATE&quot;,&quot;hls_fragmentloadmaxretry&quot;:-1,&quot;hls_manifestloadmaxretry&quot;:-1,&quot;hls_capleveltostage&quot;:false,&quot;hls_maxlevelcappingmode&quot;:&quot;downscale&quot;}},&quot;log&quot;:{&quot;level&quot;:&quot;debug&quot;,&quot;filter&quot;:&quot;org.flowplayer.controller.*&quot;},&quot;playerId&quot;:&quot;windowss&quot;,&quot;playlist&quot;:[{&quot;accelerated&quot;:true,&quot;url&quot;:&quot;http://118.190.10.51/live/1372.m3u8&quot;,&quot;lang&quot;:&quot;cn&quot;,&quot;provider&quot;:&quot;httpstreaming&quot;,&quot;urlResolvers&quot;:&quot;httpstreaming&quot;,&quot;autoPlay&quot;:true,&quot;autoBuffering&quot;:true}]}"></object>
-
-                  <!-- <iframe name="iFrame1 " src="http://wfb.5252net.com/player/wfzx/2.html" scrolling="no" frameborder="0 "> </iframe> -->
-                </div>
               </div>
             </div>
             <div class="jz_right jz_right3">
@@ -1179,7 +1180,7 @@ index++;
 
                         <div class="am-u-lg-12">
                             <div class="am-u-lg-12">
-                                <div class="jiyoujia_title ">品牌入职量</div>
+                                <div class="jiyoujia_title ">品牌入驻量</div>
                             <div class="am-u-lg-6">
                               <div class="am-panel am-panel-default jiyoujia_mianban">
                                 <div class="am-panel-hd">最近30天</div>
@@ -1242,7 +1243,7 @@ index++;
                               <div class="am-panel am-panel-default jiyoujia_mianban">
                                 <div class="am-panel-hd">今天</div>
                                 <div class="am-panel-bd">
-                                  56个
+                                  {{jiyoujia.yong_ding}}个
                                 </div>
                               </div>
                             </div>
@@ -1250,7 +1251,7 @@ index++;
                               <div class="am-panel am-panel-default jiyoujia_mianban">
                                 <div class="am-panel-hd">今天</div>
                                 <div class="am-panel-bd">
-                                  8167元
+                                  {{jiyoujia.yong_dingjin}}万元
                                 </div>
                               </div>
                             </div>
@@ -1261,12 +1262,12 @@ index++;
                     </div>
                     <div class="am-u-lg-6">
                       <div class="am-panel am-panel-default jiyoujia_page_all">
-                        <div class="am-panel-hd">极优佳-用户端</div>
+                        <div class="am-panel-hd">极优佳-商家端</div>
                         <div class="am-panel-bd jiyoujia">
 
                         <div class="am-u-lg-12">
                             <div class="am-u-lg-12">
-                                <div class="jiyoujia_title ">品牌入职量</div>
+                                <div class="jiyoujia_title ">品牌入驻量</div>
                             <div class="am-u-lg-6">
                               <div class="am-panel am-panel-default jiyoujia_mianban">
                                 <div class="am-panel-hd">最近30天</div>
@@ -1329,7 +1330,7 @@ index++;
                               <div class="am-panel am-panel-default jiyoujia_mianban">
                                 <div class="am-panel-hd">今天</div>
                                 <div class="am-panel-bd">
-                                  56个
+                                  {{jiyoujia.shang_ding}}个
                                 </div>
                               </div>
                             </div>
@@ -1337,7 +1338,7 @@ index++;
                               <div class="am-panel am-panel-default jiyoujia_mianban">
                                 <div class="am-panel-hd">今天</div>
                                 <div class="am-panel-bd">
-                                  8167元
+                                  {{jiyoujia.shang_dingjin}}万元
                                 </div>
                               </div>
                             </div>
@@ -1350,9 +1351,9 @@ index++;
                 </div>
               </div>
               <ul class="jz_right3_all">
-                <li><span>累积入驻品牌</span><span>88家</span></li>
-                <li><span>累积入驻经销商</span><span>521家</span></li>
-                <li><span>安装量</span><span>785994</span></li>
+                <li><span>累积入驻品牌</span><span>{{jiyoujia.ljpinpai}}</span></li>
+                <li><span>累积入驻经销商</span><span>{{jiyoujia.ljjingxiaoshang}}家</span></li>
+                <li><span>安装量</span><span>{{jiyoujia.ljanzhuang}}</span></li>
                 <li><span>近期入驻品牌</span><span>10家</span></li>
                 <li><span>近期入驻经销商</span><span>36家</span></li>
                 <li><span>近期安装量</span><span>1025</span></li>

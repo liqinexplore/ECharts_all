@@ -35,6 +35,9 @@
   .infor_all,.shop_all,.salesman_all{
     color: #fff!important;
   }
+  .BMap_pop{
+    z-index: 99!important;
+  }
 .jz_top{
   height: 100px;
 }
@@ -107,7 +110,7 @@ box-shadow:0 0 15px rgba(7,221,255,.36);
 
 .jz_left_top1{
   width: 100%;
-  height: 220px;
+  height: 260px;
   margin-bottom: 0px;
 }
 .jz_left_top{
@@ -491,8 +494,8 @@ color: #C05F19;
   height: 116px;
 }
 .js_middle_top_left_all{
-  width: 80%;
-  margin-left: 10%;
+  width: 90%;
+  margin-left: 5%;
 }
 .js_middle_top_foot ul{
   list-style: none;
@@ -550,7 +553,7 @@ color: #C05F19;
 
 }
 .jz_right2_all>div{
-  width: 50%;
+  width: 100%;
   float: left;
 
 }
@@ -581,9 +584,25 @@ object {
   z-index: 10;
   color: #01EFF2;
 }
+.allmap_tubiao{
+  position: absolute;
+  top: 560px;
+  left: 10px;
+  z-index: 10;
+  color: #01EFF2;
+  padding: 10px;
+    background-color:rgba(17,67,120,.7);
+}
+.allmap_tubiao img{
+  width: 40px;
+  height: 40px;
+}
 ul{
   padding: 0px;
   margin: 0px;
+}
+.allmap_sum {
+  background-color:rgba(17,67,120,.7);
 }
 .allmap_sum ul li{
   list-style: none;
@@ -598,14 +617,15 @@ ul{
   display: block;
 }
 #windowss_api,#windowss{
-  width: 100%;
-  height: 130px;
+  width: 90%;
+  margin-left: 5%;
+  height: 260px;
 }
 video{
   width: 100px!important;
   height: 100px!important;
 }
-.t_num img{
+.t_num img,.t_num2 img{
   width: 50px;
   margin:4px;
   background: #0d2d63;

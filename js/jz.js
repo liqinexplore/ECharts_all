@@ -18,27 +18,15 @@ var app = new Vue({
   data: {
     message: 'Hello Vue!',
     list:'',
+    all:[],
+    bing:[{chi:48,nochi:52},{tui:32,notui:68},{quan:24,noquan:76}],
     infor_all:[{
       infor_name:"隔壁老王",
       infor_time:"2017-4-5 12:12:12",
       infor_content:"附近新开一个社区，白酒市场缺乏，可以考虑开一家分店",
       infor_img:"https://image.qiluyidian.mobi/43230590851066149651QN1D928U291dGhFYXN0.jpg?imageMogr2/auto-orient/thumbnail/680x410"
     }],
-    manage_market:[{
-        mk_id:1,
-        mk_piao:"购买20瓶景芝酒",
-        mk_chanpin:"景芝酒53度",
-        mk_start_time:"2017-05-09",
-        mk_people:"李钦",
-        mk_other:"来喝酒了，买新酒了"
-    },{
-        mk_id:2,
-        mk_piao:"购买20瓶景芝酒",
-        mk_chanpin:"景芝酒53度",
-        mk_start_time:"2017-05-09",
-        mk_people:"李钦",
-        mk_other:"来喝酒了，买新酒了"
-    }],
+    manage_market:[],
     manage_shop:[{
         ms_id:1,
         ms_piao:"购买20瓶景芝酒",
@@ -564,80 +552,7 @@ var app = new Vue({
       beizhu:"请发货"
     },
   ],
-  manage_kaoqin:[
-    {
-      key:1,
-      name:'朱万星',
-      bumen:'定制酒中心主任',
-      chuchai:'7',
-      qingjia:'2',
-      kuquchuchai:'7',
-      gongsi:'18'
-    },
-    {
-      key:2,
-      name:'朱万星',
-      bumen:'定制酒中心主任',
-      chuchai:'7',
-      qingjia:'2',
-      kuquchuchai:'7',
-      gongsi:'18'
-    },
-    {
-      key:3,
-      name:'朱万星',
-      bumen:'定制酒中心主任',
-      chuchai:'7',
-      qingjia:'2',
-      kuquchuchai:'7',
-      gongsi:'18'
-    },
-    {
-      key:4,
-      name:'朱万星',
-      bumen:'定制酒中心主任',
-      chuchai:'7',
-      qingjia:'2',
-      kuquchuchai:'7',
-      gongsi:'18'
-    },
-    {
-      key:5,
-      name:'朱万星',
-      bumen:'定制酒中心主任',
-      chuchai:'7',
-      qingjia:'2',
-      kuquchuchai:'7',
-      gongsi:'18'
-    },
-    {
-      key:6,
-      name:'朱万星',
-      bumen:'定制酒中心主任',
-      chuchai:'7',
-      qingjia:'2',
-      kuquchuchai:'7',
-      gongsi:'18'
-    },
-    {
-      key:7,
-      name:'朱万星',
-      bumen:'定制酒中心主任',
-      chuchai:'7',
-      qingjia:'2',
-      kuquchuchai:'7',
-      gongsi:'18'
-    },
-    {
-      key:8,
-      name:'朱万星',
-      bumen:'定制酒中心主任',
-      chuchai:'7',
-      qingjia:'2',
-      kuquchuchai:'7',
-      gongsi:'18'
-    },
-  ],
+  manage_kaoqin:[],
   manage_kaqinbumen:[
     {
       key:1,
@@ -711,96 +626,420 @@ var app = new Vue({
       kuquchuchai:'7',
       gongsi:'18'
     },
-  ],
-  manage_liucheng:[
-    {
-      key:1,
-      title:'申请请假',
-      faqiren:'李莉莉',
-      time:'2017-05-09',
-      jiedian:'主任未审核',
-      jieshoutime:'2017-05-11',
-      zhuangtai:'已通过',
-      endtime:'2017-05-12'
-    },
-    {
-      key:2,
-      title:'申请请假',
-      faqiren:'李莉莉',
-      time:'2017-05-09',
-      jiedian:'主任未审核',
-      jieshoutime:'2017-05-11',
-      zhuangtai:'已通过',
-      endtime:'2017-05-12'
-    },
-    {
-      key:3,
-      title:'申请请假',
-      faqiren:'李莉莉',
-      time:'2017-05-09',
-      jiedian:'主任未审核',
-      jieshoutime:'2017-05-11',
-      zhuangtai:'已通过',
-      endtime:'2017-05-12'
-    },
-    {
-      key:4,
-      title:'申请请假',
-      faqiren:'李莉莉',
-      time:'2017-05-09',
-      jiedian:'主任未审核',
-      jieshoutime:'2017-05-11',
-      zhuangtai:'已通过',
-      endtime:'2017-05-12'
-    },
-    {
-      key:5,
-      title:'申请请假',
-      faqiren:'李莉莉',
-      time:'2017-05-09',
-      jiedian:'主任未审核',
-      jieshoutime:'2017-05-11',
-      zhuangtai:'已通过',
-      endtime:'2017-05-12'
-    },
-    {
-      key:6,
-      title:'申请请假',
-      faqiren:'李莉莉',
-      time:'2017-05-09',
-      jiedian:'主任未审核',
-      jieshoutime:'2017-05-11',
-      zhuangtai:'已通过',
-      endtime:'2017-05-12'
-    },
-    {
-      key:7,
-      title:'申请请假',
-      faqiren:'李莉莉',
-      time:'2017-05-09',
-      jiedian:'主任未审核',
-      jieshoutime:'2017-05-11',
-      zhuangtai:'已通过',
-      endtime:'2017-05-12'
-    },
-  ]
+  ],//工作流程监控BPM
+  manage_liucheng:[],
+  jiyoujia:{},
+  kaoqin_zui:{},
+  mendian:[],
   }
 })
+//经营概况销量明细
+var sum_all=[
+  {
+    mk_id:1,
+    mk_piao:"购买20瓶景芝酒",
+    mk_chanpin:"景芝酒53度",
+    mk_start_time:"2017-05-09",
+    mk_people:"李钦",
+    mk_other:"来喝酒了，买新酒了"
+},{
+    mk_id:2,
+    mk_piao:"购买20瓶景芝酒",
+    mk_chanpin:"景芝酒53度",
+    mk_start_time:"2017-05-09",
+    mk_people:"李钦",
+    mk_other:"来喝酒了，买新酒了"
+}
+];
+//工作流程监控BPM
+var manage_liucheng=[
+  {
+    biaoti:'销售公司职能部门出差申请-2017',
+    faqiren:'刘守刚',
+    faqishijian:'2017-05-31 08:15',
+    dangqianjiedian:'冯明政',
+    jieshoushijian:'',
+    dangqianzhuangtai:'部门经理意见1',
+    jieshushijian:'2017-06-02 08:15',
+  },
+  {
+    biaoti:'销售公司职能部门出差申请-2017',
+    faqiren:'魏印来',
+    faqishijian:'2017-05-31 08:00',
+    dangqianjiedian:'冯明政',
+    jieshoushijian:'',
+    dangqianzhuangtai:'部门经理意见1',
+    jieshushijian:'2017-06-02 08:15',
+  },
+  {
+    biaoti:'自媒体运营中心出差流程',
+    faqiren:'吴宝祥',
+    faqishijian:'2017-05-31 07:57',
+    dangqianjiedian:'李亦民',
+    jieshoushijian:'',
+    dangqianzhuangtai:'总监1处理',
+      jieshushijian:'2017-06-02 08:15',
+  },
+  {
+    biaoti:'2017年因特殊原因不能拜访终端申请表',
+    faqiren:'朱良超',
+    faqishijian:'2017-05-30 21:39',
+    dangqianjiedian:'王亚明',
+    jieshoushijian:'',
+    dangqianzhuangtai:'经理签字1',
+      jieshushijian:'2017-06-02 08:15',
+  },
+  {
+    biaoti:'2017年因特殊原因不能拜访终端申请表',
+    faqiren:'朱良超',
+    faqishijian:'2017-05-30 21:37',
+    dangqianjiedian:'王亚明',
+    jieshoushijian:'',
+    dangqianzhuangtai:'经理签字1',
+    jieshushijian:'2017-06-02 08:15',
+  },
+  {
+    biaoti:'销售公司地聘人员入职申请流程',
+    faqiren:'朱苗',
+    faqishijian:'2017-05-30 17:07',
+    dangqianjiedian:'冯涛',
+    jieshoushijian:'',
+    dangqianzhuangtai:'经理签字',
+    jieshushijian:'2017-06-02 08:15',
+  },
+  {
+    biaoti:'销售公司地聘人员入职申请流程',
+    faqiren:'朱苗',
+    faqishijian:'2017-05-30 16:50',
+    dangqianjiedian:'冯涛',
+    jieshoushijian:'',
+    dangqianzhuangtai:'经理签字',
+    jieshushijian:'2017-06-02 08:15',
+  },
+  {
+    biaoti:'2017年因特殊原因不能拜访终端申请表',
+    faqiren:'朱苗',
+    faqishijian:'2017-05-30 16:43',
+    dangqianjiedian:'薛凤伟',
+    jieshoushijian:'',
+    dangqianzhuangtai:'分公司总经理意见',
+    jieshushijian:'2017-06-02 08:15',
+  },
+  {
+    biaoti:'2017年因特殊原因不能拜访终端申请表',
+    faqiren:'朱苗',
+    faqishijian:'2017-05-30 16:41',
+    dangqianjiedian:'薛凤伟',
+    jieshoushijian:'',
+    dangqianzhuangtai:'分公司总经理意见',
+    jieshushijian:'2017-06-02 08:15',
+  },
+  {
+    biaoti:'2017年因特殊原因不能拜访终端申请表',
+    faqiren:'朱苗',
+    faqishijian:'2017-05-30 16:41',
+    dangqianjiedian:'薛凤伟',
+    jieshoushijian:'',
+    dangqianzhuangtai:'分公司总经理意见',
+    jieshushijian:'2017-06-02 08:15',
+  },
+  {
+    biaoti:'合理化建议呈报流程',
+    faqiren:'李瑶瑶',
+    faqishijian:'2017-05-30 15:43',
+    dangqianjiedian:'赵华娟',
+    jieshoushijian:'',
+    dangqianzhuangtai:'部门负责人审批',
+    jieshushijian:'2017-06-02 08:15',
+  },
+  {
+    biaoti:'电商公司文件审批流程',
+    faqiren:'张文宾',
+    faqishijian:'2017-05-30 14:45',
+    dangqianjiedian:'王明明',
+    jieshoushijian:'',
+    dangqianzhuangtai:'电商中心总监处理',
+    jieshushijian:'2017-06-02 08:15',
+  },
+]
+//考勤汇总按部门
+var manage_kaqinbumen =[
+  {
+      bumen:'安丘办事处',
+      guishubumen:'鲁中板块',
+      pingjun_chuchai:'24.8',
+      pingjun_qingjia:'',
+      pingjun_quyu:'0.05',
+      pingjun_gongsi:'1.15',
+  },
+  {
+      bumen:'北京办事处',
+      guishubumen:'创新渠道+省外板块',
+      pingjun_chuchai:'21.5',
+      pingjun_qingjia:'',
+      pingjun_quyu:'0.5',
+      pingjun_gongsi:'0',
+  },
+  {
+      bumen:'滨州办事处',
+      guishubumen:'鲁中板块',
+      pingjun_chuchai:'24.25',
+      pingjun_qingjia:'',
+      pingjun_quyu:'0.8',
+      pingjun_gongsi:'0',
+  },
+  {
+      bumen:'博山办事处',
+      guishubumen:'鲁中板块',
+      pingjun_chuchai:'25.5',
+      pingjun_qingjia:'',
+      pingjun_quyu:'2.25',
+      pingjun_gongsi:'0',
+  },
+  {
+      bumen:'博兴办事处',
+      guishubumen:'鲁中板块',
+      pingjun_chuchai:'20.75',
+      pingjun_qingjia:'',
+      pingjun_quyu:'0',
+      pingjun_gongsi:'3.25',
+  },
+  {
+      bumen:'昌乐办事处',
+      guishubumen:'鲁中板块',
+      pingjun_chuchai:'26.75',
+      pingjun_qingjia:'',
+      pingjun_quyu:'2',
+      pingjun_gongsi:'0',
+  },
+  {
+      bumen:'昌邑办事处',
+      guishubumen:'鲁中板块',
+      pingjun_chuchai:'24.8',
+      pingjun_qingjia:'0',
+      pingjun_quyu:'2',
+      pingjun_gongsi:'0',
+  },
+  {
+      bumen:'茌平办事处',
+      guishubumen:'鲁中板块',
+      pingjun_chuchai:'23.8',
+      pingjun_qingjia:'',
+      pingjun_quyu:'1.6',
+      pingjun_gongsi:'0',
+  },
+  {
+      bumen:'德州办事处',
+      guishubumen:'鲁中板块',
+      pingjun_chuchai:'22.7',
+      pingjun_qingjia:'',
+      pingjun_quyu:'1.6',
+      pingjun_gongsi:'0',
+  },
+  {
+      bumen:'东营办事处',
+      guishubumen:'鲁中板块',
+      pingjun_chuchai:'24.7',
+      pingjun_qingjia:'',
+      pingjun_quyu:'1.4',
+      pingjun_gongsi:'0',
+  },
+  {
+      bumen:'督导部',
+      guishubumen:'管理中心',
+      pingjun_chuchai:'26.3',
+      pingjun_qingjia:'',
+      pingjun_quyu:'0',
+      pingjun_gongsi:'0',
+  },
+]
+//考勤汇总员工
+var manage_kaoqin=[
+  {
+    bumen:'安丘办事处',
+    xingming:'李金田',
+    chuchai:'27',
+    qingjia:'',
+    quyu:'0',
+    gongsi:'0',
+  },
+  {
+    bumen:'安丘办事处',
+    xingming:'吴效春',
+    chuchai:'27',
+    qingjia:'',
+    quyu:'0',
+    gongsi:'0',
+  },
+  {
+    bumen:'安丘办事处',
+    xingming:'李亚增',
+    chuchai:'26.5',
+    qingjia:'',
+    quyu:'0',
+    gongsi:'0',
+  },
+  {
+    bumen:'安丘办事处',
+    xingming:'葛敬堂',
+    chuchai:'27.5',
+    qingjia:'',
+    quyu:'0',
+    gongsi:'0',
+  },
+  {
+    bumen:'安丘办事处',
+    xingming:'李婷',
+    chuchai:'0',
+    qingjia:'',
+    quyu:'0',
+    gongsi:'26',
+  },
+  {
+    bumen:'安丘办事处',
+    xingming:'游清田',
+    chuchai:'26.5',
+    qingjia:'',
+    quyu:'1',
+    gongsi:'0',
+  },
+  {
+    bumen:'安丘办事处',
+    xingming:'高振东',
+    chuchai:'19',
+    qingjia:'',
+    quyu:'0',
+    gongsi:'7',
+  },
+  {
+    bumen:'安丘办事处',
+    xingming:'李玉国安丘',
+    chuchai:'27.5',
+    qingjia:'',
+    quyu:'0',
+    gongsi:'0',
+  },
+  {
+    bumen:'安丘办事处',
+    xingming:'王建明',
+    chuchai:'26.5',
+    qingjia:'',
+    quyu:'0',
+    gongsi:'0',
+  },
+  {
+    bumen:'安丘办事处',
+    xingming:'赵娟娟',
+    chuchai:'26',
+    qingjia:'',
+    quyu:'0',
+    gongsi:'0',
+  },
+  {
+    bumen:'安丘办事处',
+    xingming:'周晓菲',
+    chuchai:'28',
+    qingjia:'',
+    quyu:'0',
+    gongsi:'0',
+  },
+  {
+    bumen:'安丘办事处',
+    xingming:'马建国',
+    chuchai:'28.5',
+    qingjia:'',
+    quyu:'0',
+    gongsi:'0',
+  },
+  {
+    bumen:'安丘办事处',
+    xingming:'李成田',
+    chuchai:'27.5',
+    qingjia:'',
+    quyu:'0',
+    gongsi:'0',
+  },
+  {
+    bumen:'安丘办事处',
+    xingming:'李兆懿',
+    chuchai:'27',
+    qingjia:'',
+    quyu:'0',
+    gongsi:'0',
+  },
+  {
+    bumen:'安丘办事处',
+    xingming:'刘明',
+    chuchai:'25.5',
+    qingjia:'',
+    quyu:'0',
+    gongsi:'0.5',
+  },
+  {
+    bumen:'安丘办事处',
+    xingming:'姜凤娟',
+    chuchai:'26',
+    qingjia:'',
+    quyu:'0',
+    gongsi:'0',
+  },
+  {
+    bumen:'安丘办事处',
+    xingming:'闫秀燕',
+    chuchai:'27',
+    qingjia:'',
+    quyu:'0',
+    gongsi:'0',
+  },
+]
+//极优佳
+
+var jiyoujia={
+  ljpinpai:238,
+  ljjingxiaoshang:385,
+  ljanzhuang:30152,
+  yong_ding:125987,
+  yong_dingjin:42149,
+  shang_ding:10387,
+  shang_dingjin:268,
+}
+//考勤最高
+var kaoqin_zui={
+  chuqin_gao:"潍坊办事处",
+  chuqin_di:"茌平办事处",
+  guifan_gao:"潍坊办事处",
+  guifan_di:"阳谷办事处",
+
+}
 
 
-// $(function() {
-  // $('#doc-datepicker').datepicker().
-  //   on('changeDate.datepicker.amui', function(event) {
-  //     console.log(event.date);
-  //   });
-// });
+//经营概况销量明细
+app.manage_market=sum_all;
+//工作流程监控BPM
+app.manage_liucheng=manage_liucheng;
+//考勤汇总员工
+app.manage_kaoqin=manage_kaoqin;
+//考勤汇总按照部门
+app.manage_kaqinbumen=manage_kaqinbumen;
+//极有佳
+app.jiyoujia=jiyoujia;
+
+//考勤最高
+app.kaoqin_zui=kaoqin_zui;
+// app.mendian=mendian;
+
+
 
 
 
     var start_count = 1188;
-    function init_all_count(){
-        var t_num = $(".t_num");
-        $(".t_num").html("");
+    var start_count2=3098;
+    init_all_count('.t_num',start_count);
+    init_all_count('.t_num2',start_count2);
+
+    function init_all_count(value,start_count){
+        var t_num = $(value);
+        $(value).html("");
         res_string = String(start_count).split("").reverse().join("")
         var len = String(start_count).length;
         for(var i=0;i<len;i++){
@@ -831,8 +1070,11 @@ $first.animate({
  // $first.css('marginTop', 0).appendTo($parent);
 });
 };
-setInterval(function(){doscroll('.js-slide-list')}, 2000);
+setTimeout(function () {
+  setInterval(function(){doscroll('.js-slide-list')}, 2000);
 setInterval(function(){doscroll('.js-slide-list_top')}, 4000);
+},100)
+
 
 //经营状况数据
 $('#my-popup').on('open.modal.amui', function(){
@@ -918,7 +1160,7 @@ option_jz_left_top1 = {
     },
     legend: {
         itemGap:12,
-        y: 'bottom',
+        y: '240',
         data:['采购计划','生产计划','发货计划','销售任务'],
         itemStyle : dataStyle,
     },
@@ -1036,22 +1278,18 @@ for (var i = 0; i < 8; i++) {
     lineData.push(d + b);
 }
 
-
+var colors = ['#2ADACD','#FE7F1E','#D4237A'],
 // option
 option_jz_left_top2 = {
-    color:['#2ADACD','#FE7F1E','#D4237A'],
+    color: colors,
     tooltip: {
+
         trigger: 'axis',
-        axisPointer: {
-            type: 'cross',
-            crossStyle: {
-                color: '#999'
-            }
-        }
+        axisPointer: {type: 'cross'}
     },
     toolbox: {
         feature: {
-            dataView: {show: false, readOnly: false},
+            dataView: {show: true, readOnly: false},
             magicType: {show: true, type: ['line', 'bar']},
             restore: {show: true},
             saveAsImage: {show: true}
@@ -1063,39 +1301,51 @@ option_jz_left_top2 = {
     xAxis: [
         {
             type: 'category',
-            data: ['办事处','运营','部门','人力','安全节能','酿酒'],
-            axisPointer: {
-                type: 'shadow'
+            data: ['办事处', '运营', '部门', '人力', '安全节能', '酿酒'],
+             axisLine: {
+            lineStyle: {
+                color: '#5793f3'
             }
+        },
         }
     ],
     yAxis: [
         {
             type: 'value',
-            name: '完成度',
+            name: '去年同期',
             min: 0,
-            max: 2250,
-            interval: 500,
+            max: 3000,
+            interval: 600,
             axisLabel: {
                 formatter: '{value}'
+            },
+             axisLine: {
+            lineStyle: {
+                 color: colors[0]
             }
+        },
         },
         {
             type: 'value',
-            name: '销量',
+            name: '增长比例',
             min: 0,
             max: 100,
             interval: 20,
             axisLabel: {
-                formatter: '{value}'
+                formatter: '{value} '
+            },
+             axisLine: {
+            lineStyle: {
+                  color: colors[2]
             }
+        },
         }
     ],
     series: [
         {
             name:'去年同期',
             type:'bar',
-            data:[1102.0, 1500.9, 1300.0, 1230.2, 1025.6, 1176.7]
+            data: [1102.0, 1500.9, 1300.0, 1230.2, 1025.6, 1176.7]
         },
         {
             name:'本月',
@@ -1109,8 +1359,7 @@ option_jz_left_top2 = {
             data:[20.0, 32.2, 13.3, 20.5, 16.3, 10.2]
         }
     ]
-}
-
+};
 // -----------------------折线图--------------------------
 option_jz_top6_zhe = {
     color: ['#00ffff', '#00ffa2', '#f0e750'],
@@ -1133,21 +1382,21 @@ option_jz_top6_zhe = {
         }
     },
     toolbox: {
-        show: true,
+        show: false,
         orient: 'vertical',
         right: 'right',
         top: '20%',
         itemGap: 20,
         feature: {
             magicType: {
-                show: true,
+                show: false,
                 type: ['line', 'bar']
             },
             restore: {
-                show: true
+                show: false
             },
             saveAsImage: {
-                show: true
+                show: false
             }
         },
         iconStyle: {
@@ -1288,7 +1537,8 @@ option_jz_top6_zhe = {
 }; // option结束
 //------------------------------------------------
 // -------------------------考勤统计小圆圈11-------------------------------------
-option_jz_top4_left1 = {
+
+option_jz_top4_left1 ={
     tooltip: {
         trigger: 'item',
         formatter: "{a} <br/>{b} : {c} ({d}%)"
@@ -1299,17 +1549,17 @@ option_jz_top4_left1 = {
         data: ['']
     },
     series: [{
-        name: '全率',
+        name: '全勤率',
         type: 'pie',
-        radius: ['60%', '70%'],
+        radius: ['60%', '80%'],
         label: {
             normal: {
                 position: 'center'
             }
         },
         data: [{
-            value: 40,
-            name: '全率',
+            value: app._data.bing[2].quan,
+            name: '全勤率',
             label: {
                 normal: {
                     formatter: '{d} %',
@@ -1326,27 +1576,22 @@ option_jz_top4_left1 = {
                         color: 'rgba(207, 8,255, 1)'
                     }, {
                         offset: 1,
-                        color: 'rgba(207, 2,255, 0.9)'
+                        color: 'rgba(17, 99,198, 0.9)'
                     }]),
                     shadowColor: 'rgba(0, 0, 0, 1)',
-                    color: '#fff',
                     shadowBlur: 10
                 },
             }
         }, {
-            value: 60,
+            value: app._data.bing[2].noquan,
             name: '占位',
-            itemStyle: {
-                        normal: {
-                            color: '#fff'
-                        }
-                    },
             label: {
                 normal: {
                     formatter: '\n全勤率',
                     textStyle: {
+                      fontSize: "16",
                         color: '#fff',
-                        fontSize: 18
+
                     }
                 }
             },
@@ -1355,10 +1600,10 @@ option_jz_top4_left1 = {
             },
             itemStyle: {
                 normal: {
-                    color: '#fff'
+                    color: '#aaa'
                 },
                 emphasis: {
-                    color: '#fff'
+                    color: '#aaa'
                 }
             },
             hoverAnimation: false
@@ -1380,16 +1625,16 @@ option_jz_top4_left2 = {
         data: ['']
     },
     series: [{
-        name: '饼图二',
+        name: '迟到率',
         type: 'pie',
-        radius: ['60%', '70%'],
+        radius: ['60%', '80%'],
         label: {
             normal: {
                 position: 'center'
             }
         },
         data: [{
-            value: 40,
+            value: app._data.bing[0].chi,
             name: '占有率',
             label: {
                 normal: {
@@ -1414,14 +1659,15 @@ option_jz_top4_left2 = {
                 },
             }
         }, {
-            value: 60,
+            value: app._data.bing[0].nochi,
             name: '占位',
             label: {
                 normal: {
-                    formatter: '\n完率',
+                    formatter: '\n迟到率',
                     textStyle: {
-                        color: '#555',
-                        fontSize: 16
+                      fontSize: "16",
+                        color: '#fff',
+
                     }
                 }
             },
@@ -1455,16 +1701,16 @@ option_jz_top4_left3 = {
         data: ['']
     },
     series: [{
-        name: '饼图二',
+        name: '早退率',
         type: 'pie',
-        radius: ['60%', '70%'],
+        radius: ['60%', '80%'],
         label: {
             normal: {
                 position: 'center'
             }
         },
         data: [{
-            value: 40,
+            value: app._data.bing[1].tui,
             name: '占有率',
             label: {
                 normal: {
@@ -1489,14 +1735,14 @@ option_jz_top4_left3 = {
                 },
             }
         }, {
-            value: 60,
+            value: app._data.bing[1].notui,
             name: '占位',
             label: {
                 normal: {
-                    formatter: '\n完成率',
+                    formatter: '\n早退率',
                     textStyle: {
-                        color: '#555',
-                        fontSize: 16
+                        color: '#fff',
+                        fontSize: '18'
                     }
                 }
             },
@@ -1662,77 +1908,7 @@ option_top3_center_tu = {
         ] //series结束
 }; // option结束
 // -------------------------考勤统计小圆圈11-------------------------------------
-option_jz_top4_left1 = {
-    tooltip: {
-        trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    },
-    legend: {
-        orient: 'vertical',
-        left: 'left',
-        data: ['']
-    },
-    series: [{
-        name: '全勤率',
-        type: 'pie',
-        radius: ['60%', '70%'],
-        label: {
-            normal: {
-                position: 'center'
-            }
-        },
-        data: [{
-            value: 40,
-            name: '占有率',
-            label: {
-                normal: {
-                    formatter: '{d} %',
-                    textStyle: {
-                        fontSize: 20,
-                        color:'red'
-                    }
-                }
-            },
-             itemStyle: {
-                 normal: {
-                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                        offset: 0,
-                        color: 'rgba(0, 211,252, 1)'
-                    }, {
-                        offset: 1,
-                        color: 'rgba(0, 193,246, 0.4)'
-                    }]),
-                    shadowColor: 'rgba(0, 0, 0, 1)',
-                    shadowBlur: 10
-                },
-            }
-        }, {
-            value: 60,
-            name: '占位',
-            label: {
-                normal: {
-                    formatter: '\n全勤率',
-                    textStyle: {
-                        color: '#555',
-                        fontSize: 14
-                    }
-                }
-            },
-            tooltip: {
-                show: false
-            },
-            itemStyle: {
-                normal: {
-                    color: '#aaa'
-                },
-                emphasis: {
-                    color: '#aaa'
-                }
-            },
-            hoverAnimation: false
-        }]
-    }]
-};
+
 //经营概况
 jz_left_top.setOption(option_jz_left_top1);
 //销售排名
